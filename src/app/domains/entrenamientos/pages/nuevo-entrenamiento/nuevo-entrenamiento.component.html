@@ -1,1 +1,139 @@
 <p>nuevo-entrenamiento works!</p>
+<div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">
+          {{'NEW_COMPANY'|translate}}
+        </h4>
+      </div>
+      <form [formGroup]="companyForm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="form-group col-md-10">
+                <label class="form-label" for="name">
+                  {{'COMPANY_NAME'|translate}}
+                </label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="{{'COMPANY_NAME' |translate}}" formControlName="name">
+                <p id="companyNameError" class="text-danger" *ngIf="companyForm.get('name')?.hasError('required') && companyForm.get('name')?.touched ">
+                  {{'COMPANY_VALIDATION_NAME'|translate}}
+                </p>
+                <p class="text-danger" *ngIf="companyForm.get('name')?.hasError('alphanumeric') && companyForm.get('name')?.touched ">
+                  {{'COMPANY_VALIDATION_NAME_ALPHANUMERIC'|translate}}
+                </p>
+              </div>
+              <div class="form-group col-md-10">
+                <label class="form-label" for="email">
+                  {{'COMPANY_EMAIL'|translate}}
+                </label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="{{'COMPANY_EMAIL' |translate}}" formControlName="email">
+  
+                <p id="emailError" class="text-danger" *ngIf="companyForm.get('email')?.hasError('required') && companyForm.get('email')?.touched ">
+                  {{'COMPANY_VALIDATION_EMAIL'|translate}}
+                </p>
+  
+                <p class="text-danger" *ngIf="companyForm.get('email')?.hasError('email') && companyForm.get('email')?.touched ">
+                  {{'COMPANY_VALIDATION_EMAIL_VALID'|translate}}
+                </p>
+              </div>
+              <div class="form-group col-md-10">
+                <label class="form-label" for="address">
+                  {{'COMPANY_ADDRESS'|translate}}
+                </label>
+                <input type="text" class="form-control" name="address" id="address" placeholder="{{'COMPANY_ADDRESS' |translate}}" formControlName="address">
+                <p id="addressError" class="text-danger" *ngIf="companyForm.get('address')?.hasError('required') && companyForm.get('address')?.touched ">
+                  {{'COMPANY_VALIDATION_ADDRESS'|translate}}
+                </p>
+                <p class="text-danger" *ngIf="companyForm.get('address')?.hasError('alphanumeric') && companyForm.get('address')?.touched ">
+                  {{'COMPANY_VALIDATION_ADDRESS_ALPHANUMERIC'|translate}}
+                </p>
+              </div>
+              <div class="form-group col-md-10">
+                <label for="country">
+                  {{'COMPANY_COUNTRY'|translate}}
+                </label>
+                <select id="country" class="form-select mx-sm3 mb-2" name="country" formControlName="country">
+                  <option value="" selected>{{'SELECT'|translate}} </option>
+                  <option>Colombia</option>
+                  <option>USA</option>
+                  <option>Canada</option>
+                </select>
+                <p id="countryError" class="text-danger" *ngIf="companyForm.get('country')?.hasError('required') && companyForm.get('country')?.touched ">
+                  {{'RULE_SELECT_COUNTRY'|translate}}
+                </p>
+              </div>
+              <div class="form-group col-md-10">
+                  <label class="form-label" for="city">
+                    {{'COMPANY_CITY'|translate}}
+                  </label>
+                  <input type="text" class="form-control" name="city" id="city" placeholder="{{'COMPANY_CITY' |translate}}" formControlName="city">
+                  <p id="cityError" class="text-danger" *ngIf="companyForm.get('city')?.hasError('required') && companyForm.get('city')?.touched ">
+                    {{'COMPANY_VALIDATION_CITY'|translate}}
+                  </p>
+                  <p class="text-danger" *ngIf="companyForm.get('city')?.hasError('alphabetical') && companyForm.get('city')?.touched ">
+                    {{'COMPANY_VALIDATION_CITY_ALPHABETIC'|translate}}
+                  </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group col-md-10">
+                <label for="dept" class="form-label">
+                  {{'COMPANY_DEPT'|translate}}
+                </label>
+                <select id="dept" class="form-select mx-sm3 mb-2" name="dept" formControlName="dept">
+                  <option value="" selected>{{'SELECT'|translate}}</option>
+                  <option>Arauca</option>
+                  <option>Bogotá</option>
+                  <option>Tolima</option>
+                </select>
+                <p id="stateError" class="text-danger" *ngIf="companyForm.get('dept')?.hasError('required') && companyForm.get('dept')?.touched ">
+                  {{'RULE_SELECT_STATE'|translate}}
+                </p>
+              </div>
+              <div class="form-group col-md-10">
+                <label class="form-label" for="phone">
+                  {{'COMPANY_PHONE'|translate}}
+                </label>
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="{{'COMPANY_PHONE' |translate}}" formControlName="phone">
+                <p id="phoneError" class="text-danger" *ngIf="companyForm.get('phone')?.hasError('required') && companyForm.get('phone')?.touched ">
+                  {{'COMPANY_VALIDATION_PHONE'|translate}}
+                </p>
+                <p class="text-danger" *ngIf="companyForm.get('phone')?.hasError('numeric') && companyForm.get('phone')?.touched ">
+                  {{'COMPANY_VALIDATION_PHONE_NUMERIC'|translate}}
+                </p>
+              </div>
+              <div class="form-group col-md-10">
+                <label class="form-label" for="contact_name">
+                  {{'COMPANY_CONTACT'|translate}}
+                </label>
+                <input type="text" class="form-control" id="contact_name" name="contact_name" formControlName="contact_name">
+                <p id="contactError" class="text-danger" *ngIf="companyForm.get('contact_name')?.hasError('required') && companyForm.get('contact_name')?.touched ">
+                  {{'COMPANY_VALIDATION_CONTACT'|translate}}
+                </p>
+                <p class="text-danger" *ngIf="companyForm.get('contact_name')?.hasError('alphabetical') && companyForm.get('contact_name')?.touched ">
+                  {{'COMPANY_VALIDATION_CONTACT_ALPHABETIC'|translate}}
+                </p>
+              </div>
+              <div class="form-group col-md-10">
+                <label class="form-label" for="contact_phone">
+                  {{'COMPANY_CONTACT_PHONE'|translate}}
+                </label>
+                <input type="text" class="form-control" id="contact_phone" name="contact_phone" formControlName="contact_phone">
+                <p id="contactPhoneError" class="text-danger" *ngIf="companyForm.get('contact_phone')?.hasError('required') && companyForm.get('contact_phone')?.touched ">
+                  {{'COMPANY_VALIDATION_CONTACT_PHONE'|translate}}
+                </p>
+                <p class="text-danger" *ngIf="companyForm.get('contact_phone')?.hasError('numeric') && companyForm.get('contact_phone')?.touched ">
+                  {{'COMPANY_VALIDATION_CONTACT_PHONE_NUMERIC'|translate}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-action">
+          <button id="guardar" [disabled] = "companyForm.invalid" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >
+            {{'COMPANY_SAVE'|translate}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
