@@ -4,8 +4,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ToastrModule, provideToastr } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,8 +20,10 @@ export const appConfig: ApplicationConfig = {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: 'ingles'
-    }))
+      defaultLanguage: 'español'
+    })),
+    provideAnimations(),
+    provideToastr()
   ]
 };
 

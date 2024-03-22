@@ -1,27 +1,18 @@
 import { Component,OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nuevo-entrenamiento',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule,CommonModule],
   templateUrl: './nuevo-entrenamiento.component.html',
   styleUrl: './nuevo-entrenamiento.component.css'
 })
 export class NuevoEntrenamientoComponent implements OnInit  {
-  companyForm = this.formBuilder.group({
-    name: ['', [Validators.required, this.alphanumeric]],
-    email: ['', [Validators.required, Validators.email]],
-    address: ['', [Validators.required, this.alphanumeric]],
-    country: ['', [Validators.required]],
-    dept: ['', [Validators.required]],
-    city: ['', [Validators.required, this.alphabetical]],
-    phone: ['', [Validators.required, this.numeric]],
-    contact_name: ['', [Validators.required, this.alphabetical]],
-    contact_phone: ['', [Validators.required, this.numeric]],
-  });
+  companyForm: any;
 
   bottonDisable:Boolean = true;
 
@@ -32,7 +23,17 @@ export class NuevoEntrenamientoComponent implements OnInit  {
   }
 
   ngOnInit() {
-   
+    this.companyForm = this.formBuilder.group({
+      name: ['', [Validators.required, this.alphanumeric]],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', [Validators.required, this.alphanumeric]],
+      country: ['', [Validators.required]],
+      dept: ['', [Validators.required]],
+      city: ['', [Validators.required, this.alphabetical]],
+      phone: ['', [Validators.required, this.numeric]],
+      contact_name: ['', [Validators.required, this.alphabetical]],
+      contact_phone: ['', [Validators.required, this.numeric]],
+    });
   }
 
   
