@@ -19,8 +19,12 @@ export const appConfig: ApplicationConfig = {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-      },
-      defaultLanguage: 'español'
+      }
+    })),
+    importProvidersFrom(ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
     })),
     provideAnimations(),
     provideToastr()
