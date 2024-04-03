@@ -1,13 +1,14 @@
 import { Component,OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './../../../shared/components/header/header.component'
 
 @Component({
   selector: 'app-nuevo-entrenamiento',
   standalone: true,
-  imports: [TranslateModule,CommonModule],
+  imports: [TranslateModule,CommonModule,ReactiveFormsModule,HeaderComponent],
   templateUrl: './nuevo-entrenamiento.component.html',
   styleUrl: './nuevo-entrenamiento.component.css'
 })
@@ -24,7 +25,8 @@ export class NuevoEntrenamientoComponent implements OnInit  {
 
   ngOnInit() {
     this.companyForm = this.formBuilder.group({
-      name: ['', [Validators.required, this.alphanumeric]],
+      nombre: ['', [Validators.required, this.alphanumeric]],
+      fecha_entrenamiento: ['',[Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required, this.alphanumeric]],
       country: ['', [Validators.required]],

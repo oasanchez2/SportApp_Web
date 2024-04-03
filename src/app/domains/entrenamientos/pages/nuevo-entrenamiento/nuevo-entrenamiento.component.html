@@ -1,3 +1,4 @@
+<app-header></app-header>
 <p>nuevo-entrenamiento works!</p>
 <div class="col-md-12">
     <div class="card">
@@ -5,22 +6,31 @@
         <h4 class="card-title">
           {{'NEW_COMPANY'|translate}}
         </h4>
-      </div>
-      <form>
+      </div>    
+        <form [formGroup]="companyForm">
         <div class="card-body">
           <div class="row">
             <div class="col">
               <div class="form-group col-md-10">
-                <label class="form-label" for="name">
-                  {{'COMPANY_NAME'|translate}}
+                <label class="form-label" for="nombre">
+                  {{'TRAINING_NAME'|translate}}
                 </label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="{{'COMPANY_NAME' |translate}}" formControlName="name">
-                <p id="companyNameError" class="text-danger" *ngIf="companyForm.get('name')?.hasError('required') && companyForm.get('name')?.touched ">
-                  {{'COMPANY_VALIDATION_NAME'|translate}}
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="{{'TRAINING_NAME' |translate}}" formControlName="nombre">
+                <p id="trainingNameError" class="text-danger" *ngIf="companyForm.get('nombre')?.hasError('required') && companyForm.get('nombre')?.touched ">
+                  {{'TRAINING_VALIDATION_NAME'|translate}}
                 </p>
                 <p class="text-danger" *ngIf="companyForm.get('name')?.hasError('alphanumeric') && companyForm.get('name')?.touched ">
-                  {{'COMPANY_VALIDATION_NAME_ALPHANUMERIC'|translate}}
+                  {{'TRAINING_VALIDATION_NAME_ALPHANUMERIC'|translate}}
                 </p>
+              </div>
+              <div class="form-group col-md-10">
+                <label class="form-label" for="fecha_entrenamiento">
+                  {{'TRAINING_DATE'|translate}}
+                </label>
+                <input type="text" class="form-control" name="fecha_entrenamiento" id="fecha_entrenamiento" placeholder="{{'TRAINING_DATE' |translate}}" formControlName="fecha_entrenamiento">
+                <p id="trainingDateError" class="text-danger" *ngIf="companyForm.get('fecha_entrenamiento')?.hasError('fecha_entrenamiento') && companyForm.get('fecha_entrenamiento')?.touched ">
+                  {{'TRAINING_VALIDATION_DATE'|translate}}
+                </p>  
               </div>
               <div class="form-group col-md-10">
                 <label class="form-label" for="email">
