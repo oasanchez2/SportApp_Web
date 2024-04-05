@@ -1,14 +1,17 @@
-<nav class="navbar navbar-header navbar-expand-lg" data-background-color="orange">			
+<nav class="navbar navbar-header navbar-expand-lg" data-background-color= "orangeS">			
     <div class="container-fluid">        
         <div class="collapse" id="search-nav">
             <h1>SportApp</h1>
-            <img src="./.././../../../../assets/img/bici.png">
+            <img src="./.././../../../../assets/img/Icono_running.png">
         </div>
         <div>
             <a href="">Cerrar sesión</a>
-            <select>
-                
-            </select>
+            <div>
+                <label for="lang">{{"LANGUAJE_JOBS"|translate}}</label>
+                <select class="form-select mx-sm3 mb-2" #langSelect (change)="changeLang(langSelect.value)" id="lang">
+                  <option *ngFor = "let lang of langs" [value]="lang" >{{lang}}</option>
+                </select>
+              </div>
         </div>
     </div>
 </nav>

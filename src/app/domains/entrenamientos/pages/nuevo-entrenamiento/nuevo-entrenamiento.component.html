@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="col-md-12">
     <div class="card">   
-        <form [formGroup]="companyForm">
+        <form [formGroup]="companyForm" class="form-inline">
         <div class="card-body">
           <div class="row">
             <div class="col">
@@ -38,9 +38,9 @@
                   {{'TRAINING_DATE'|translate}}
                 </label>
                 <input type="text" class="form-control" name="fecha_entrenamiento" id="fecha_entrenamiento" placeholder="{{'TRAINING_DATE' |translate}}" formControlName="fecha_entrenamiento">
-                <p id="trainingDateError" class="text-danger" *ngIf="companyForm.get('fecha_entrenamiento')?.hasError('fecha_entrenamiento') && companyForm.get('fecha_entrenamiento')?.touched ">
+                <p id="trainingDateError" class="text-danger" *ngIf="companyForm.get('fecha_entrenamiento')?.hasError('required') && companyForm.get('fecha_entrenamiento')?.touched ">
                   {{'TRAINING_VALIDATION_DATE'|translate}}
-                </p>  
+                </p>
               </div>              
               <div class="form-group col-md-10">
                 <label class="form-label" for="numero_repeticiones">
