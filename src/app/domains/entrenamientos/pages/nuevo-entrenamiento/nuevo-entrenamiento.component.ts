@@ -27,14 +27,8 @@ export class NuevoEntrenamientoComponent implements OnInit  {
     this.companyForm = this.formBuilder.group({
       nombre: ['', [Validators.required, this.alphanumeric]],
       fecha_entrenamiento: ['',[Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, this.alphanumeric]],
-      country: ['', [Validators.required]],
-      dept: ['', [Validators.required]],
-      city: ['', [Validators.required, this.alphabetical]],
-      phone: ['', [Validators.required, this.numeric]],
-      contact_name: ['', [Validators.required, this.alphabetical]],
-      contact_phone: ['', [Validators.required, this.numeric]],
+      ejercicios: ['', [Validators.required]],
+      numero_repeticiones: ['', [Validators.required, this.numeric]],
     });
   }
 
