@@ -1447,6 +1447,9 @@ body {
 .navbar-header[data-background-color="red2"] {
   background: #EA4d56 !important; }
 
+.navbar-header[data-background-color="orangeS"] {
+  background: #F26522 !important; }
+
 .sidebar[data-background-color="dark"] {
   background: #1a2035 !important; }
   .sidebar[data-background-color="dark"] .user {
@@ -1914,6 +1917,42 @@ body {
     background-color: #f7f7f7; }
   .sidebar[data-background-color="red2"] .scrollbar-inner > .scroll-element.scroll-draggable .scroll-bar, .sidebar[data-background-color="red2"] .scrollbar-inner > .scroll-element:hover .scroll-bar {
     background-color: #dcdbdb; }
+
+  .sidebar[data-background-color="orangeS"] {
+    background: #F26522 !important; }
+    .sidebar[data-background-color="orangeS"] .user {
+      margin-top: 0px;
+      padding-top: 12.5px;
+      border-top: 1px solid;
+      border-color: rgba(255, 255, 255, 0.1) !important; }
+      .sidebar[data-background-color="orangeS"] .user .info a > span {
+        color: #fff; }
+        .sidebar[data-background-color="orangeS"] .user .info a > span .user-level {
+          color: #eaeaea; }
+      .sidebar[data-background-color="orangeS"] .user .info .caret {
+        border-top-color: #fff; }
+    .sidebar[data-background-color="orangeS"] .nav .nav-item a {
+      color: #eaeaea !important; }
+      .sidebar[data-background-color="orangeS"] .nav .nav-item a p, .sidebar[data-background-color="orangeS"] .nav .nav-item a i, .sidebar[data-background-color="orangeS"] .nav .nav-item a .caret {
+        color: #eaeaea !important; }
+      .sidebar[data-background-color="orangeS"] .nav .nav-item a:hover, .sidebar[data-background-color="orangeS"] .nav .nav-item a:focus, .sidebar[data-background-color="orangeS"] .nav .nav-item a[data-toggle=collapse][aria-expanded=true] {
+        color: #fff !important; }
+        .sidebar[data-background-color="orangeS"] .nav .nav-item a:hover p, .sidebar[data-background-color="orangeS"] .nav .nav-item a:hover i, .sidebar[data-background-color="orangeS"] .nav .nav-item a:hover .caret, .sidebar[data-background-color="orangeS"] .nav .nav-item a:focus p, .sidebar[data-background-color="orangeS"] .nav .nav-item a:focus i, .sidebar[data-background-color="orangeS"] .nav .nav-item a:focus .caret, .sidebar[data-background-color="orangeS"] .nav .nav-item a[data-toggle=collapse][aria-expanded=true] p, .sidebar[data-background-color="orangeS"] .nav .nav-item a[data-toggle=collapse][aria-expanded=true] i, .sidebar[data-background-color="orangeS"] .nav .nav-item a[data-toggle=collapse][aria-expanded=true] .caret {
+          color: #fff !important; }
+    .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:hover, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:focus, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a[data-toggle=collapse][aria-expanded=true] {
+      background: #fff !important;
+      color: #F26522 !important; }
+      .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a p, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a i, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a .caret, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:hover p, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:hover i, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:hover .caret, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:focus p, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:focus i, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a:focus .caret, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a[data-toggle=collapse][aria-expanded=true] p, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a[data-toggle=collapse][aria-expanded=true] i, .sidebar[data-background-color="orangeS"] .nav > .nav-item.active > a[data-toggle=collapse][aria-expanded=true] .caret {
+        color: #F26522 !important; }
+    .sidebar[data-background-color="orangeS"] .nav .nav-section .text-section, .sidebar[data-background-color="orangeS"] .nav .nav-section .sidebar-mini-icon {
+      color: #eaeaea; }
+    .sidebar[data-background-color="orangeS"] .nav .nav-collapse li a .sub-item:before {
+      background: #eaeaea; }
+    .sidebar[data-background-color="orangeS"] .scrollbar-inner > .scroll-element .scroll-bar {
+      background-color: #f7f7f7; }
+    .sidebar[data-background-color="orangeS"] .scrollbar-inner > .scroll-element.scroll-draggable .scroll-bar, .sidebar[data-background-color="orangeS"] .scrollbar-inner > .scroll-element:hover .scroll-bar {
+      background-color: #dcdbdb; }  
+
 
 /*    Avatar    */
 .avatar {
