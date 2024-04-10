@@ -1,21 +1,27 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './../../../shared/components/header/header.component'
+import { EjerciciosService } from './../../../shared/services/ejercicio/ejercicios.service'
+import { Ejercicios } from '../../../shared/models/ejercicios.model';
+import { EjercicioComponent } from '../../components/ejercicio/ejercicio.component'
 
 @Component({
   selector: 'app-nuevo-entrenamiento',
   standalone: true,
-  imports: [TranslateModule,CommonModule,ReactiveFormsModule,HeaderComponent],
+  imports: [TranslateModule,CommonModule,ReactiveFormsModule,HeaderComponent, EjercicioComponent],
   templateUrl: './nuevo-entrenamiento.component.html',
   styleUrl: './nuevo-entrenamiento.component.css'
 })
 export class NuevoEntrenamientoComponent implements OnInit  {
   companyForm: any;
 
-  bottonDisable:Boolean = true;
+  botonAgregarEjercicio: boolean = true;
+
+  private ejercicioService = inject(EjerciciosService)
+  ejercicios = signal<Ejercicios[]>([]);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +35,24 @@ export class NuevoEntrenamientoComponent implements OnInit  {
       fecha_entrenamiento: ['',[Validators.required]],
       ejercicios: ['', [Validators.required]],
       numero_repeticiones: ['', [Validators.required, this.numeric]],
+    });
+
+    this.ejercicioService.getEjercicios()
+    .subscribe({
+      next: (ejercicios) => {
+        this.ejercicios.set(ejercicios);
+      },
+      error: () => {
+
+      }
+    })
+
+    // Observa los cambios en los campos relevantes y actualiza la propiedad del botón
+    this.companyForm.get('ejercicios').valueChanges.subscribe(() => {
+      this.actualizarEstadoBoton();
+    });
+    this.companyForm.get('numero_repeticiones').valueChanges.subscribe(() => {
+      this.actualizarEstadoBoton();
     });
   }
 
@@ -53,5 +77,15 @@ export class NuevoEntrenamientoComponent implements OnInit  {
     const isValid = numericRegex.test(value);
     return isValid ? null : { 'numeric': true };
   }
+
+  // Función para verificar las condiciones y actualizar el estado del botón
+  private actualizarEstadoBoton(): void {
+    const numeroRepeticiones = this.companyForm.get('numero_repeticiones').value;
+    const ejercicioSeleccionado = this.companyForm.get('ejercicios').value;
+    const ejerciciosValidos = this.companyForm.get('ejercicios').valid;
+    const numeroRepeticionesValido = this.companyForm.get('numero_repeticiones').valid;
+    this.botonAgregarEjercicio = !(numeroRepeticiones && ejercicioSeleccionado && ejerciciosValidos && numeroRepeticionesValido);
+  }
+  
 
 }
