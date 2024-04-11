@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="col-md-12">
     <div class="card">   
-        <form [formGroup]="companyForm" class="form-inline">
+        <form [formGroup]="companyForm">
         <div class="card-body">
           <div class="row">
             <div class="col">
@@ -22,10 +22,8 @@
                   {{'TRAINING_EXERCISE'|translate}}
                 </label>
                 <select id="ejercicios" class="form-select mx-sm3 mb-2" name="ejercicios" formControlName="ejercicios">
-                  <option value="" selected>{{'SELECT'|translate}}</option>
-                  <option>Arauca</option>
-                  <option>Bogotá</option>
-                  <option>Tolima</option>
+                  <option value="" selected>{{'SELECT'|translate}}</option>                  
+                  <option *ngFor="let ejercicio of ejercicios()" [value]="ejercicio.id_ejercicio">{{ejercicio.nombre}}</option>    
                 </select>
                 <p id="exerciseError" class="text-danger" *ngIf="companyForm.get('ejercicios')?.hasError('required') && companyForm.get('ejercicios')?.touched ">
                   {{'RULE_SELECT_EXERCISE'|translate}}
@@ -54,12 +52,27 @@
                   {{'TRAINING_VALIDATION_NUMBER_REPETITIONS_NUMERIC'|translate}}
                 </p>
               </div>
+              <div class="form-group col-md-10">
+                <button id="agregar_ejercicio" [disabled] = "botonAgregarEjercicio" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >
+                  {{'EXERCICE_ADD'|translate}}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+               <app-ejercicio></app-ejercicio> 
+               <app-ejercicio></app-ejercicio> 
+               <app-ejercicio></app-ejercicio>
             </div>
           </div>
         </div>
         <div class="card-action">
+          <button id="cancelar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >
+            {{'TRAINING_CANCEL'|translate}}
+          </button>
           <button id="guardar" [disabled] = "companyForm.invalid" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" >
-            {{'COMPANY_SAVE'|translate}}
+            {{'TRAINING_SAVE'|translate}}
           </button>
         </div>
       </form>
