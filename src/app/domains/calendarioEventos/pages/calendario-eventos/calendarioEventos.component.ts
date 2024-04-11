@@ -33,13 +33,7 @@ export class CalendarioEventosComponent implements OnInit  {
   }
 
   ngOnInit() {
-    this.companyForm = this.formBuilder.group({
-      nombre: ['', [Validators.required, this.alphanumeric]],
-      fecha_evento: ['',[Validators.required]],
-      lugar: ['', [Validators.required]],
-      descripcion: ['', [Validators.required, this.alphanumeric]],
-      nivel: ['', [Validators.required, this.alphanumeric]]
-    });
+    this.getCalendarioEventosList();
   }
 
 
