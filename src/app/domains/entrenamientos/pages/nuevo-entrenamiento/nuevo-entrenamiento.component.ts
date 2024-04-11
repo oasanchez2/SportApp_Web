@@ -6,7 +6,11 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { EjerciciosService } from './../../../shared/services/ejercicio/ejercicios.service'
 import { Ejercicios } from '../../../shared/models/ejercicios.model';
-import { EjercicioComponent } from '../../components/ejercicio/ejercicio.component'
+import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
+
+
+import { EjercicioComponent } from '../../components/ejercicio/ejercicio.component';
+import { EntrenamientosService } from './../../../shared/services/entrenamiento/entrenamientos.service';
 
 @Component({
   selector: 'app-nuevo-entrenamiento',
@@ -20,7 +24,8 @@ export class NuevoEntrenamientoComponent implements OnInit  {
 
   botonAgregarEjercicio: boolean = true;
 
-  private ejercicioService = inject(EjerciciosService)
+  private ejercicioService = inject(EjerciciosService);
+  private entrenamientoService = inject(EntrenamientosService);
   ejercicios = signal<Ejercicios[]>([]);
   ejerciciosSeleccionados = signal<Ejercicios[]>([]);
 
@@ -88,8 +93,6 @@ export class NuevoEntrenamientoComponent implements OnInit  {
     this.botonAgregarEjercicio = !(numeroRepeticiones && ejercicioSeleccionado && ejerciciosValidos && numeroRepeticionesValido);
   }
   
-
-
 // Método para buscar y mover un ejercicio a la nueva array
 anadirEjercicio(): void {
   const numeroRepeticiones = this.companyForm.get('numero_repeticiones').value;
@@ -107,8 +110,24 @@ anadirEjercicio(): void {
     console.error('No se encontró ningún ejercicio con el id proporcionado.');
   }
 }
-  
-  
-  
+crearEntrenamiento(){
+  const nuevoEntrenamiento: EntrenamientoJson = {
+    nombre: 'Desafio antebrazo',
+    fecha_entrenamiento: new Date(2024,4,20,12,30,0),
+    id_usuario: '07adc016-82eb-4c92-b722-0e80ebfdcfe5',
+    estado: true
+  };
+
+  this.entrenamientoService.postEntrenamiento(nuevoEntrenamiento).subscribe(
+    (respuesta: Entrenamientos) => {
+      // Manejar la respuesta exitosa
+      // La respuesta ahora está disponible como un objeto `Entrenamiento`
+      console.log('Entrenamiento creado:', respuesta);
+    },
+    (error) => {
+      // Manejar el error
+    }
+  );
+}
 
 }
