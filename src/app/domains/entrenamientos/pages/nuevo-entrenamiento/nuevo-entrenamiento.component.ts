@@ -22,6 +22,7 @@ export class NuevoEntrenamientoComponent implements OnInit  {
 
   private ejercicioService = inject(EjerciciosService)
   ejercicios = signal<Ejercicios[]>([]);
+  ejerciciosSeleccionados = signal<Ejercicios[]>([]);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -86,6 +87,28 @@ export class NuevoEntrenamientoComponent implements OnInit  {
     const numeroRepeticionesValido = this.companyForm.get('numero_repeticiones').valid;
     this.botonAgregarEjercicio = !(numeroRepeticiones && ejercicioSeleccionado && ejerciciosValidos && numeroRepeticionesValido);
   }
+  
+
+
+// Método para buscar y mover un ejercicio a la nueva array
+anadirEjercicio(): void {
+  const numeroRepeticiones = this.companyForm.get('numero_repeticiones').value;
+  const ejercicioSeleccionado = this.companyForm.get('ejercicios').value;
+  const ejercicioEncontrado = this.ejercicios().find(ejercicio => ejercicio.id_ejercicio === ejercicioSeleccionado);
+
+  if (ejercicioEncontrado) {
+    ejercicioEncontrado.numero_repeticiones = numeroRepeticiones;
+    this.ejerciciosSeleccionados().push(ejercicioEncontrado);
+    this.companyForm.get('ejercicios').reset('');
+    this.companyForm.get('numero_repeticiones').reset('');
+    const ejerciciosFiltrados = this.ejercicios().filter(ejercicio => ejercicio.id_ejercicio !== ejercicioEncontrado.id_ejercicio);
+    this.ejercicios.set(ejerciciosFiltrados); // Actualizar la señal con los ejercicios filtrados
+  } else {
+    console.error('No se encontró ningún ejercicio con el id proporcionado.');
+  }
+}
+  
+  
   
 
 }
