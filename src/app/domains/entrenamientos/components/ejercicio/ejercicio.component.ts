@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common'
+import { Ejercicios } from '../../../shared/models/ejercicios.model';
 
 @Component({
   selector: 'app-ejercicio',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './ejercicio.component.html',
   styleUrl: './ejercicio.component.css'
 })
 export class EjercicioComponent {
-  img = 'https://picsum.photos/320/320?' + Math.random();
+  @Input({required: true}) ejercicio!: Ejercicios;
+
 }
