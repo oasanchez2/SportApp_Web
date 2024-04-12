@@ -12,3 +12,12 @@ export interface EntrenamientoJson{
     id_usuario: string;
     estado: boolean;
 }
+
+export interface EjercicioJson {
+    estado: boolean;
+    id_ejercicio: string;
+    nombre: string;
+    url_imagen: string;
+    numero_repeticiones: number;
+  }
+  
