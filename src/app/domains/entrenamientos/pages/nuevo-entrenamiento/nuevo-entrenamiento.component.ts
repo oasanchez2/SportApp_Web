@@ -36,9 +36,9 @@ export class NuevoEntrenamientoComponent implements OnInit  {
   ngOnInit() {
     this.companyForm = this.formBuilder.group({
       nombre: ['', [Validators.required, this.alphanumeric]],
-      fecha_entrenamiento: ['',[Validators.required]],
-      ejercicios: ['', [Validators.required]],
-      numero_repeticiones: ['', [Validators.required, this.numeric]],
+      fecha_entrenamiento: ['',[Validators.required]],  
+      ejercicios: [''],
+      numero_repeticiones: [''],
     });
 
     this.getEjerciciosLista();

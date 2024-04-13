@@ -14,11 +14,7 @@ export class EntrenamientosService {
   private urlApi= this.apiUrl;
 
   constructor() { }
-
-  getEntrenamientos() {
-    return this.http.get<Entrenamientos[]>(this.urlApi);
-  }
-
+  
   postEntrenamiento(entrenamiento: EntrenamientoJson): Observable<Entrenamientos> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
     return this.http.post<Entrenamientos>(this.urlApi, entrenamiento, { headers });
