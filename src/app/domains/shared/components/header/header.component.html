@@ -6,7 +6,7 @@
         </div>
         <div>
             <div>
-                <label for="lang">{{"LANGUAJE_JOBS"|translate}}</label>
+                <label class="lb-text" for="lang">{{"LANGUAJE_JOBS"|translate}}</label>
                 <select class="form-select mx-sm3 mb-2" #langSelect (change)="changeLang(langSelect.value)" id="lang">
                   <option *ngFor = "let lang of langs" [value]="lang" >{{lang}}</option>
                 </select>
