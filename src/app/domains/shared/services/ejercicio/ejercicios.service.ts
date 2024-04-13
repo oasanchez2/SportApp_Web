@@ -9,7 +9,7 @@ import { environment } from '../../.././../../environments/environment'
 export class EjerciciosService {
   private http = inject(HttpClient);
   apiUrl = environment.URL_EJERCICIOS;
-  private urlApi= this.apiUrl+'/ejercicios';
+  private urlApi= this.apiUrl;
 
   constructor() { }
 
