@@ -38,7 +38,7 @@ export class NuevoEntrenamientoComponent implements OnInit  {
       nombre: ['', [Validators.required, this.alphanumeric]],
       fecha_entrenamiento: ['',[Validators.required]],  
       ejercicios: [''],
-      numero_repeticiones: [''],
+      numero_repeticiones: ['',[this.numeric]],
     });
 
     this.getEjerciciosLista();
