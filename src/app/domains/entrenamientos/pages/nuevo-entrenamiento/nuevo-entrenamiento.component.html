@@ -35,7 +35,7 @@
                 <label class="form-label" for="fecha_entrenamiento">
                   {{'TRAINING_DATE'|translate}}
                 </label>
-                <input type="text" class="form-control" name="fecha_entrenamiento" id="fecha_entrenamiento" placeholder="{{'TRAINING_DATE' |translate}}" formControlName="fecha_entrenamiento">
+                <input type="date" class="form-control" name="fecha_entrenamiento" id="fecha_entrenamiento" placeholder="{{'TRAINING_DATE' |translate}}" formControlName="fecha_entrenamiento">
                 <p id="trainingDateError" class="text-danger" *ngIf="companyForm.get('fecha_entrenamiento')?.hasError('required') && companyForm.get('fecha_entrenamiento')?.touched ">
                   {{'TRAINING_VALIDATION_DATE'|translate}}
                 </p>
