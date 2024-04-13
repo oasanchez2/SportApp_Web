@@ -11,6 +11,7 @@ export interface EntrenamientoJson{
     fecha_entrenamiento: Date;
     id_usuario: string;
     estado: boolean;
+    ejercicios: EjercicioJson[]
 }
 
 export interface EjercicioJson {
