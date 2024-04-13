@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class EntrenamientosService {
   private http = inject(HttpClient);
-  apiUrl = environment.URL_EJERCICIOS;
-  private urlApi= this.apiUrl+'/ejercicios';
+  apiUrl = environment.URL_ENTRENAMIENTO;
+  private urlApi= this.apiUrl;
 
   constructor() { }
 
