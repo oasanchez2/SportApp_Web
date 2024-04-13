@@ -11,4 +11,14 @@ export interface EntrenamientoJson{
     fecha_entrenamiento: Date;
     id_usuario: string;
     estado: boolean;
+    ejercicios: EjercicioJson[]
 }
+
+export interface EjercicioJson {
+    estado: boolean;
+    id_ejercicio: string;
+    nombre: string;
+    url_imagen: string;
+    numero_repeticiones: number;
+  }
+  

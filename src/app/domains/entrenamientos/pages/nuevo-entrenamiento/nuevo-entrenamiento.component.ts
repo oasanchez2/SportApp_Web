@@ -7,8 +7,6 @@ import { HeaderComponent } from './../../../shared/components/header/header.comp
 import { EjerciciosService } from './../../../shared/services/ejercicio/ejercicios.service'
 import { Ejercicios } from '../../../shared/models/ejercicios.model';
 import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
-
-
 import { EjercicioComponent } from '../../components/ejercicio/ejercicio.component';
 import { EntrenamientosService } from './../../../shared/services/entrenamiento/entrenamientos.service';
 
@@ -38,20 +36,12 @@ export class NuevoEntrenamientoComponent implements OnInit  {
   ngOnInit() {
     this.companyForm = this.formBuilder.group({
       nombre: ['', [Validators.required, this.alphanumeric]],
-      fecha_entrenamiento: ['',[Validators.required]],
-      ejercicios: ['', [Validators.required]],
-      numero_repeticiones: ['', [Validators.required, this.numeric]],
+      fecha_entrenamiento: ['',[Validators.required]],  
+      ejercicios: [''],
+      numero_repeticiones: [''],
     });
 
-    this.ejercicioService.getEjercicios()
-    .subscribe({
-      next: (ejercicios) => {
-        this.ejercicios.set(ejercicios);
-      },
-      error: () => {
-
-      }
-    })
+    this.getEjerciciosLista();
 
     // Observa los cambios en los campos relevantes y actualiza la propiedad del botón
     this.companyForm.get('ejercicios').valueChanges.subscribe(() => {
@@ -62,6 +52,17 @@ export class NuevoEntrenamientoComponent implements OnInit  {
     });
   }
 
+  getEjerciciosLista(){
+    this.ejercicioService.getEjercicios()
+    .subscribe({
+      next: (ejercicios) => {
+        this.ejercicios.set(ejercicios);
+      },
+      error: () => {
+
+      }
+    })
+  }
   
   alphanumeric(control: FormControl) {
     const alphanumericRegex = /^[a-zA-Z0-9\s]*$/;
@@ -111,23 +112,47 @@ anadirEjercicio(): void {
   }
 }
 crearEntrenamiento(){
-  const nuevoEntrenamiento: EntrenamientoJson = {
-    nombre: 'Desafio antebrazo',
-    fecha_entrenamiento: new Date(2024,4,20,12,30,0),
-    id_usuario: '07adc016-82eb-4c92-b722-0e80ebfdcfe5',
-    estado: true
-  };
-
-  this.entrenamientoService.postEntrenamiento(nuevoEntrenamiento).subscribe(
-    (respuesta: Entrenamientos) => {
-      // Manejar la respuesta exitosa
-      // La respuesta ahora está disponible como un objeto `Entrenamiento`
-      console.log('Entrenamiento creado:', respuesta);
-    },
-    (error) => {
-      // Manejar el error
+  if (this.companyForm.invalid) {
+    this.toastr.error("Error", "Por favor, revise los campos")
+    return;
+  }else{
+    if(this.ejerciciosSeleccionados().length > 0){
+      const nuevoEntrenamiento: EntrenamientoJson = {
+        nombre: this.companyForm.value.nombre,
+        fecha_entrenamiento: this.companyForm.value.fecha_entrenamiento,
+        id_usuario: '07adc016-82eb-4c92-b722-0e80ebfdcfe5',
+        estado: true,
+        ejercicios: this.ejerciciosSeleccionados()
+      };
+      
+      this.entrenamientoService.postEntrenamiento(nuevoEntrenamiento).subscribe(
+        (respuesta: Entrenamientos) => {
+          // Manejar la respuesta exitosa
+          // La respuesta ahora está disponible como un objeto `Entrenamiento`
+          console.log('Entrenamiento creado:', respuesta);
+          // Después de guardar los datos, resetea el formulario
+          this.companyForm.reset();
+          this.ejerciciosSeleccionados.set([]);
+          this.getEjerciciosLista();
+          this.toastr.success("Ok", "El entrenamiento creado correctamente!") 
+        },
+        (error) => {
+          // Manejar el error
+          if (error.status == 412){
+            this.toastr.error("Error", "E entrenamiento ya existe")
+          }
+          else{
+            this.toastr.error("Error", "Ha ocurrido un error")
+            console.log(error);
+          }
+        }
+      );
+      
     }
-  );
+    else{
+      this.toastr.error("Error", "Debe Seleccionar almenos un ejercicio!")
+    }
+  }
 }
 
 }
