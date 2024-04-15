@@ -1,16 +1,22 @@
-<nav class="navbar navbar-header navbar-expand-lg" data-background-color= "orangeS">			
-    <div class="container-fluid">        
-        <div class="collapse" id="search-nav">
-            <h1>SportApp</h1>
-            <img src="./.././../../../../assets/img/Icono_running.png">
-        </div>
-        <div>
+  <link rel="stylesheet" href="header.component.css">
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="orangeS">
+        <div class="container-fluid">
+            <div class="collapse" id="search-nav">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h1 class="jomhuria-text">
+                    SportApp
+                    <img src="./.././../../../../assets/img/Icono_running.png" alt="SportApp" width="64" height="64" style="margin-right: 5px;"> <!-- Agrega la imagen al lado del texto "SportApp" con el tamaño deseado -->
+                </h1>
+            </div>
             <div>
-                <label class="lb-text" for="lang">{{"LANGUAJE_JOBS"|translate}}</label>
-                <select class="form-select mx-sm3 mb-2" #langSelect (change)="changeLang(langSelect.value)" id="lang">
-                  <option *ngFor = "let lang of langs" [value]="lang" >{{lang}}</option>
-                </select>
-              </div>
+                <div >
+                    <select class="form-select mx-sm3 mb-2" #langSelect (change)="changeLang(langSelect.value)" id="lang">
+                        <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
+                    </select>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+

@@ -1,4 +1,4 @@
-import { Component,signal, ChangeDetectorRef } from '@angular/core';
+import { Component,signal, inject,ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullCalendarModule } from '@fullcalendar/angular'
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
@@ -10,14 +10,34 @@ import esLocale from '@fullcalendar/core/locales/es';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
 import { options } from '@fullcalendar/core/preact';
 
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr'
+import { HeaderComponent } from './../../../shared/components/header/header.component'
+import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
+import { EntrenamientosService } from './../../../shared/services/entrenamiento/entrenamientos.service';
+
+
+
+
+
 @Component({
   selector: 'app-calendario-eventos',
   standalone: true,
-  imports: [CommonModule, FullCalendarModule],
+  imports: [CommonModule
+            , FullCalendarModule
+            ,TranslateModule
+            ,CommonModule
+            ,ReactiveFormsModule
+            ,HeaderComponent],
   templateUrl: './calendario-eventos.component.html',
   styleUrl: './calendario-eventos.component.css'
 })
 export class CalendarioEventosComponent {
+
+  private entrenamientoService = inject(EntrenamientosService);
+  entrenamientos = signal<Entrenamientos[]>([]);
+
   localeEsSelected: boolean = true;
   calendarVisible = signal(true);
   calendarOptions = signal<CalendarOptions>({
@@ -52,7 +72,11 @@ export class CalendarioEventosComponent {
   });
   currentEvents = signal<EventApi[]>([]);
 
-  constructor(private changeDetector: ChangeDetectorRef){
+  constructor(
+    private changeDetector: ChangeDetectorRef,
+    private formBuilder: FormBuilder,
+    private toastr:ToastrService
+  ){
   }
 
   handleCalendarToggle() {
@@ -101,5 +125,17 @@ export class CalendarioEventosComponent {
     this.currentEvents.set(events);
     this.changeDetector.detectChanges(); // workaround for pressionChangedAfterItHasBeenCheckedError
   }
+/*
+  getEntrenamientosLista(){
+    this.entrenamientoService.getEntrenamientos()
+    .subscribe({
+      next: (entrenamientos) => {
+        this.ejercicios.set(ejercicios);
+      },
+      error: () => {
+
+      }
+    })
+  }*/
 
 }

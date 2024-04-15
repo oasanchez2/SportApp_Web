@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Jomhuria';
+  src: url('./.././../../../../assets/fonts/Jomhuria/Jomhuria-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.jomhuria-text {
+  font-family: 'Jomhuria', sans-serif;
+  font-size: 96px;
+  color: white;
+}
 .lb-text{
     color: white !important;
 }
