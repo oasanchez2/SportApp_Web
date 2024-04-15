@@ -41,6 +41,7 @@
     "COMPANY_SAVED_ERROR": "Company has not been saved",
     "COMPANY_SAVED_ERROR_DUPLICATE": "Company has not been saved, there is already a company with that name",
     "TRAINING_CANCEL": "Cancel",
+    "TRAINING_RETURN": "Back",
     "EXERCICE_ADD": "Add exercice",
     "NEW_INTERVIEW": " New Interview",
     "INTERVIEW": "Interview",

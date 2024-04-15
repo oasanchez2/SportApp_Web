@@ -40,6 +40,7 @@
     "COMPANY_SAVED_ERROR": "La compañia no ha sido guardada",
     "COMPANY_SAVED_ERROR_DUPLICATE": "La compañia no ha sido guardada, ya existe una compañia con ese nombre",
     "TRAINING_CANCEL": "Cancelar",
+    "TRAINING_RETURN": "Atras",
     "EXERCICE_ADD": "Agregar ejercicio",
     "NEW_INTERVIEW": "Nueva Entrevista",
     "INTERVIEW": "Entrevista",
