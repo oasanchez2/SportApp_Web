@@ -1,16 +1,22 @@
 .btn-sport-app {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #f26522 ;
-    --bs-btn-border-color: #f26522 ;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #f7580e;
-    --bs-btn-hover-border-color: #db4b09;
-    --bs-btn-focus-shadow-rgb: 49, 132, 253;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #be440b;
-    --bs-btn-active-border-color: #b33f08;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #f26522 ;
-    --bs-btn-disabled-border-color: #f26522 ;
+    background: #f26522 !important;
+    border-color: #f26522 !important;
+    color: white !important;
+}
+.btn-sport-app:hover, .btn-sport-app:focus, .btn-sport-app:disabled {
+    background: #f26522 !important;
+    border-color: #f26522 !important; 
+}
+
+.btn-border.btn-sport-app {
+    color: #f7580e !important;
+    border: 1px solid #f7580e !important; 
+}      
+.btn-link.btn-success {
+    color: #f26522 !important; 
+}
+
+.btn-link.btn-success:hover 
+    {
+    color: #f26522 !important; 
 }

@@ -11,10 +11,13 @@ describe('NotFoundComponent', () => {
       imports: [NotFoundComponent]
     })
     .compileComponents();
-    
+
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(NotFoundComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges(); // Detectar cambios después de la creación del componente
   });
 
   it('should create', () => {
