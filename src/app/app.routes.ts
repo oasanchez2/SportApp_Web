@@ -3,10 +3,11 @@ import { NuevoEntrenamientoComponent } from './domains/entrenamientos/pages/nuev
 import { LoginComponent } from './domains/seguridad/pages/login/login.component';
 import { NotFoundComponent } from './domains/shared/pages/not-found/not-found.component';
 import { CalendarioEventosComponent } from './domains/calendario/pages/calendario-eventos/calendario-eventos.component';
+import { HeaderComponent} from './domains/shared/components/header/header.component'
 export const routes: Routes = [
     {
         path: '',
-        component: NuevoEntrenamientoComponent,        
+        component: NuevoEntrenamientoComponent,
     },
     {
         path:'login',
@@ -15,6 +16,10 @@ export const routes: Routes = [
     {
         path:'calendario',
         component: CalendarioEventosComponent
+    },
+    {
+      path:'header',
+      component: HeaderComponent
     },
     {
         path: '**',
