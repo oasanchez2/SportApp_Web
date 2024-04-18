@@ -2,18 +2,19 @@ import { Component,OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { EjerciciosService } from './../../../shared/services/ejercicio/ejercicios.service'
 import { Ejercicios } from '../../../shared/models/ejercicios.model';
 import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
 import { EjercicioComponent } from '../../components/ejercicio/ejercicio.component';
 import { EntrenamientosService } from './../../../shared/services/entrenamiento/entrenamientos.service';
+import { validateHeaderName } from 'http';
 
 @Component({
   selector: 'app-nuevo-entrenamiento',
   standalone: true,
-  imports: [TranslateModule,CommonModule,ReactiveFormsModule,HeaderComponent, EjercicioComponent],
+  imports: [TranslateModule,CommonModule, DatePipe, ReactiveFormsModule,HeaderComponent, EjercicioComponent],
   templateUrl: './nuevo-entrenamiento.component.html',
   styleUrl: './nuevo-entrenamiento.component.css'
 })
@@ -24,8 +25,12 @@ export class NuevoEntrenamientoComponent implements OnInit  {
 
   private ejercicioService = inject(EjerciciosService);
   private entrenamientoService = inject(EntrenamientosService);
+ 
   ejercicios = signal<Ejercicios[]>([]);
   ejerciciosSeleccionados = signal<Ejercicios[]>([]);
+
+  public fechaMinima:Date= new Date();
+  public fechaMaxima:Date= new Date();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,9 +39,15 @@ export class NuevoEntrenamientoComponent implements OnInit  {
   }
 
   ngOnInit() {
+        
+    this.fechaMinima = new Date();
+    const unAnioDespues = new Date();
+    unAnioDespues.setFullYear(new Date().getFullYear() + 1);
+    this.fechaMaxima = unAnioDespues;
+
     this.companyForm = this.formBuilder.group({
       nombre: ['', [Validators.required, this.alphanumeric]],
-      fecha_entrenamiento: ['',[Validators.required]],  
+      fecha_entrenamiento: ['',[Validators.required, this.fechaValida]],  
       ejercicios: [''],
       numero_repeticiones: ['',[this.numeric]],
     });
@@ -85,6 +96,30 @@ export class NuevoEntrenamientoComponent implements OnInit  {
     return isValid ? null : { 'numeric': true };
   }
 
+  fechaValida(control: FormControl): { [key: string]: any } | null {    
+    var partes = control.value.split('-');
+    const dia = parseInt(partes[2], 10);
+    const mes = parseInt(partes[1], 10) - 1; // Los meses en JavaScript son base 0
+    const anio = parseInt(partes[0], 10);
+    const fechaSeleccionada = new Date(anio, mes, dia,0,0,0,0); 
+    const fechaActual = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0);
+    
+    // Validar que la fecha no sea menor a la fecha actual
+    if (fechaSeleccionada < fechaActual) {
+      return { 'fechaPasada': true };
+    }
+  
+    // Validar que la fecha no sea mayor a un año desde la fecha actual
+    const unAnioDespues = new Date();
+    unAnioDespues.setHours(0, 0, 0, 0);
+    unAnioDespues.setFullYear(fechaActual.getFullYear() + 1);
+    if (fechaSeleccionada > unAnioDespues) {
+      return { 'fechaFutura': true };
+    }
+  
+    return null;
+  }
+  
   // Función para verificar las condiciones y actualizar el estado del botón
   private actualizarEstadoBoton(): void {
     const numeroRepeticiones = this.companyForm.get('numero_repeticiones').value;
@@ -111,7 +146,7 @@ anadirEjercicio(): void {
     console.error('No se encontró ningún ejercicio con el id proporcionado.');
   }
 }
-crearEntrenamiento(){
+crearEntrenamiento(): void{
   if (this.companyForm.invalid) {
     this.toastr.error("Error", "Por favor, revise los campos")
     return;

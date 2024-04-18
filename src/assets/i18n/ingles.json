@@ -24,6 +24,8 @@
     "TRAINING_VALIDATION_NAME": "Training name is required",
     "TRAINING_VALIDATION_NAME_ALPHANUMERIC": "Training name must be alphanumeric",
     "TRAINING_VALIDATION_DATE": "Training date is required",
+    "TRAINING_VALIDATION_DATE_MIN": "The date cannot be earlier than the current date",
+    "TRAINING_VALIDATION_DATE_MAX": "The date cannot be later than one year from the current date",
     "COMPANY_VALIDATION_EMAIL": "Company email is required",
     "COMPANY_VALIDATION_EMAIL_VALID": "Company email must be valid",
     "COMPANY_VALIDATION_ADDRESS": "Company address is required",
