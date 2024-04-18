@@ -23,6 +23,8 @@
     "TRAINING_VALIDATION_NAME": "Se requiere un nombre para el entrenamiemto",
     "TRAINING_VALIDATION_NAME_ALPHANUMERIC": "El nombre del entrenamiento debe ser alfanumérico",
     "TRAINING_VALIDATION_DATE": "Se requiere la fecha para el entrenamiento",
+    "TRAINING_VALIDATION_DATE_MIN": "La fecha no puede ser anterior a la fecha actual",
+    "TRAINING_VALIDATION_DATE_MAX": "La fecha no puede ser posterior a un año desde la fecha actual",
     "COMPANY_VALIDATION_EMAIL": "Se requiere un email para la empresa",
     "COMPANY_VALIDATION_EMAIL_VALID": "El email debe ser válido",
     "COMPANY_VALIDATION_ADDRESS": "Se requiere una dirección para la empresa",
