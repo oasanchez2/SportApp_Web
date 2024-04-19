@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="col-md-12">
+    <div class="card">
+        <form [formGroup]="buscarForm">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group col-md-10">
+                            <label for="ciudades" class="form-label">
+                              {{'TRAINING_EXERCISE'|translate}}
+                            </label>
+                            <select id="ciudades" class="form-select mx-sm3 mb-2" name="ciudades" formControlName="ciudades">
+                              <option value="" selected>{{'SELECT'|translate}}</option>                  
+                             <!-- <option *ngFor="let ejercicio of ejercicios()" [value]="ejercicio.id_ejercicio">{{ejercicio.nombre}}</option>    -->
+                            </select>
+                            <p id="ciudadesError" class="text-danger" *ngIf="buscarForm.get('ciudades')?.hasError('required') && buscarForm.get('ciudades')?.touched ">
+                              {{'RULE_SELECT_EXERCISE'|translate}}
+                            </p>
+                          </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
