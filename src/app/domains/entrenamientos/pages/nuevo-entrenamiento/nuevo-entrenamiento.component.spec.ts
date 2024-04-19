@@ -80,7 +80,7 @@ describe('NuevoEntrenamientoComponent', () => {
     expect(component.getEjerciciosLista).toHaveBeenCalled();
   });
 
-  /*
+  
   it('should add ejercicio when anadirEjercicio is called', () => {
     const mockEjercicio: Ejercicios = { id_ejercicio: '1', nombre: 'Ejercicio 1', numero_repeticiones: 10, estado: true, url_imagen: 'https://picsum.photos/200/300?r=234'  };
     component.companyForm.get('ejercicios').setValue('1');
@@ -90,7 +90,7 @@ describe('NuevoEntrenamientoComponent', () => {
     component.anadirEjercicio();
     expect(component.ejerciciosSeleccionados().push).toHaveBeenCalledWith(mockEjercicio);
   });
-  */
+  
   it('should add ejercicio when anadirEjercicio is called', () => {
     // Inicializar el formulario con valores
     component.companyForm.patchValue({
@@ -111,7 +111,7 @@ describe('NuevoEntrenamientoComponent', () => {
     }));
   });
 
-  /*
+  
   it('should reset companyForm and ejerciciosSeleccionados when entrenamiento is created', () => {
     const mockEntrenamiento: Entrenamientos = { id_entrenamiento: '1', nombre: 'Entrenamiento 1', 
                   fecha_entrenamiento: new Date('2024-04-30'),id_usuario: '07adc016-82eb-4c92-b722-0e80ebfdcfe5', 
@@ -123,7 +123,7 @@ describe('NuevoEntrenamientoComponent', () => {
     expect(component.companyForm.reset).toHaveBeenCalled();
     expect(component.ejerciciosSeleccionados.set).toHaveBeenCalledWith([]);
   });
-  */
+  
   it('should reset companyForm and ejerciciosSeleccionados when entrenamiento is created', () => {
     // Simular valores en el formulario y en ejerciciosSeleccionados
     component.companyForm.patchValue({

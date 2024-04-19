@@ -9,7 +9,6 @@ import { Ejercicios } from '../../../shared/models/ejercicios.model';
 import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
 import { EjercicioComponent } from '../../components/ejercicio/ejercicio.component';
 import { EntrenamientosService } from './../../../shared/services/entrenamiento/entrenamientos.service';
-import { validateHeaderName } from 'http';
 
 @Component({
   selector: 'app-nuevo-entrenamiento',
