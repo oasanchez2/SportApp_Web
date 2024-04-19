@@ -96,26 +96,27 @@ export class NuevoEntrenamientoComponent implements OnInit  {
   }
 
   fechaValida(control: FormControl): { [key: string]: any } | null {    
-    var partes = control.value.split('-');
-    const dia = parseInt(partes[2], 10);
-    const mes = parseInt(partes[1], 10) - 1; // Los meses en JavaScript son base 0
-    const anio = parseInt(partes[0], 10);
-    const fechaSeleccionada = new Date(anio, mes, dia,0,0,0,0); 
-    const fechaActual = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0);
+    if(control.value){
+      var partes = control.value.split('-');
+      const dia = parseInt(partes[2], 10);
+      const mes = parseInt(partes[1], 10) - 1; // Los meses en JavaScript son base 0
+      const anio = parseInt(partes[0], 10);
+      const fechaSeleccionada = new Date(anio, mes, dia,0,0,0,0); 
+      const fechaActual = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0);
     
-    // Validar que la fecha no sea menor a la fecha actual
-    if (fechaSeleccionada < fechaActual) {
-      return { 'fechaPasada': true };
-    }
+      // Validar que la fecha no sea menor a la fecha actual
+      if (fechaSeleccionada < fechaActual) {
+        return { 'fechaPasada': true };
+      }
   
-    // Validar que la fecha no sea mayor a un año desde la fecha actual
-    const unAnioDespues = new Date();
-    unAnioDespues.setHours(0, 0, 0, 0);
-    unAnioDespues.setFullYear(fechaActual.getFullYear() + 1);
-    if (fechaSeleccionada > unAnioDespues) {
-      return { 'fechaFutura': true };
-    }
-  
+      // Validar que la fecha no sea mayor a un año desde la fecha actual
+      const unAnioDespues = new Date();
+      unAnioDespues.setHours(0, 0, 0, 0);
+      unAnioDespues.setFullYear(fechaActual.getFullYear() + 1);
+      if (fechaSeleccionada > unAnioDespues) {
+        return { 'fechaFutura': true };
+      }
+    }  
     return null;
   }
   
@@ -164,11 +165,12 @@ crearEntrenamiento(): void{
           // Manejar la respuesta exitosa
           // La respuesta ahora está disponible como un objeto `Entrenamiento`
           console.log('Entrenamiento creado:', respuesta);
+          this.toastr.success("Ok", "El entrenamiento creado correctamente!") 
           // Después de guardar los datos, resetea el formulario
           this.companyForm.reset();
           this.ejerciciosSeleccionados.set([]);
           this.getEjerciciosLista();
-          this.toastr.success("Ok", "El entrenamiento creado correctamente!") 
+          
         },
         (error) => {
           // Manejar el error
