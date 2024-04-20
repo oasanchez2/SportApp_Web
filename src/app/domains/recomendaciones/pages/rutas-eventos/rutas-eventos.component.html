@@ -7,19 +7,43 @@
                     <div class="col">
                         <div class="form-group col-md-10">
                             <label for="ciudades" class="form-label">
-                              {{'TRAINING_EXERCISE'|translate}}
+                              {{'CITY_RECOMENDATION'|translate}}
                             </label>
                             <select id="ciudades" class="form-select mx-sm3 mb-2" name="ciudades" formControlName="ciudades">
-                              <option value="" selected>{{'SELECT'|translate}}</option>                  
+                              <option value="" selected>{{'SELECT'|translate}}</option>  
+                              <option value="Ibagué">Ibagué</option>
+                              <option value="Duitama">Duitama</option>
+                              <option value="Medellín">Medellín</option>                
                              <!-- <option *ngFor="let ejercicio of ejercicios()" [value]="ejercicio.id_ejercicio">{{ejercicio.nombre}}</option>    -->
                             </select>
                             <p id="ciudadesError" class="text-danger" *ngIf="buscarForm.get('ciudades')?.hasError('required') && buscarForm.get('ciudades')?.touched ">
-                              {{'RULE_SELECT_EXERCISE'|translate}}
+                              {{'RULE_SELECT_RECOMENDATION'|translate}}
                             </p>
                           </div>
                     </div>
-                    <div class="col"></div>
+                    <div class="col">
+                      <div class="form-group col-md-10">
+                        <label class="form-label" for="fecha_prevista">
+                          {{'DAY_RECOMENDATION'|translate}}
+                        </label>
+                        <input type="date" [min]="fechaMinima | date:'yyyy-MM-dd'" [max]="fechaMaxima | date:'yyyy-MM-dd'" class="form-control" name="fecha_prevista" id="fecha_prevista" placeholder="{{'RECOMENDATION_DATE_PLACE_HOLDER' |translate}}" formControlName="fecha_prevista">
+                        <p id="recomendacionDateError" class="text-danger" *ngIf="buscarForm.get('fecha_prevista')?.hasError('required') && buscarForm.get('fecha_prevista')?.touched ">
+                          {{'RECOMENDATION_VALIDATION_DATE'|translate}}
+                        </p>
+                        <p id="recomendacionDateError2" class="text-danger" *ngIf="buscarForm.get('fecha_prevista').hasError('fechaPasada') && buscarForm.get('fecha_prevista')?.touched">                  
+                          {{'RECOMENDATION_VALIDATION_DATE_MIN'|translate}}
+                        </p>                
+                        <p id="recomendacionDateError3" class="text-danger" *ngIf="buscarForm.get('fecha_prevista').hasError('fechaFutura') && buscarForm.get('fecha_prevista')?.touched">                  
+                          {{'RECOMENDATION_VALIDATION_DATE_MAX'|translate}}
+                        </p>
+                      </div>        
+                    </div>
                 </div>
+            </div>
+            <div class="card-footer text-center">
+              <button id="buscar" [disabled] = "buscarForm.invalid" type="button" class="btn btn-sport-app" data-toggle="modal" data-target="#exampleModalCenter"  (click)="buscarRecomendaciones()" >
+                {{'RECOMENDATION_SEARCH'|translate}}
+              </button>
             </div>
         </form>
     </div>

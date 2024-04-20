@@ -143,5 +143,14 @@
     "PERFORMANCE_REVIEW":"Evaluación de desempeño",
     "PERFORMANCE_RESULT":"Evaluación",
     "PERFORMANCE_COMMENT_ERROR":"Se requieren comentarios",
-    "PERFORMANCE_RESULT_ERROR":"Se requiere un puntaje de evaluación"
+    "PERFORMANCE_RESULT_ERROR":"Se requiere un puntaje de evaluación",
+    "CITY_RECOMENDATION":"Ciudad",
+    "RULE_SELECT_RECOMENDATION":"Se requiere seleccionar una ciudad",
+    "DAY_RECOMENDATION":"Fecha Prevista",
+    "RECOMENDATION_DATE_PLACE_HOLDER": "Fecha prevista",
+    "RECOMENDATION_VALIDATION_DATE": "Se requiere la fecha para la busqueda",
+    "RECOMENDATION_VALIDATION_DATE_MIN": "La fecha no puede ser anterior a la fecha actual",
+    "RECOMENDATION_VALIDATION_DATE_MAX": "La fecha no puede ser posterior a un año desde la fecha actual",
+    "RECOMENDATION_CANCEL": "Cancelar",
+    "RECOMENDATION_SEARCH": "Encontrar"
 }
