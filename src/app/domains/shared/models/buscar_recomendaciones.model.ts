@@ -5,7 +5,8 @@ export interface RecomendacionesBuscarJson{
 
 export interface Recomendaciones{
     nombre: string;
-    fecha: Date;
+    lugar: string;
+    fecha_evento: Date;
     nivel:string;
     descripcion:string;
 }

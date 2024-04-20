@@ -2,7 +2,7 @@ import { Component,OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { RecomendacionesBuscarJson, Recomendaciones } from '../../../shared/models/buscar_recomendaciones.model';
 import { BuscarRecomendacionService } from '../../../shared/services/recomendacion/buscar-recomendacion.service';
@@ -10,7 +10,7 @@ import { BuscarRecomendacionService } from '../../../shared/services/recomendaci
 @Component({
   selector: 'app-rutas-eventos',
   standalone: true,
-  imports: [TranslateModule,CommonModule,ReactiveFormsModule,HeaderComponent],
+  imports: [TranslateModule,CommonModule,DatePipe, ReactiveFormsModule,HeaderComponent],
   templateUrl: './rutas-eventos.component.html',
   styleUrl: './rutas-eventos.component.css'
 })
@@ -21,6 +21,8 @@ export class RutasEventosComponent implements OnInit {
   public fechaMaxima:Date= new Date();
 
   private buscarRecomendacionesService = inject(BuscarRecomendacionService);
+
+  recomendaciones = signal<Recomendaciones[]>([]);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -76,24 +78,21 @@ export class RutasEventosComponent implements OnInit {
           fecha_prevista: this.buscarForm.value.fecha_prevista
         };
         
-        this.buscarRecomendacionesService.postBuscarRecomendaciones(busqueda).subscribe(
-          (respuesta: Recomendaciones[]) => {
-            // Manejar la respuesta exitosa
-            console.log('Busqueda:', respuesta);
-            // Después de guardar los datos, resetea el formulario            
-            
+        this.buscarRecomendacionesService.postBuscarRecomendaciones(busqueda)
+        .subscribe({
+          next: (recomendacion) => {
+            this.recomendaciones.set(recomendacion)
           },
-          (error) => {
+          error: (er) => {
             // Manejar el error
-            if (error.status == 412){
-              this.toastr.error("Error", "E entrenamiento ya existe")
-            }
-            else{
-              this.toastr.error("Error", "Ha ocurrido un error")
-              console.log(error);
-            }
+          if (er.status == 412){
+            this.toastr.error("Error", "Revisar los parametros de busqueda")
           }
-        );
+          else{
+            this.toastr.error("Error", "Ha ocurrido un error")
+            console.log(er);  }
+          }
+        });
     }
   }
 }

@@ -152,6 +152,9 @@
     "RECOMENDATION_VALIDATION_DATE_MIN": "The date cannot be earlier than the current date",
     "RECOMENDATION_VALIDATION_DATE_MAX": "The date cannot be later than one year from the current date",
     "RECOMENDATION_CANCEL": "Cancel",
-    "RECOMENDATION_SEARCH": "Search"
+    "RECOMENDATION_SEARCH": "Search",
+    "RECOMENDATION_DATE_EVENT": "Date:",
+    "RECOMENDATION_LEVEL_EVENT": "Lavel:",
+    "RECOMENDATION_CYTY_EVENT": "City:"
 }
 
