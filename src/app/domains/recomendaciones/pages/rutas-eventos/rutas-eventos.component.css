@@ -1,0 +1,7 @@
+.activity-feed .feed-item .text-head {
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    color: #8c96a3;
+    text-transform: uppercase;
+    font-size: 13px; }
