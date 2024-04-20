@@ -39,7 +39,7 @@ export class RutasEventosComponent implements OnInit {
     
     this.buscarForm = this.formBuilder.group({
       ciudades: ['',[Validators.required]],
-      fecha_prevista: ['',[Validators.required,this.fechaValida]]
+      fecha_prevista: ['',[this.fechaValida]]
     });
   }
 
