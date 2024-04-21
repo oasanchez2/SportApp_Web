@@ -1,4 +1,6 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
+/* To learn more about this file see: https://angular.io/config/tsconfig.
+Se cambiar de true a false el valor de sourceMap" para permitir pruebas en Cypress
+*/
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -11,7 +13,7 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "node",
