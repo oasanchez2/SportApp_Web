@@ -155,5 +155,6 @@
     "RECOMENDATION_SEARCH": "Encontrar",
     "RECOMENDATION_DATE_EVENT": "Fecha:",
     "RECOMENDATION_LEVEL_EVENT": "Nivel:",
-    "RECOMENDATION_CYTY_EVENT": "Lugar:"
+    "RECOMENDATION_CYTY_EVENT": "Lugar:",
+    "RECOMENDATION_TITLE":"Rutas y Eventos"
 }
