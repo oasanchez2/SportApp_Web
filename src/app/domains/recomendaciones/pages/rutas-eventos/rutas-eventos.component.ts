@@ -3,9 +3,12 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } f
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { CommonModule, DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { RecomendacionesBuscarJson, Recomendaciones } from '../../../shared/models/buscar_recomendaciones.model';
 import { BuscarRecomendacionService } from '../../../shared/services/recomendacion/buscar-recomendacion.service';
+import { Ciudades } from '../../../shared/models/ciudades.model';
+import { CiudadesService } from '../../../shared/services/ciudades/ciudades.service';
 
 @Component({
   selector: 'app-rutas-eventos',
@@ -21,8 +24,10 @@ export class RutasEventosComponent implements OnInit {
   public fechaMaxima:Date= new Date();
 
   private buscarRecomendacionesService = inject(BuscarRecomendacionService);
+  private ciudadesService = inject(CiudadesService)
 
   recomendaciones = signal<Recomendaciones[]>([]);
+  ciudades = signal<Ciudades[]>([])
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +46,36 @@ export class RutasEventosComponent implements OnInit {
       ciudades: ['',[Validators.required]],
       fecha_prevista: ['',[this.fechaValida]]
     });
+
+    this.getCiudadesLista();
+
+  }
+
+  getCiudadesLista(){
+    this.ciudadesService.getCiudades()
+    .subscribe({
+      next: (ciudad) => {
+        this.ciudades.set(ciudad);
+      },
+      error: (err) => {
+        console.error('Error al cargar ciudades:', err);
+    if (err instanceof HttpErrorResponse) {
+        console.error('Status:', err.status);
+        console.error('Mensaje:', err.message);
+        console.error('URL:', err.url);
+        if (err.error instanceof Error) {
+            // El error del lado del cliente (p. ej., red)
+            console.error('Error del cliente:', err.error.message);
+        } else {
+            // El error del lado del servidor
+            console.error('Error del servidor:', err.error);
+        }
+    } else {
+        // Error en el cliente Angular
+        console.error('Error Angular:', err);
+    }
+      }
+    })
   }
 
   fechaValida(control: FormControl): { [key: string]: any } | null {    
@@ -87,6 +122,10 @@ export class RutasEventosComponent implements OnInit {
             // Manejar el error
           if (er.status == 412){
             this.toastr.error("Error", "Revisar los parametros de busqueda")
+          }
+          if(er.status == 404){
+            this.toastr.info("Información", "No se encontraron registros")
+            this.recomendaciones.set([])
           }
           else{
             this.toastr.error("Error", "Ha ocurrido un error")

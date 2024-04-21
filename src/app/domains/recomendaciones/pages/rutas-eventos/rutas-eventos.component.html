@@ -11,12 +11,9 @@
                   <label for="ciudades" class="form-label">
                     {{'CITY_RECOMENDATION'|translate}}
                   </label>
-                  <select id="ciudades" class="form-select mx-sm3 mb-2" name="ciudades" formControlName="ciudades">
+                  <select id="ciudades" class="selectpicker form-control " name="ciudades" formControlName="ciudades" data-live-search="true">
                     <option value="" selected>{{'SELECT'|translate}}</option>
-                    <option value="Ibagué">Ibagué</option>
-                    <option value="Duitama">Duitama</option>
-                    <option value="Medellín">Medellín</option>
-                    <!-- <option *ngFor="let ejercicio of ejercicios()" [value]="ejercicio.id_ejercicio">{{ejercicio.nombre}}</option>    -->
+                    <option *ngFor="let ciudad of ciudades()" [value]="ciudad.municipio">{{ciudad.municipio}}-{{ciudad.departamento}}</option>
                   </select>
                   <p id="ciudadesError" class="text-danger"
                     *ngIf="buscarForm.get('ciudades')?.hasError('required') && buscarForm.get('ciudades')?.touched ">
@@ -62,9 +59,9 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-8">
-      <div class="card full-height">
+      <div *ngIf="recomendaciones() && recomendaciones().length > 0" class="card full-height" >
         <div class="card-header" >
-          <div class="card-title">Rutas y Eventos</div>
+          <div class="card-title">{{'RECOMENDATION_TITLE'|translate}}</div>
         </div>
         <div class="card-body">
           <ol class="activity-feed">
