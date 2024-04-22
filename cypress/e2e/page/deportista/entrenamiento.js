@@ -11,51 +11,60 @@ export class Entrenamiento {
   ingresarNombre (nombreEntrenamiento){
     //cy.get('input[name="nombre"]').type('Entrenamiento de prueba')
     cy.get('#nombre').type(nombreEntrenamiento)
+    cy.wait(400)
 
+  }
+
+  clicEnNombre(){
+    cy.get('#nombre').click();
+    cy.wait(400)
   }
 
   ingresarFecha(fechaEntrenamiento){
     cy.get('#fecha_entrenamiento').type(fechaEntrenamiento)
+    cy.wait(400)
   }
 
   ingresaNombreEjercicio(nombreEjercicio){
 
-      //cy.get('select[name="ejercicios"]').select(nombreEjercicio);
-      cy.get('#ejercicios').select('3d05ea31-aa8a-4e1d-84a1-ce5277a6ddcb')
+      cy.get('#ejercicios').select('f1c027e5-c810-4f63-a662-d208c1c3d8ab')
+      cy.wait(400)
 
   }
   seleccionEjercicio() {
     // Seleccionar 2 o 3 ejercicios
     const ejerciciosIds = [
-      '3d05ea31-aa8a-4e1d-84a1-ce5277a6ddcb',
-      '65ac15c9-0072-4f6c-92de-f5bee26f90bf',
-      '1f8b4936-0a63-42dc-ae59-2eb347780038'
+      'f1c027e5-c810-4f63-a662-d208c1c3d8ab'
     ]
 
     ejerciciosIds.forEach(ejercicioId => {
       cy.get('#ejercicios').select(ejercicioId)
+      cy.wait(400)
     })
   }
 
   ingresarRepeticiones(numeroRepeciones){
     cy.get('#numero_repeticiones').type(numeroRepeciones)
+    cy.wait(400)
   }
 
 
   agregarEjercicio(){
     cy.get('#agregar_ejercicio').click()
-    cy.wait(300)
+    cy.wait(400)
   }
 
   guardarEntrenamiento(){
     cy.get('#guardar').click()
-    cy.wait(300)
+    cy.wait(400)
   }
 
   validarMsjExitoso(){
     cy.on('window:alert', (str) => {
       expect(str).to.equal('Entrenamiento guardado correctamente')
+      cy.wait(900)
     })
+
   }
 
 }

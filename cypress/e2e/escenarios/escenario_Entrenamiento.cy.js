@@ -11,7 +11,8 @@ describe('Funcionalidad F001: Ingresa funcionalidad entrenamiento', () => {
   it('Home SportApp', () => {
     entrenamiento.navegarEntrenamiento();
   })
-/*
+
+
 describe('Nuevo Entrenamiento - Escenario Positivo', () => {
   beforeEach(() => {
     entrenamiento.navegarEntrenamiento();
@@ -39,19 +40,20 @@ describe('Nuevo Entrenamiento - Escenario Positivo', () => {
       //let numeroRepeciones =faker.number;
       let numeroRepeciones = faker.datatype.number({ min: 0, max: 20 });
       entrenamiento.ingresarRepeticiones (numeroRepeciones);
+      cy.screenshot('Nuevo-entrenamiento-numeroRepeciones')
 
       // Habilitar el botón 'agregar_ejercicio'
       entrenamiento.agregarEjercicio();
 
       // Guardar el entrenamiento
       entrenamiento.guardarEntrenamiento();
-
+      cy.screenshot('Nuevo-entrenamiento-guardarEntrenamiento')
     // Verificar que se guardó correctamente
     entrenamiento.validarMsjExitoso;
-  })
-})*/
+    cy.screenshot('Nuevo-entrenamiento-validarMsjExitoso')
 
-/// <reference types="cypress" />
+  })
+})
 
 describe('Nuevo Entrenamiento - Escenarios Negativos', () => {
   beforeEach(() => {
@@ -80,30 +82,21 @@ describe('Nuevo Entrenamiento - Escenarios Negativos', () => {
     cy.get('#numero_repeticiones').click();
 
     // Intentar guardar sin llenar el nombre
-    /*cy.get('#guardar').click()
+    //cy.get('#guardar').click()
 
     // Verificar que se muestre un mensaje de error
-    cy.on('window:alert', (str) => {
-      expect(str).to.contain('Por favor, ingrese un nombre')
-    })*/
+    //cy.on('window:alert', (str) => {
+    //  expect(str).to.contain('Por favor, ingrese un nombre')
+    //})
   })
-//debe iniciar el comentario
-/* it('should not allow past date for training', () => {
-    // Llenar el campo 'nombre'
-    cy.get('#nombre').type('John Doe')
 
-    // Seleccionar un ejercicio
-    cy.get('#ejercicios').select('3d05ea31-aa8a-4e1d-84a1-ce5277a6ddcb')
+it('No debe permitirse una fecha anterior a la fecha actual', () => {
 
     // Llenar el campo 'fecha_entrenamiento' con una fecha pasada
-    const pastDate = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split('T')[0]
-    cy.get('#fecha_entrenamiento').type(pastDate)
+  const pastDate = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString().split('T')[0]
+    entrenamiento.ingresarFecha(pastDate);
 
-    // Llenar el campo 'numero_repeticiones'
-    cy.get('#numero_repeticiones').type('20')
-
-    // Intentar guardar con una fecha pasada
-    cy.get('#guardar').click()
+    entrenamiento.clicEnNombre();
 
     // Verificar que se muestre un mensaje de error
     cy.on('window:alert', (str) => {
@@ -111,50 +104,85 @@ describe('Nuevo Entrenamiento - Escenarios Negativos', () => {
     })
   })
 
-  it('should not allow negative repetitions', () => {
-    // Llenar el campo 'nombre'
-    cy.get('#nombre').type('John Doe')
-
-    // Seleccionar un ejercicio
-    cy.get('#ejercicios').select('3d05ea31-aa8a-4e1d-84a1-ce5277a6ddcb')
+  it('No debe permitir repeticiones negativa', () => {
 
     // Llenar el campo 'fecha_entrenamiento'
-    const currentDate = new Date().toISOString().split('T')[0]
-    cy.get('#fecha_entrenamiento').type(currentDate)
+    let nombreEntrenamiento = faker.lorem.words();
+          entrenamiento.ingresarNombre(nombreEntrenamiento);
 
-    // Llenar el campo 'numero_repeticiones' con un valor negativo
-    cy.get('#numero_repeticiones').type('-10')
+      // Obtener la fecha actual
+      let fechaActual = new Date();
+      // Generar una fecha aleatoria utilizando faker
+      //let fechaAleatoria = faker.date.recent();
+      let fechaAleatoria = faker.date.future({ min: fechaActual });
+      // Formatear la fecha en el formato deseado (YYYY-MM-DD HH:mm:ss)
+      let fechaFormateada = fechaAleatoria.toISOString().split('T')[0]
+      entrenamiento.ingresarFecha(fechaFormateada);
 
-    // Intentar guardar con un valor negativo de repeticiones
-    cy.get('#guardar').click()
+      // Seleccionar un ejercicio
+      entrenamiento.seleccionEjercicio();
 
-    // Verificar que se muestre un mensaje de error
-    cy.on('window:alert', (str) => {
-      expect(str).to.contain('El número de repeticiones debe ser positivo')
-    })
+      // Llenar el campo 'numero_repeticiones' con un valor negativo
+      let numeroRepeciones = faker.datatype.number({ min: -20, max: 0 });
+      entrenamiento.ingresarRepeticiones (numeroRepeciones);
+
+      entrenamiento.clicEnNombre();
+      cy.screenshot('repeticiones-negativas')
+
   })
 
-  it('should not allow submitting without selecting an exercise', () => {
-    // Llenar el campo 'nombre'
-    cy.get('#nombre').type('John Doe')
+  it('No debe permitir ingresar texto en repeticiones', () => {
+     // Llenar el campo 'fecha_entrenamiento'
+    let nombreEntrenamiento = faker.lorem.words();
+          entrenamiento.ingresarNombre(nombreEntrenamiento);
+
+       // Obtener la fecha actual
+      let fechaActual = new Date();
+       // Generar una fecha aleatoria utilizando faker
+       //let fechaAleatoria = faker.date.recent();
+      let fechaAleatoria = faker.date.future({ min: fechaActual });
+       // Formatear la fecha en el formato deseado (YYYY-MM-DD HH:mm:ss)
+      let fechaFormateada = fechaAleatoria.toISOString().split('T')[0]
+      entrenamiento.ingresarFecha(fechaFormateada);
+
+       // Llenar el campo 'numero_repeticiones' con un valor negativo
+    let numeroRepeciones = faker.lorem.words();
+      entrenamiento.ingresarRepeticiones (numeroRepeciones);
+
+      entrenamiento.clicEnNombre();
+      cy.screenshot('repeticiones-con-texto')
+
+  })
+
+  it('No debe permitir agregar ejercicio sin seleccionar un ejercicio', () => {
+
+    let nombreEntrenamiento = faker.lorem.words();
+          entrenamiento.ingresarNombre(nombreEntrenamiento);
 
     // Llenar el campo 'fecha_entrenamiento'
-    const currentDate = new Date().toISOString().split('T')[0]
-    cy.get('#fecha_entrenamiento').type(currentDate)
+    // Obtener la fecha actual
+    let fechaActual = new Date();
+    // Generar una fecha aleatoria utilizando faker
+    //let fechaAleatoria = faker.date.recent();
+    let fechaAleatoria = faker.date.future({ min: fechaActual });
+    // Formatear la fecha en el formato deseado (YYYY-MM-DD HH:mm:ss)
+    let fechaFormateada = fechaAleatoria.toISOString().split('T')[0]
+    entrenamiento.ingresarFecha(fechaFormateada);
 
     // Llenar el campo 'numero_repeticiones'
-    cy.get('#numero_repeticiones').type('20')
+    let numeroRepeciones = faker.datatype.number({ min: 1, max: 20 });
+      entrenamiento.ingresarRepeticiones (numeroRepeciones);
 
     // Intentar guardar sin seleccionar un ejercicio
-    cy.get('#guardar').click()
+    entrenamiento.guardarEntrenamiento();
 
     // Verificar que se muestre un mensaje de error
     cy.on('window:alert', (str) => {
-      expect(str).to.contain('Por favor, seleccione al menos un ejercicio')
+      expect(str).to.contain('Por favor, seleccione almenos un ejercicio')
     })
-  })*/
+    cy.screenshot('Guardar-sin-ejericio-seleccionado')
+  })
 })
-
 
 })
 
