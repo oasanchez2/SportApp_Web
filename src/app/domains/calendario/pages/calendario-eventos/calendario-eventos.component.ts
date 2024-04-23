@@ -1,25 +1,23 @@
-import { Component,signal, inject,ChangeDetectorRef } from '@angular/core';
+import { Component,signal, inject,ChangeDetectorRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullCalendarModule } from '@fullcalendar/angular'
-import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
+import { CalendarOptions, DateSelectArg, EventClickArg, EventApi,EventInput } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import esLocale from '@fullcalendar/core/locales/es';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
-import { options } from '@fullcalendar/core/preact';
+
 
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
 import { EntrenamientosService } from './../../../shared/services/entrenamiento/entrenamientos.service';
-
-
-
-
+import { EventosService } from '../../../shared/services/eventos/eventos.service';
+import { co } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-calendario-eventos',
@@ -33,10 +31,12 @@ import { EntrenamientosService } from './../../../shared/services/entrenamiento/
   templateUrl: './calendario-eventos.component.html',
   styleUrl: './calendario-eventos.component.css'
 })
-export class CalendarioEventosComponent {
+export class CalendarioEventosComponent implements OnInit{
 
   private entrenamientoService = inject(EntrenamientosService);
+  private eventosService = inject(EventosService);
   entrenamientos = signal<Entrenamientos[]>([]);
+  eventosCalendario = signal<EventInput[]>([])
 
   localeEsSelected: boolean = true;
   calendarVisible = signal(true);
@@ -55,7 +55,7 @@ export class CalendarioEventosComponent {
     locales:[esLocale],
     locale: 'en',
     initialView: 'dayGridMonth',
-    initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
+    initialEvents: [],//INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     weekends: true,
     editable: true,
     selectable: true,
@@ -75,8 +75,74 @@ export class CalendarioEventosComponent {
   constructor(
     private changeDetector: ChangeDetectorRef,
     private formBuilder: FormBuilder,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private translate: TranslateService
   ){
+  }
+
+  ngOnInit() {
+    this.getEventosDeportista('07adc016-82eb-4c92-b722-0e80ebfdcfe5');
+    this.cambiarIdioma(this.translate.currentLang)
+    
+    this.translate.onLangChange.subscribe(langChangeEvent => {
+      // When the language changes, update the calendar's locale
+      this.cambiarIdioma(langChangeEvent.lang);
+    });
+  }
+
+  cambiarIdioma(locale: string = 'ingles'){
+    if(locale == "español"){
+      locale = "es";
+    }else if(locale == "ingles"){
+      locale = "en";
+    };
+    this.calendarOptions.update((options) => ({
+      ...options,
+      locale: locale
+    }))
+  }
+  getEventosDeportista(idDeportista: string){
+    const events: EventInput[] = [];
+
+    this.eventosService.getEventosDeportista(idDeportista)
+      .subscribe({
+        next: (evento) => {
+          evento.forEach((e) => {
+            const event: EventInput = {
+              id: e.id_evento,
+              title: e.evento.nombre,
+              start: e.evento.fecha_evento
+            };
+            events.push(event);
+          });
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
+
+    this.entrenamientoService.getEntrenamientoDeportista(idDeportista)
+    .subscribe({
+      next: (entrenamientos) => {          
+        entrenamientos.forEach((e) => {
+          const event: EventInput = {
+            id: e.id_entrenamiento,
+            title: e.nombre,
+            start: e.fecha_entrenamiento
+          };
+          events.push(event);
+        });      
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    }); 
+
+    this.calendarOptions.update((options) => ({
+      ...options,
+      initialEvents: events
+    }));
+
   }
 
   handleCalendarToggle() {
@@ -125,17 +191,5 @@ export class CalendarioEventosComponent {
     this.currentEvents.set(events);
     this.changeDetector.detectChanges(); // workaround for pressionChangedAfterItHasBeenCheckedError
   }
-/*
-  getEntrenamientosLista(){
-    this.entrenamientoService.getEntrenamientos()
-    .subscribe({
-      next: (entrenamientos) => {
-        this.ejercicios.set(ejercicios);
-      },
-      error: () => {
-
-      }
-    })
-  }*/
 
 }

@@ -5,6 +5,7 @@ import { environment } from '../../.././../../environments/environment'
 import { Observable } from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,5 +21,8 @@ export class EntrenamientosService {
     return this.http.post<Entrenamientos>(this.urlApi, entrenamiento, { headers });
   }
   
+  getEntrenamientoDeportista(id_usuario: string): Observable<Entrenamientos[]> {
+    return this.http.get<Entrenamientos[]>(this.urlApi+"/user/"+id_usuario);
+  }
 
 }
