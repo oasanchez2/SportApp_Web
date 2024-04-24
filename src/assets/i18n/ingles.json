@@ -143,5 +143,19 @@
     "PERFORMANCE_REVIEW":"Performance Review",
     "PERFORMANCE_RESULT":"Evaluation",
     "PERFORMANCE_COMMENT_ERROR":"Commenta are mandatory",
-    "PERFORMANCE_RESULT_ERROR":"Evaluation Score is mandatory"
+    "PERFORMANCE_RESULT_ERROR":"Evaluation Score is mandatory",
+    "CITY_RECOMENDATION":"City",
+    "RULE_SELECT_RECOMENDATION":"City is mandatory",
+    "DAY_RECOMENDATION":"Expected Date",
+    "RECOMENDATION_DATE_PLACE_HOLDER": "Expected Date",
+    "RECOMENDATION_VALIDATION_DATE": "Expected date is required",
+    "RECOMENDATION_VALIDATION_DATE_MIN": "The date cannot be earlier than the current date",
+    "RECOMENDATION_VALIDATION_DATE_MAX": "The date cannot be later than one year from the current date",
+    "RECOMENDATION_CANCEL": "Cancel",
+    "RECOMENDATION_SEARCH": "Search",
+    "RECOMENDATION_DATE_EVENT": "Date:",
+    "RECOMENDATION_LEVEL_EVENT": "Lavel:",
+    "RECOMENDATION_CYTY_EVENT": "City:",
+    "RECOMENDATION_TITLE":"Routes and Events"
 }
+
