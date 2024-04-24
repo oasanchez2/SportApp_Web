@@ -13,7 +13,6 @@ import { INITIAL_EVENTS, createEventId } from './event-utils';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
-import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
 import { EntrenamientosService } from './../../../shared/services/entrenamiento/entrenamientos.service';
 import { EventosService } from '../../../shared/services/eventos/eventos.service';
@@ -26,8 +25,7 @@ import { co } from '@fullcalendar/core/internal-common';
             , FullCalendarModule
             ,TranslateModule
             ,CommonModule
-            ,ReactiveFormsModule
-            ,HeaderComponent],
+            ,ReactiveFormsModule],
   templateUrl: './calendario-eventos.component.html',
   styleUrl: './calendario-eventos.component.css'
 })

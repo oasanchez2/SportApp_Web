@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { RecomendacionesBuscarJson, Recomendaciones } from '../../../shared/models/buscar_recomendaciones.model';
 import { BuscarRecomendacionService } from '../../../shared/services/recomendacion/buscar-recomendacion.service';
 import { Ciudades } from '../../../shared/models/ciudades.model';
@@ -13,7 +12,7 @@ import { CiudadesService } from '../../../shared/services/ciudades/ciudades.serv
 @Component({
   selector: 'app-rutas-eventos',
   standalone: true,
-  imports: [TranslateModule,CommonModule,DatePipe, ReactiveFormsModule,HeaderComponent],
+  imports: [TranslateModule,CommonModule,DatePipe, ReactiveFormsModule],
   templateUrl: './rutas-eventos.component.html',
   styleUrl: './rutas-eventos.component.css'
 })
