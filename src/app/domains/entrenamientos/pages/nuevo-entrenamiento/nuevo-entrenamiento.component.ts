@@ -3,7 +3,6 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } f
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { CommonModule, DatePipe } from '@angular/common';
-import { HeaderComponent } from './../../../shared/components/header/header.component'
 import { EjerciciosService } from './../../../shared/services/ejercicio/ejercicios.service'
 import { Ejercicios } from '../../../shared/models/ejercicios.model';
 import { Entrenamientos, EntrenamientoJson } from '../../../shared/models/entrenamientos.model';
@@ -13,7 +12,7 @@ import { EntrenamientosService } from './../../../shared/services/entrenamiento/
 @Component({
   selector: 'app-nuevo-entrenamiento',
   standalone: true,
-  imports: [TranslateModule,CommonModule, DatePipe, ReactiveFormsModule,HeaderComponent, EjercicioComponent],
+  imports: [TranslateModule,CommonModule, DatePipe, ReactiveFormsModule, EjercicioComponent],
   templateUrl: './nuevo-entrenamiento.component.html',
   styleUrl: './nuevo-entrenamiento.component.css'
 })
