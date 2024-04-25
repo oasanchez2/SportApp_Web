@@ -15,8 +15,8 @@ export class SociosService {
 
   constructor() { }
 
-  postEntrenamiento(productoServicio: ProductoServicioJson): Observable<ProductoServicio> {
+  postProductoServicio(productoServicio: ProductoServicioJson): Observable<ProductoServicio> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
-    return this.http.post<ProductoServicio>(this.urlApi, productoServicio, { headers });
+    return this.http.post<ProductoServicio>(this.urlApi + "/producto-servicio", productoServicio, { headers });
   }
 }

@@ -49,14 +49,14 @@ export class NuevoProductoServicioComponent implements OnInit {
       return;
     }else{      
         const nuevoProductoServicio: ProductoServicioJson = {
-          id_socio: '',
+          id_socio: 'ce4a4e82-948d-41d8-b27d-04c8e59973c0',
           nombre: this.productoServicioForm.value.nombre,
           descripcion: this.productoServicioForm.value.descripcion,
           costo: this.productoServicioForm.value.costo,
           tipo_oferta : this.productoServicioForm.value.tipo_oferta
         };
         
-        this.socioService.postEntrenamiento(nuevoProductoServicio).subscribe(
+        this.socioService.postProductoServicio(nuevoProductoServicio).subscribe(
           (respuesta: ProductoServicio) => {
             // Manejar la respuesta exitosa
             // La respuesta ahora está disponible como un objeto `Entrenamiento`

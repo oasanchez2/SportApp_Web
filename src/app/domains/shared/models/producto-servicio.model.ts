@@ -1,7 +1,7 @@
 
 export enum TipoOferta {
-    Servicio = 'Servicio',
-    Producto = 'Producto'
+    SERVICIO = 'SERVICIO',
+    PRODUCTO = 'PRODUCTO'
 }
 export interface ProductoServicio{
     id_producto_servicio: string,
@@ -9,8 +9,7 @@ export interface ProductoServicio{
     nombre: string,
     descripcion:string,
     costo: number,
-    tipo_oferta: TipoOferta,
-    fecha_creacion: Date
+    tipo_oferta: TipoOferta
 }
 
 export interface ProductoServicioJson{
