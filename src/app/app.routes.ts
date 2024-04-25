@@ -5,6 +5,7 @@ import { CalendarioEventosComponent } from './domains/calendario/pages/calendari
 import { HeaderComponent} from './domains/shared/components/header/header.component'
 import { RutasEventosComponent } from './domains/recomendaciones/pages/rutas-eventos/rutas-eventos.component';
 import { LayoutComponent } from './domains/shared/components/layout/layout.component';
+import { NuevoProductoServicioComponent } from './domains/socio/pages/nuevo-producto-servicio/nuevo-producto-servicio.component';
 
 export const routes: Routes = [
     {
@@ -22,6 +23,10 @@ export const routes: Routes = [
             {
                 path:'recomendaciones',
                 component: RutasEventosComponent
+            },
+            {
+                path:'producto-servicio',
+                component: NuevoProductoServicioComponent
             }
         ]
     },        
