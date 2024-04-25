@@ -156,5 +156,16 @@
     "RECOMENDATION_DATE_EVENT": "Fecha:",
     "RECOMENDATION_LEVEL_EVENT": "Nivel:",
     "RECOMENDATION_CYTY_EVENT": "Lugar:",
-    "RECOMENDATION_TITLE":"Rutas y Eventos"
+    "RECOMENDATION_TITLE":"Rutas y Eventos",
+    "SPORTAPP_TERM":"Reservados todos los derechos.",
+    "SPORTAPP_VERSION": "Versión:",
+    "PRODUCT_SERVICE_NAME": "Nombre servicio/oferta",
+    "PRODUCT_SERVICE_VALIDATION_NAME": "Se requiere ingresar un nombre.",
+    "PRODUCT_SERVICE_TYPE_OFFER": "Tipo Oferta",
+    "RULE_SELECT_TYPE_OFFER": "Se requiere seleccionar un tipo de oferta.",
+    "PRODUCT_SERVICE_DESCRIPTION": "Descripción",
+    "PRODUCT_SERVICE_VALIDATION_DESCRIPTION": "Se requiere ingresar una descripción.",
+    "PRODUCT_SERVICE_COST": "Costo",
+    "PRODUCT_SERVICE_VALIDATION_COST": "Se requiere ingresar un costo.",
+    "PRODUCT_SERVICE_VALIDATION_COST_NUMERIC": "Costo debe ser numerico"
 }
