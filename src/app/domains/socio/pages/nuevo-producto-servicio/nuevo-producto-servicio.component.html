@@ -1,1 +1,76 @@
-<p>nuevo-producto-servicio works!</p>
+<div class="page-inner mt--1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <form [formGroup]="productoServicioForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group col-md-8">
+                                    <label class="form-label" for="nombre">
+                                      {{'PRODUCT_SERVICE_NAME'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="{{'PRODUCT_SERVICE_NAME' |translate}}" formControlName="nombre">
+                                    <p id="trainingNameError" class="text-danger" *ngIf="productoServicioForm.get('nombre')?.hasError('required') && productoServicioForm.get('nombre')?.touched ">
+                                      {{'PRODUCT_SERVICE_VALIDATION_NAME'|translate}}
+                                    </p>
+                                  </div>                                  
+                            </div>
+                            <div class="col">
+                                <div class="form-group col-md-8">
+                                    <label for="tipo_oferta" class="form-label">
+                                      {{'PRODUCT_SERVICE_TYPE_OFFER'|translate}}
+                                    </label>
+                                    <select id="tipo_oferta" class="form-select mx-sm3 mb-2" name="tipo_oferta" formControlName="tipo_oferta">
+                                      <option value="" selected>{{'SELECT'|translate}}</option>                  
+                                      <option *ngFor="let tipo of tipoOferta" [value]="tipo">{{tipo}}</option>    
+                                    </select>
+                                    <p id="tipoOfertaError" class="text-danger" *ngIf="productoServicioForm.get('tipo_oferta')?.hasError('required') && productoServicioForm.get('tipo_oferta')?.touched ">
+                                      {{'RULE_SELECT_TYPE_OFFER'|translate}}
+                                    </p>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group col-md-12">
+                                    <label class="form-label" for="descripcion">
+                                        {{'PRODUCT_SERVICE_DESCRIPTION'|translate}}
+                                      </label>
+                                      <textarea class="form-control" name="descripcion" id="descripcion" placeholder="{{'PRODUCT_SERVICE_DESCRIPTION' |translate}}" formControlName="descripcion" rows="3"></textarea>
+                                      <p id="trainingNameError" class="text-danger" *ngIf="productoServicioForm.get('descripcion')?.hasError('required') && productoServicioForm.get('descripcion')?.touched ">
+                                        {{'PRODUCT_SERVICE_VALIDATION_DESCRIPTION'|translate}}
+                                      </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group col-md-4">
+                                    <label class="form-label" for="costo">
+                                        {{'PRODUCT_SERVICE_COST'|translate}}
+                                      </label>
+                                      <input type="text" class="form-control" name="costo" id="costo" placeholder="{{'PRODUCT_SERVICE_COST' |translate}}" formControlName="costo">
+                                      <p id="costoError" class="text-danger" *ngIf="productoServicioForm.get('costo')?.hasError('required') && productoServicioForm.get('costo')?.touched ">
+                                        {{'PRODUCT_SERVICE_VALIDATION_COST'|translate}}
+                                      </p>
+                                      <p class="text-danger" *ngIf="productoServicioForm.get('costo')?.hasError('numeric') && productoServicioForm.get('costo')?.touched ">
+                                        {{'PRODUCT_SERVICE_VALIDATION_COST_NUMERIC'|translate}}
+                                      </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button id="cancelar" type="button" class="btn btn-sport-app" data-toggle="modal" data-target="#exampleModalCenter" >
+                        {{'TRAINING_CANCEL'|translate}}
+                        </button>
+                        <button id="guardar" [disabled] = "productoServicioForm.invalid" type="button" class="btn btn-sport-app" data-toggle="modal" data-target="#exampleModalCenter"  (click)="crearProductoServicio()" >
+                        {{'TRAINING_SAVE'|translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

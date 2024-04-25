@@ -158,6 +158,15 @@
     "RECOMENDATION_CYTY_EVENT": "City:",
     "RECOMENDATION_TITLE":"Routes and Events",
     "SPORTAPP_TERM":"All rights reserved.",
-    "SPORTAPP_VERSION": "Version:"
+    "SPORTAPP_VERSION": "Version:",
+    "PRODUCT_SERVICE_NAME": "Service/offer name",
+    "PRODUCT_SERVICE_VALIDATION_NAME": "A service/offer name is required.",
+    "PRODUCT_SERVICE_TYPE_OFFER": "Offer Type",
+    "RULE_SELECT_TYPE_OFFER": "It is required to select a type of offer.",
+    "PRODUCT_SERVICE_DESCRIPTION": "Description",
+    "PRODUCT_SERVICE_VALIDATION_DESCRIPTION": "A description is required.",
+    "PRODUCT_SERVICE_COST": "Cost",
+    "PRODUCT_SERVICE_VALIDATION_COST": "A cost is required",
+    "PRODUCT_SERVICE_VALIDATION_COST_NUMERIC": "The cost must be numerical"
 }
 
