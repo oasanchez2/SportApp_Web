@@ -167,5 +167,10 @@
     "PRODUCT_SERVICE_VALIDATION_DESCRIPTION": "Se requiere ingresar una descripción.",
     "PRODUCT_SERVICE_COST": "Costo",
     "PRODUCT_SERVICE_VALIDATION_COST": "Se requiere ingresar un costo.",
-    "PRODUCT_SERVICE_VALIDATION_COST_NUMERIC": "Costo debe ser numerico"
+    "PRODUCT_SERVICE_VALIDATION_COST_NUMERIC": "Costo debe ser numerico",
+    "HEADERNOTIFY_1": "Tienes" ,
+    "HEADERNOTIFY_2": "nuevas notificaciones",
+    "TIMENOTIFY": "minutos antes",
+    "ALLNOTIFY": "Ver todas las notificaciones",
+    "NOTIFY_TITLE": "Notificaciones"
 }
