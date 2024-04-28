@@ -1,0 +1,44 @@
+<nav class="navbar navbar-header navbar-expand-lg" data-background-color="orangeS">
+    <div class="container-fluid">
+        <div>
+            <h1 class="jomhuria-text">
+                SportApp
+                <img src="./.././../../../../assets/img/Icono_running.png" alt="SportApp" width="64" height="64" style="margin-right: 5px;"> <!-- Agrega la imagen al lado del texto "SportApp" con el tamaño deseado -->
+            </h1>
+        </div>
+        <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+            <li class="nav-item dropdown hidden-caret">
+                <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-bell" style="font-size:25px;color:white"></i>
+                    <span class="notification">{{notificacionesDeportista().length}}</span>
+                </a>
+                <ul class="dropdown-menu notif-box animated fadeIn" aria-labelledby="notifDropdown">
+                    <li>
+                        <div class="dropdown-title"> {{'HEADERNOTIFY_1'|translate}} {{notificacionesDeportista().length}} {{'HEADERNOTIFY_2'|translate}}</div>
+                    </li>
+                    <li>
+                        <div class="notif-center">                            
+                            <a *ngFor="let notificacion of notificacionesDeportista()" href="#" style="text-decoration: none;">
+                                <div class="notif-icon notif-success"> <i class="fas fa-circle"></i> </div>
+                                <div class="notif-content">
+                                    <span class="block">
+                                        {{notificacion.mensaje}}
+                                    </span>
+                                    <span class="time">{{calcularMinutosPasados(notificacion.fecha_creado)}} {{'TIMENOTIFY'|translate}}</span> 
+                                </div>
+                            </a>                            
+                        </div>
+                    </li>
+                    <li>
+                       <a class="see-all" href="javascript:void(0);"> {{'ALLNOTIFY'|translate}}<i class="fa fa-angle-right"></i> </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown hidden-caret submenu">
+                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fas fa-user" style="font-size:25px;color:white"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
