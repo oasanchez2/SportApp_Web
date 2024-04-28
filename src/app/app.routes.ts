@@ -6,6 +6,8 @@ import { HeaderComponent} from './domains/shared/components/header/header.compon
 import { RutasEventosComponent } from './domains/recomendaciones/pages/rutas-eventos/rutas-eventos.component';
 import { LayoutComponent } from './domains/shared/components/layout/layout.component';
 import { NuevoProductoServicioComponent } from './domains/socio/pages/nuevo-producto-servicio/nuevo-producto-servicio.component';
+import { LayoutDeportistaComponent } from './domains/shared/components/layout-deportista/layout-deportista.component';
+import { NotificacionesDeportistaComponent } from './domains/notificaciones/pages/notificaciones-deportista/notificaciones-deportista.component';
 
 export const routes: Routes = [
     {
@@ -29,7 +31,17 @@ export const routes: Routes = [
                 component: NuevoProductoServicioComponent
             }
         ]
-    },        
+    }, 
+    {
+        path: '',
+        component: LayoutDeportistaComponent,
+        children: [
+            {
+                path:'notificaciones',
+                component: NotificacionesDeportistaComponent
+            }
+        ]
+    },       
     {
         path: '**',
         component: NotFoundComponent

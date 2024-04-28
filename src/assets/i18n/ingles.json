@@ -167,6 +167,11 @@
     "PRODUCT_SERVICE_VALIDATION_DESCRIPTION": "A description is required.",
     "PRODUCT_SERVICE_COST": "Cost",
     "PRODUCT_SERVICE_VALIDATION_COST": "A cost is required",
-    "PRODUCT_SERVICE_VALIDATION_COST_NUMERIC": "The cost must be numerical"
+    "PRODUCT_SERVICE_VALIDATION_COST_NUMERIC": "The cost must be numerical",
+    "HEADERNOTIFY_1": "You have",
+    "HEADERNOTIFY_2": "new notification",
+    "TIMENOTIFY": "minutes ago",
+    "ALLNOTIFY": "See all notifications",
+    "NOTIFY_TITLE": "Notifications"
 }
 
