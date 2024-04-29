@@ -15,9 +15,9 @@ export default defineConfig({
       // implement node event listeners here
     },
   },
-  screenshotsFolder: 'cypress/screenshots', // Carpeta donde se guardarán las capturas de pantalla
+  //screenshotsFolder: 'cypress/screenshots', // Carpeta donde se guardarán las capturas de pantalla
   //screenshotOnRunFailure: true,
-  videosFolder: 'cypress/videos', // Carpeta donde se guardarán los videos
-  video: true, // Habilitar la grabación de video
+  //videosFolder: 'cypress/videos', // Carpeta donde se guardarán los videos
+  //video: true, // Habilitar la grabación de video
 });
 
