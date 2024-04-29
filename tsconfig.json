@@ -13,7 +13,7 @@ Se cambiar de true a false el valor de sourceMap" para permitir pruebas en Cypre
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "node",
