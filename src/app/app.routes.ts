@@ -8,6 +8,7 @@ import { LayoutComponent } from './domains/shared/components/layout/layout.compo
 import { NuevoProductoServicioComponent } from './domains/socio/pages/nuevo-producto-servicio/nuevo-producto-servicio.component';
 import { LayoutDeportistaComponent } from './domains/shared/components/layout-deportista/layout-deportista.component';
 import { NotificacionesDeportistaComponent } from './domains/notificaciones/pages/notificaciones-deportista/notificaciones-deportista.component';
+import { InvitadoComponent } from './domains/invitados/pages/invitado/invitado.component';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,10 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
+                component: InvitadoComponent,
+            },
+            {
+                path: 'nuevo-entrenamiento',
                 component: NuevoEntrenamientoComponent,
             },
             {

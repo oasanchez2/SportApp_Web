@@ -1,0 +1,21 @@
+.jumbotron {
+    background-image: url('/assets/img/Imagen_Home.png');
+     background-size: cover; 
+     background-repeat: no-repeat;
+     background-position: center;
+     height: 65vh;
+  }
+
+  .jumbotron h1 {
+    color: white;
+    font-family: 'jomhuria';
+    font-size: 6rem;    
+  }
+
+  .jumbotron-desc {
+    background-color: #F8F3F3;
+  }
+
+    .jumbotron-desc p {
+    padding: 2rem 1rem 1rem 3rem;
+    }
