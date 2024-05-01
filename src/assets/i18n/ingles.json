@@ -177,6 +177,17 @@
     "MESSAGE_VISIT": "Welcome to SportApp. A platform specialized in athletics and cycling. Discover tools designed for non-professional athletes. Improve your performance, maintain an active lifestyle, and enjoy sports to the fullest with us!",
     "NAV-SEDES": "Locations",
     "NAV-SESION-SOCIO":"Member Login",
-    "NAV-SESION-DEPORTISTA":"Start Athlete Session"
+    "NAV-SESION-DEPORTISTA":"Start Athlete Session",
+    "NOT-FOUND-TITLE":"Something's missing.",
+    "NOT-FOUND-DESC": "Sorry, we can't find that page. You'll find lots to explore on the home page.",
+    "NOT-FOUND-BACK":"Back to Homepage",
+    "LOGIN_EMAIL":"Username",
+    "LOGIN_PLACE_HOLDER": "Email",
+    "LOGIN_VALIDATION_EMAIL_REQUIRE":"Email is required",
+    "LOGIN_VALIDATION_EMAIL_VALID": "Email must be valid",
+    "LOGIN_PASSWORD":"Password",
+    "PASSWORD_PLACE_HOLDER": "Password",
+    "LOGIN_VALIDATION_PASSWORD_REQUIRE":"Password is required",
+    "LOGIN_GET_INTO_BOTON":"Enter"
 }
 

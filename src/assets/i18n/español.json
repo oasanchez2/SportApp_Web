@@ -177,5 +177,16 @@
     "MESSAGE_VISIT": "Plataforma especializada en atletismo y ciclismo. Descubre herramientas diseñadas para deportistas no profesionales. ¡Mejora tu rendimiento, mantén un estilo de vida activo y disfruta al  máximo del deporte con nosotros!",
     "NAV-SEDES": "Sedes",
     "NAV-SESION-SOCIO":"Iniciar Sesión Socio",
-    "NAV-SESION-DEPORTISTA":"Iniciar Sesion Deportista"
+    "NAV-SESION-DEPORTISTA":"Iniciar Sesion Deportista",
+    "NOT-FOUND-TITLE":"Algo falta, algo está faltando.",
+    "NOT-FOUND-DESC": "Lo sentimos, no podemos encontrar esa página. Encontrarás mucho para explorar en la página de inicio.",
+    "NOT-FOUND-BACK":"Volver a la página de inicio",
+    "LOGIN_EMAIL":"Usuario",
+    "LOGIN_PLACE_HOLDER": "correo electrónico",
+    "LOGIN_VALIDATION_EMAIL_REQUIRE":"Se requiere un correo electrónico",
+    "LOGIN_VALIDATION_EMAIL_VALID": "El correo electrónico debe ser válido",
+    "LOGIN_PASSWORD":"Contraseña",
+    "PASSWORD_PLACE_HOLDER": "contraseña",
+    "LOGIN_VALIDATION_PASSWORD_REQUIRE":"Se requiere una contraseña",
+    "LOGIN_GET_INTO_BOTON":"Ingresar"
 }

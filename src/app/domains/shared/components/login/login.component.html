@@ -1,0 +1,54 @@
+<div class="page-inner mt--1">
+    <div class="row">
+      <div class="col-md-4">
+       <img src="assets/img/Socio_Home.png" alt="login" class="img-fluid">
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <form [formGroup]="loginForm">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group col-md-10">
+                    <label class="form-label" for="email">
+                      {{'LOGIN_EMAIL'|translate}}
+                    </label>
+                    <input type="text" class="form-control" name="email" id="email"
+                      placeholder="{{'LOGIN_PLACE_HOLDER' |translate}}" formControlName="email">
+                    <p id="emailError" class="text-danger"
+                      *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched ">
+                      {{'LOGIN_VALIDATION_EMAIL_REQUIRE'|translate}}
+                    </p>
+                    <p id="emailError2" class="text-danger"
+                      *ngIf="loginForm.get('email').hasError('email') && loginForm.get('email')?.touched">
+                      {{'LOGIN_VALIDATION_EMAIL_VALID'|translate}}
+                  </div>
+                </div>                
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group col-md-10">
+                    <label class="form-label" for="password">
+                      {{'LOGIN_PASSWORD'|translate}}
+                    </label>
+                    <input type="password" class="form-control" name="password" id="password"
+                      placeholder="{{'PASSWORD_PLACE_HOLDER' |translate}}" formControlName="password">
+                    <p id="passwordError" class="text-danger"
+                      *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched ">
+                      {{'LOGIN_VALIDATION_PASSWORD_REQUIRE'|translate}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-center">
+              <button id="ingresar" [disabled]="loginForm.invalid" type="button" class="btn btn-sport-app"
+                data-toggle="modal" data-target="#exampleModalCenter" (click)="login()">
+                {{'LOGIN_GET_INTO_BOTON'|translate}}
+              </button>
+            </div>
+          </form>
+        </div>
+       </div>
+    </div>
+  </div>
