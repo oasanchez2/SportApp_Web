@@ -172,5 +172,10 @@
     "HEADERNOTIFY_2": "nuevas notificaciones",
     "TIMENOTIFY": "minutos antes",
     "ALLNOTIFY": "Ver todas las notificaciones",
-    "NOTIFY_TITLE": "Notificaciones"
+    "NOTIFY_TITLE": "Notificaciones",
+    "WELCOME_VISIT":"Bienvenido a SportApp",
+    "MESSAGE_VISIT": "Plataforma especializada en atletismo y ciclismo. Descubre herramientas diseñadas para deportistas no profesionales. ¡Mejora tu rendimiento, mantén un estilo de vida activo y disfruta al  máximo del deporte con nosotros!",
+    "NAV-SEDES": "Sedes",
+    "NAV-SESION-SOCIO":"Iniciar Sesión Socio",
+    "NAV-SESION-DEPORTISTA":"Iniciar Sesion Deportista"
 }
