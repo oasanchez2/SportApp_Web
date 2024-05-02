@@ -16,6 +16,6 @@ export class LoginService {
 
   postloginUsuario(loginModel: LoginModel): Observable<LoginResult> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
-    return this.http.post<LoginResult>(this.urlApi+"/auth", loginModel , { headers });
+    return this.http.post<LoginResult>(this.urlApi+"/login", loginModel , { headers });
   }
 }
