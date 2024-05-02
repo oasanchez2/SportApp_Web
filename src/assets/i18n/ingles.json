@@ -188,6 +188,13 @@
     "LOGIN_PASSWORD":"Password",
     "PASSWORD_PLACE_HOLDER": "Password",
     "LOGIN_VALIDATION_PASSWORD_REQUIRE":"Password is required",
-    "LOGIN_GET_INTO_BOTON":"Enter"
+    "LOGIN_GET_INTO_BOTON":"Enter",
+    "LOGIN-REGISTER":"Register",
+    "LOGIN-FORGOT-PASS":"Forgot your password?",
+    "LOGIN_CODIGO_MFA":"Token",
+    "LOGIN_VALIDATION_CODIGO_MFA_REQUIRE":"Token is required",
+    "LOGIN_VALIDATION_CODIGO_MFA_MIN":"The token must be 6 characters",
+    "LOGIN_VALIDATION_CODIGO_MFA_MAX":"The token must be 6 characters",
+    "LOGIN_VALIDATION_CODIGO_MFA_NUMBER":"The token must be numeric"
 }
 
