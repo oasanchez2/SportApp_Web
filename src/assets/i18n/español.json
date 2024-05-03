@@ -195,5 +195,13 @@
     "LOGIN_VALIDATION_CODIGO_MFA_REQUIRE":"Se requiere un token",
     "LOGIN_VALIDATION_CODIGO_MFA_MIN":"El token debe tener al menos 6 caracteres",
     "LOGIN_VALIDATION_CODIGO_MFA_MAX":"El token no puede tener más de 6 caracteres",
-    "LOGIN_VALIDATION_CODIGO_MFA_NUMBER":"El token debe ser numérico"
+    "LOGIN_VALIDATION_CODIGO_MFA_NUMBER":"El token debe ser numérico",
+    "REGISTER_NAME":"Nombre",
+    "REGISTER_VALIDATION_NAME_REQUIRE":"Se requiere un nombre",
+    "REGISTER_LASTNAME":"Apellido",
+    "REGISTER_VALIDATION_LASTNAME_REQUIRE":"Se requiere un apellido",
+    "REGISTER_TIPO_IDENT":"Tipo de identificación",
+    "REGISTER_VALIDATION_TIPO_IDENT_REQUIRE":"Se requiere un tipo de identificación",
+    "REGISTER_NUMBER_IDENT":"Número de identificación",
+    "REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE":"Se requiere un número de identificación"
 }

@@ -1,0 +1,76 @@
+<div class="page-inner mt--1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <form [formGroup]="registerForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="nombre">
+                                        {{'REGISTER_NAME'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre"
+                                        placeholder="{{'REGISTER_NAME' |translate}}" formControlName="nombre">
+                                    <p id="nombreError" class="text-danger"
+                                        *ngIf="registerForm.get('nombre')?.hasError('required') && registerForm.get('nombre')?.touched ">
+                                        {{'REGISTER_VALIDATION_NAME_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="apellido">
+                                        {{'REGISTER_LASTNAME'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="apellido" id="apellido"
+                                        placeholder="{{'REGISTER_LASTNAME' |translate}}" formControlName="apellido">
+                                    <p id="apellidoError" class="text-danger"
+                                        *ngIf="registerForm.get('apellido')?.hasError('required') && registerForm.get('apellido')?.touched ">
+                                        {{'REGISTER_VALIDATION_LASTNAME_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="tipo_dentificacion">
+                                        {{'REGISTER_TIPO_IDENT'|translate}}
+                                    </label>
+                                    <select id="tipo_dentificacion" class="form-select mx-sm3 mb-2" name="tipo_dentificacion" formControlName="tipo_dentificacion">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>                  
+                                        <option *ngFor="let tipo of tipoIdList" [value]="tipo[0]">{{tipo[1]}}</option>    
+                                    </select>
+                                    <p id="tipo_identificacionError" class="text-danger"
+                                        *ngIf="registerForm.get('tipo_dentificacion')?.hasError('required') && registerForm.get('tipo_dentificacion')?.touched ">
+                                        {{'REGISTER_VALIDATION_TIPO_IDENT_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="numero_identificacion">
+                                        {{'REGISTER_NUMBER_IDENT'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="numero_identificacion" id="numero_identificacion"
+                                        placeholder="{{'REGISTER_NUMBER_IDENT' |translate}}" formControlName="numero_identificacion">
+                                    <p id="apellidoError" class="text-danger"
+                                        *ngIf="registerForm.get('numero_identificacion')?.hasError('required') && registerForm.get('numero_identificacion')?.touched ">
+                                        {{'REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="ingresar" [disabled]="registerForm.invalid" type="button" class="btn btn-sport-app"
+                            data-toggle="modal" data-target="#exampleModalCenter" (click)="register()">
+                            {{'SAVE'|translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { LayoutDeportistaComponent } from './domains/shared/components/layout-de
 import { NotificacionesDeportistaComponent } from './domains/notificaciones/pages/notificaciones-deportista/notificaciones-deportista.component';
 import { InvitadoComponent } from './domains/invitados/pages/invitado/invitado.component';
 import { LoginComponent } from './domains/shared/components/login/login.component';
+import { RegistrarComponent } from './domains/seguridad/pages/registrar/registrar.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,10 @@ export const routes: Routes = [
             {
                 path:'login',
                 component: LoginComponent
+            },
+            {
+                path: 'register',
+                component: RegistrarComponent
             }
         ]
     }, 
