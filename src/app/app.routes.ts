@@ -9,6 +9,7 @@ import { NuevoProductoServicioComponent } from './domains/socio/pages/nuevo-prod
 import { LayoutDeportistaComponent } from './domains/shared/components/layout-deportista/layout-deportista.component';
 import { NotificacionesDeportistaComponent } from './domains/notificaciones/pages/notificaciones-deportista/notificaciones-deportista.component';
 import { InvitadoComponent } from './domains/invitados/pages/invitado/invitado.component';
+import { LoginComponent } from './domains/shared/components/login/login.component';
 
 export const routes: Routes = [
     {
@@ -34,6 +35,10 @@ export const routes: Routes = [
             {
                 path:'producto-servicio',
                 component: NuevoProductoServicioComponent
+            },
+            {
+                path:'login',
+                component: LoginComponent
             }
         ]
     }, 
