@@ -215,6 +215,8 @@
     "REGISTER_ESTATURA":"Height",
     "REGISTER_VALIDATION_ESTATURA_REQUIRE":"Height is required",
     "REGISTER_DEPORTE_DESEO": "Sport I want to practice",
-    "REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE":"Sport I want to practice is required"
+    "REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE":"Sport I want to practice is required",
+    "CONFIRM_CODE":"Confirmation code",
+    "REGISTER_VALIDATION_CODE_REQUIRE":"Confirmation code is required"
 }
 

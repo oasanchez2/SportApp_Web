@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLinkWithHref } from '@angular/router';
 import { LoginService } from '../../../shared/services/login/login.service';
 import { ToastrService } from 'ngx-toastr';
-import { LoginModel } from '../../models/login.model';
+import { LoginModel } from '../../../shared/models/login.model';
 
 @Component({
   selector: 'app-login',

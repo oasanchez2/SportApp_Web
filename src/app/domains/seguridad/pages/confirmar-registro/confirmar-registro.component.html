@@ -1,0 +1,33 @@
+<div class="page-inner mt--1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <form [formGroup]="confirForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="codigo">
+                                        {{'CONFIRM_CODE'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="codigo" id="codigo"
+                                        placeholder="{{'CONFIRM_CODE' |translate}}" formControlName="codigo">
+                                    <p id="nombreError" class="text-danger"
+                                        *ngIf="confirForm.get('codigo')?.hasError('required') && confirForm.get('codigo')?.touched ">
+                                        {{'REGISTER_VALIDATION_CODE_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="confirmar" [disabled]="confirForm.invalid" type="button" class="btn btn-sport-app"
+                            data-toggle="modal" data-target="#exampleModalCenter" (click)="confirmar()">
+                            {{'CONFIRMAR'|translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

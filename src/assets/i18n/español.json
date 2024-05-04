@@ -215,6 +215,8 @@
     "REGISTER_ESTATURA":"Estatura",
     "REGISTER_VALIDATION_ESTATURA_REQUIRE":"Se requiere una estatura",
     "REGISTER_DEPORTE_DESEO": "Deportes de interés",
-    "REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE":"Se requiere un deporte de interés"
+    "REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE":"Se requiere un deporte de interés",
+    "CONFIRM_CODE":"Código de confirmación",
+    "REGISTER_VALIDATION_CODE_REQUIRE":"Se requiere un código de confirmación"
 
 }

@@ -4,6 +4,7 @@ import { environment } from '../../.././../../environments/environment'
 import { Observable } from 'rxjs';
 import { LoginModel, LoginResult } from '../../models/login.model';
 import { RegistrarModel, RegistrarResult  } from '../../models/registrar.model';
+import { ConfirmarRegistroModel, ConfirmarRegistroResultModel } from '../../models/confirmar_registro.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,12 @@ export class SeguridadService {
   postRegistrarUsuario(registrarModel: RegistrarModel): Observable<RegistrarResult> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
     return this.http.post<RegistrarResult>(this.urlApi+"/register", registrarModel , { headers });
-  } 
+  }
+  
+  postConfirmarRegistroUsuario(confirmar: ConfirmarRegistroModel): Observable<ConfirmarRegistroResultModel> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.post<ConfirmarRegistroResultModel>(this.urlApi+"/confirmar-registro", confirmar , { headers });
+  }
 
   postloginUsuario(loginModel: LoginModel): Observable<LoginResult> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  

@@ -1,4 +1,4 @@
-import { Component,OnInit, inject, signal } from '@angular/core';
+import { Component,OnInit, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { RegistrarModel, TiposIdentificacion, Genero } from '../../../shared/models/registrar.model';
 import { SeguridadService } from '../../../shared/services/seguridad/seguridad.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar',
@@ -24,7 +25,8 @@ export class RegistrarComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -75,6 +77,7 @@ export class RegistrarComponent implements OnInit {
         (data) => {
           this.toastr.success('Registro exitoso', 'Usuario registrado');
           console.log(data);
+            this.router.navigate(['/confirmar-registro',this.registerForm.value.email]);
         },
         (error: HttpErrorResponse) => {
           switch (error.status) {
