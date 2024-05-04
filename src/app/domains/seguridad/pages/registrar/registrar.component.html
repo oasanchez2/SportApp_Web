@@ -38,9 +38,11 @@
                                     <label class="form-label" for="tipo_dentificacion">
                                         {{'REGISTER_TIPO_IDENT'|translate}}
                                     </label>
-                                    <select id="tipo_dentificacion" class="form-select mx-sm3 mb-2" name="tipo_dentificacion" formControlName="tipo_dentificacion">
-                                        <option value="" selected>{{'SELECT'|translate}}</option>                  
-                                        <option *ngFor="let tipo of tipoIdList" [value]="tipo[0]">{{tipo[1]}}</option>    
+                                    <select id="tipo_dentificacion" class="form-select mx-sm3 mb-2"
+                                        name="tipo_dentificacion" formControlName="tipo_dentificacion">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let tipo of tipoIdentificaList" [value]="tipo[0]">{{tipo[1]}}
+                                        </option>
                                     </select>
                                     <p id="tipo_identificacionError" class="text-danger"
                                         *ngIf="registerForm.get('tipo_dentificacion')?.hasError('required') && registerForm.get('tipo_dentificacion')?.touched ">
@@ -53,11 +55,128 @@
                                     <label class="form-label" for="numero_identificacion">
                                         {{'REGISTER_NUMBER_IDENT'|translate}}
                                     </label>
-                                    <input type="text" class="form-control" name="numero_identificacion" id="numero_identificacion"
-                                        placeholder="{{'REGISTER_NUMBER_IDENT' |translate}}" formControlName="numero_identificacion">
+                                    <input type="text" class="form-control" name="numero_identificacion"
+                                        id="numero_identificacion" placeholder="{{'REGISTER_NUMBER_IDENT' |translate}}"
+                                        formControlName="numero_identificacion">
                                     <p id="apellidoError" class="text-danger"
                                         *ngIf="registerForm.get('numero_identificacion')?.hasError('required') && registerForm.get('numero_identificacion')?.touched ">
                                         {{'REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="genero_nacimiento">
+                                        {{'REGISTER_GENERO_NACIMIENTO'|translate}}
+                                    </label>
+                                    <select id="genero_nacimiento" class="form-select mx-sm3 mb-2"
+                                        name="genero_nacimiento" formControlName="genero_nacimiento">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let genero of generoList" [value]="genero[0]">{{genero[1]}}
+                                        </option>
+                                    </select>
+                                    <p id="tipo_identificacionError" class="text-danger"
+                                        *ngIf="registerForm.get('genero_nacimiento')?.hasError('required') && registerForm.get('genero_nacimiento')?.touched ">
+                                        {{'REGISTER_GENERO_NACIMIENTO_REQUIRED'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="edad">
+                                        {{'REGISTER_EDAD'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="edad" id="edad"
+                                        placeholder="{{'REGISTER_EDAD' |translate}}" formControlName="edad">
+                                    <p id="edadError" class="text-danger"
+                                        *ngIf="registerForm.get('edad')?.hasError('required') && registerForm.get('edad')?.touched ">
+                                        {{'REGISTER_VALIDATION_EDAD_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="peso">
+                                        {{'REGISTER_PESO'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="peso" id="peso"
+                                        placeholder="{{'REGISTER_PESO' |translate}}" formControlName="peso">
+                                    <p id="pesoError" class="text-danger"
+                                        *ngIf="registerForm.get('peso')?.hasError('required') && registerForm.get('peso')?.touched ">
+                                        {{'REGISTER_VALIDATION_PESO_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="estatura">
+                                        {{'REGISTER_ESTATURA'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="estatura" id="estatura"
+                                        placeholder="{{'REGISTER_ESTATURA' |translate}}" formControlName="estatura">
+                                    <p id="estaturaError" class="text-danger"
+                                        *ngIf="registerForm.get('estatura')?.hasError('required') && registerForm.get('estatura')?.touched ">
+                                        {{'REGISTER_VALIDATION_ESTATURA_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="deportes_desea_practicar">
+                                        {{'REGISTER_DEPORTE_DESEO'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="deportes_desea_practicar"
+                                        id="deportes_desea_practicar" placeholder="{{'REGISTER_PESO' |translate}}"
+                                        formControlName="deportes_desea_practicar">
+                                    <p id="deportes_desea_practicarError" class="text-danger"
+                                        *ngIf="registerForm.get('deportes_desea_practicar')?.hasError('required') && registerForm.get('deportes_desea_practicar')?.touched ">
+                                        {{'REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="email">
+                                        {{'LOGIN_EMAIL'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="email" id="email"
+                                        placeholder="{{'LOGIN_PLACE_HOLDER' |translate}}" formControlName="email">
+                                    <p id="emailError" class="text-danger"
+                                        *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched ">
+                                        {{'LOGIN_VALIDATION_EMAIL_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="emailError2" class="text-danger"
+                                        *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email')?.touched">
+                                        {{'LOGIN_VALIDATION_EMAIL_VALID'|translate}}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="password">
+                                        {{'LOGIN_PASSWORD'|translate}}
+                                    </label>
+                                    <input type="password" class="form-control" name="password" id="password"
+                                        placeholder="{{'PASSWORD_PLACE_HOLDER' |translate}}" formControlName="password">
+                                    <p id="passwordError" class="text-danger"
+                                        *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched ">
+                                        {{'LOGIN_VALIDATION_PASSWORD_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="passwordError2" class="text-danger"
+                                        *ngIf="registerForm.get('password')?.hasError('pattern') && registerForm.get('password')?.touched ">
+                                        {{'LOGIN_VALIDATION_PASSWORD_VALID'|translate}}
                                     </p>
                                 </div>
                             </div>

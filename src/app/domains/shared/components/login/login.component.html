@@ -37,6 +37,10 @@
                     *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched ">
                     {{'LOGIN_VALIDATION_PASSWORD_REQUIRE'|translate}}
                   </p>
+                  <p id="passwordError2" class="text-danger"
+                    *ngIf="loginForm.get('password')?.hasError('pattern') && loginForm.get('password')?.touched ">
+                    {{'LOGIN_VALIDATION_PASSWORD_VALID'|translate}}
+                  </p>
                 </div>
               </div>
             </div>
@@ -51,7 +55,7 @@
                   <p id="codigo_MFAError" class="text-danger"
                     *ngIf="loginForm.get('codigo_MFA')?.hasError('required') && loginForm.get('codigo_MFA')?.touched ">
                     {{'LOGIN_VALIDATION_CODIGO_MFA_REQUIRE'|translate}}
-                  </p>                  
+                  </p>
                   <p id="codigo_MFAError2" class="text-danger"
                     *ngIf="loginForm.get('codigo_MFA')?.hasError('minlength') && loginForm.get('codigo_MFA')?.touched ">
                     {{'LOGIN_VALIDATION_CODIGO_MFA_MIN'|translate}}

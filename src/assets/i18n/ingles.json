@@ -178,6 +178,7 @@
     "NAV-SEDES": "Locations",
     "NAV-SESION-SOCIO":"Member Login",
     "NAV-SESION-DEPORTISTA":"Start Athlete Session",
+    "NAV-REGISTRO":"Register",
     "NOT-FOUND-TITLE":"Something's missing.",
     "NOT-FOUND-DESC": "Sorry, we can't find that page. You'll find lots to explore on the home page.",
     "NOT-FOUND-BACK":"Back to Homepage",
@@ -188,6 +189,7 @@
     "LOGIN_PASSWORD":"Password",
     "PASSWORD_PLACE_HOLDER": "Password",
     "LOGIN_VALIDATION_PASSWORD_REQUIRE":"Password is required",
+    "LOGIN_VALIDATION_PASSWORD_VALID":"The password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
     "LOGIN_GET_INTO_BOTON":"Enter",
     "LOGIN-REGISTER":"Register",
     "LOGIN-FORGOT-PASS":"Forgot your password?",
@@ -203,6 +205,16 @@
     "REGISTER_TIPO_IDENT":"Document Type",
     "REGISTER_VALIDATION_TIPO_IDENT_REQUIRE":"Document Type is required",
     "REGISTER_NUMBER_IDENT":"Document Number",
-    "REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE":"Document Number is required"
+    "REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE":"Document Number is required",
+    "REGISTER_GENERO_NACIMIENTO":"Gender",
+    "REGISTER_GENERO_NACIMIENTO_REQUIRED":"Gender is required",
+    "REGISTER_EDAD":"Age",
+    "REGISTER_VALIDATION_EDAD_REQUIRE":"Age is required",
+    "REGISTER_PESO":"Weight",
+    "REGISTER_VALIDATION_PESO_REQUIRE":"Weight is required",
+    "REGISTER_ESTATURA":"Height",
+    "REGISTER_VALIDATION_ESTATURA_REQUIRE":"Height is required",
+    "REGISTER_DEPORTE_DESEO": "Sport I want to practice",
+    "REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE":"Sport I want to practice is required"
 }
 

@@ -178,6 +178,7 @@
     "NAV-SEDES": "Sedes",
     "NAV-SESION-SOCIO":"Iniciar Sesión Socio",
     "NAV-SESION-DEPORTISTA":"Iniciar Sesion Deportista",
+    "NAV-REGISTRO":"Registrarse",
     "NOT-FOUND-TITLE":"Algo falta, algo está faltando.",
     "NOT-FOUND-DESC": "Lo sentimos, no podemos encontrar esa página. Encontrarás mucho para explorar en la página de inicio.",
     "NOT-FOUND-BACK":"Volver a la página de inicio",
@@ -188,6 +189,7 @@
     "LOGIN_PASSWORD":"Contraseña",
     "PASSWORD_PLACE_HOLDER": "contraseña",
     "LOGIN_VALIDATION_PASSWORD_REQUIRE":"Se requiere una contraseña",
+    "LOGIN_VALIDATION_PASSWORD_VALID":"La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial",
     "LOGIN_GET_INTO_BOTON":"Ingresar",
     "LOGIN-REGISTER":"Registrarse",
     "LOGIN-FORGOT-PASS":"¿Olvidaste tu contraseña?",
@@ -203,5 +205,16 @@
     "REGISTER_TIPO_IDENT":"Tipo de identificación",
     "REGISTER_VALIDATION_TIPO_IDENT_REQUIRE":"Se requiere un tipo de identificación",
     "REGISTER_NUMBER_IDENT":"Número de identificación",
-    "REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE":"Se requiere un número de identificación"
+    "REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE":"Se requiere un número de identificación",
+    "REGISTER_GENERO_NACIMIENTO":"Género nacimiento",
+    "REGISTER_GENERO_NACIMIENTO_REQUIRED":"Se requiere un género de nacimiento",
+    "REGISTER_EDAD":"Edad",
+    "REGISTER_VALIDATION_EDAD_REQUIRE":"Se requiere una edad",
+    "REGISTER_PESO":"Peso",
+    "REGISTER_VALIDATION_PESO_REQUIRE":"Se requiere un peso",
+    "REGISTER_ESTATURA":"Estatura",
+    "REGISTER_VALIDATION_ESTATURA_REQUIRE":"Se requiere una estatura",
+    "REGISTER_DEPORTE_DESEO": "Deportes de interés",
+    "REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE":"Se requiere un deporte de interés"
+
 }
