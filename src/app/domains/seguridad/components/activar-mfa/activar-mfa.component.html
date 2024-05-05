@@ -1,0 +1,41 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Activar Segundo Factor</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" (click)="bsModalRef.hide()">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="activarMFAForm">
+                <div class="form-group">
+                    <label class="form-label" for="codigo_MFA">
+                        {{'LOGIN_CODIGO_MFA'|translate}}
+                    </label>
+                    <input type="text" class="form-control" name="codigo_MFA" id="codigo_MFA"
+                        placeholder="{{'LOGIN_CODIGO_MFA' |translate}}" formControlName="codigo_MFA">
+                    <p id="codigo_MFAError" class="text-danger"
+                        *ngIf="activarMFAForm.get('codigo_MFA')?.hasError('required') && activarMFAForm.get('codigo_MFA')?.touched ">
+                        {{'LOGIN_VALIDATION_CODIGO_MFA_REQUIRE'|translate}}
+                    </p>
+                    <p id="codigo_MFAError2" class="text-danger"
+                        *ngIf="activarMFAForm.get('codigo_MFA')?.hasError('minlength') && activarMFAForm.get('codigo_MFA')?.touched ">
+                        {{'LOGIN_VALIDATION_CODIGO_MFA_MIN'|translate}}
+                    </p>
+                    <p id="codigo_MFAError3" class="text-danger"
+                        *ngIf="activarMFAForm.get('codigo_MFA')?.hasError('maxlength') && activarMFAForm.get('codigo_MFA')?.touched ">
+                        {{'LOGIN_VALIDATION_CODIGO_MFA_MAX'|translate}}
+                    </p>
+                    <p id="codigo_MFAError4" class="text-danger"
+                        *ngIf="activarMFAForm.get('codigo_MFA')?.hasError('pattern') && activarMFAForm.get('codigo_MFA')?.touched ">
+                        {{'LOGIN_VALIDATION_CODIGO_MFA_NUMBER'|translate}}
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close</button>
+            <button type="button" class="btn btn-primary">Confirmar</button>
+        </div>
+    </div>
+</div>
