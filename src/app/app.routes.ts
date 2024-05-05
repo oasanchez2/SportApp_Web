@@ -9,7 +9,9 @@ import { NuevoProductoServicioComponent } from './domains/socio/pages/nuevo-prod
 import { LayoutDeportistaComponent } from './domains/shared/components/layout-deportista/layout-deportista.component';
 import { NotificacionesDeportistaComponent } from './domains/notificaciones/pages/notificaciones-deportista/notificaciones-deportista.component';
 import { InvitadoComponent } from './domains/invitados/pages/invitado/invitado.component';
-import { LoginComponent } from './domains/shared/components/login/login.component';
+import { LoginComponent } from './domains/seguridad/pages/login/login.component';
+import { RegistrarComponent } from './domains/seguridad/pages/registrar/registrar.component';
+import { ConfirmarRegistroComponent } from './domains/seguridad/pages/confirmar-registro/confirmar-registro.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +41,14 @@ export const routes: Routes = [
             {
                 path:'login',
                 component: LoginComponent
+            },
+            {
+                path: 'register',
+                component: RegistrarComponent
+            },
+            {
+                path: 'confirmar-registro/:email',
+                component: ConfirmarRegistroComponent
             }
         ]
     }, 
