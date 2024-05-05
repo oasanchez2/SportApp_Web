@@ -3,7 +3,6 @@ import exp from "constants";
 export interface LoginModel{
     username: string;
     password: string;
-    codigo_MFA: string;
 }
 
 export interface Tokens{
@@ -16,6 +15,12 @@ export interface Tokens{
 
 export interface LoginResult{
     AuthenticationResult: Tokens;
+}
+
+export interface ActivarMFAModel{
+    email: string;
+    session: string;
+    codigo_MFA: string;
 }
 
 

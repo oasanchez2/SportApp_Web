@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../.././../../environments/environment'
 import { Observable } from 'rxjs';
-import { LoginModel, LoginResult } from '../../models/login.model';
+import { LoginModel, LoginResult, ActivarMFAModel } from '../../models/login.model';
 import { RegistrarModel, RegistrarResult  } from '../../models/registrar.model';
 import { ConfirmarRegistroModel, ConfirmarRegistroResultModel } from '../../models/confirmar_registro.model';
 
@@ -26,8 +26,13 @@ export class SeguridadService {
     return this.http.post<ConfirmarRegistroResultModel>(this.urlApi+"/confirmar-registro", confirmar , { headers });
   }
 
-  postloginUsuario(loginModel: LoginModel): Observable<LoginResult> {
+  postloginUsuario(loginModel: LoginModel): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
-    return this.http.post<LoginResult>(this.urlApi+"/login", loginModel , { headers });
+    return this.http.post<any>(this.urlApi+"/login", loginModel , { headers });
+  }
+  
+  postActivarMFA(activarMFA: ActivarMFAModel): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.post<any>(this.urlApi+"/activar-mfa", activarMFA , { headers });
   }
 }
