@@ -1,13 +1,17 @@
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Activar Segundo Factor</h5>
+            <h5 class="modal-title" id="exampleModalLabel">{{'CONFIRM_MFA_TITLE' | translate}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" (click)="bsModalRef.hide()">&times;</span>
             </button>
         </div>
         <div class="modal-body">
             <form [formGroup]="activarMFAForm">
+                 <div class="form-group">
+                    <qrcode [qrdata]="secretCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                    <p>{{'CONFIRM_MFA_MESSAJE_SCAN_QR' | translate}}</p>
+                 </div>     
                 <div class="form-group">
                     <label class="form-label" for="codigo_MFA">
                         {{'LOGIN_CODIGO_MFA'|translate}}
@@ -34,8 +38,9 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">Close</button>
-            <button type="button" class="btn btn-primary">Confirmar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                (click)="bsModalRef.hide()">{{'CONFIRM_MFA_BTN_CLOSE' | translate}}</button>
+            <button id="confirmar" [disabled]="activarMFAForm.invalid" type="button" class="btn btn-primary" (click)="activarMFA()">{{'CONFIRM_MFA_BTN_CONFIR' | translate}}</button>
         </div>
     </div>
 </div>

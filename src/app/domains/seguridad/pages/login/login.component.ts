@@ -1,4 +1,12 @@
-import { Component, OnInit, ViewChild, inject, signal, ElementRef, TemplateRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  inject,
+  signal,
+  ElementRef,
+  TemplateRef,
+} from '@angular/core';
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -11,13 +19,10 @@ import { CommonModule } from '@angular/common';
 import { RouterLinkWithHref } from '@angular/router';
 import { SeguridadService } from '../../../shared/services/seguridad/seguridad.service';
 import { ToastrService } from 'ngx-toastr';
-import {
-  LoginModel,
-  ActivarMFAModel,
-} from '../../../shared/models/login.model';
+import { LoginModel } from '../../../shared/models/login.model';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { ActivarMfaComponent } from '../../components/activar-mfa/activar-mfa.component';
-import { ModalBackdropComponent } from 'ngx-bootstrap/modal';
+import { verificarMfaComponent } from '../../components/verificar-mfa/verificar-mfa.component';
+import { ResponderDesafioComponent } from '../../components/responder-desafio/responder-desafio.component';
 
 @Component({
   selector: 'app-login',
@@ -27,18 +32,19 @@ import { ModalBackdropComponent } from 'ngx-bootstrap/modal';
     CommonModule,
     ReactiveFormsModule,
     RouterLinkWithHref,
-    ActivarMfaComponent,
+    verificarMfaComponent,
+    ResponderDesafioComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-
 export class LoginComponent implements OnInit {
   loginForm: any;
   bsModalRef?: BsModalRef;
   modalRef?: BsModalRef;
   sessionUser: string = '';
   emailUser: string = '';
+  secretCode: string = '';
 
   private seguridadService = inject(SeguridadService);
 
@@ -62,8 +68,6 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
-
-    
   }
 
   login(): void {
@@ -78,20 +82,31 @@ export class LoginComponent implements OnInit {
       this.seguridadService.postloginUsuario(loginModel).subscribe({
         next: (tokens) => {
           console.log(tokens);
-            if (  
+          if (
             tokens.ChallengeName == 'MFA_SETUP' &&
-            tokens.ChallengeParameters.MFAS_CAN_SETUP.includes('SOFTWARE_TOKEN_MFA')
-            ) {
-            // si es asi, se debe mostrar el formulario de activarMFAForm
+            tokens.ChallengeParameters.MFAS_CAN_SETUP.includes(
+              'SOFTWARE_TOKEN_MFA'
+            )
+          ) {
+            // si es asi, se debe mostrar el componente con formulario de validarMFAForm
             this.sessionUser = tokens.Session;
             this.emailUser = this.loginForm.get('email').value;
-            this.openModalWithComponent();
-            
-            } else {
-            // si no, se debe redirigir a la pagina de inicio
-            console.log('redirigir a la pagina de inicio');
-            }
-          
+            const issuer = 'SportApp';
+            //const qrUrl = `otpa:${issuer}/totp?account=${this.emailUser}&secret=${tokens.SecretCode}`;
+            //const qrUrl = `otpauth://totp/${issuer}?secret=${tokens.SecretCode}&issuer=${this.emailUser}`;
+            const qrUrl = `otpauth://totp/${issuer}:${this.emailUser}?secret=${tokens.SecretCode}&issuer=${issuer}`;
+            console.log(qrUrl);
+            this.secretCode = qrUrl;
+            this.openModalWithComponentVerify();
+            this.loginForm.reset();
+          } else if (tokens.ChallengeName == 'SOFTWARE_TOKEN_MFA') {
+            this.sessionUser = tokens.Session;
+            this.emailUser = this.loginForm.get('email').value;
+            this.openModalWithComponentDesafio();
+            this.loginForm.reset();
+          } else {
+            this.toastr.error('Error', 'No se recibio la respuesta esperada');
+          }
         },
         error: (er) => {
           // Manejar el error
@@ -120,15 +135,24 @@ export class LoginComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  openModalWithComponent() {
+  openModalWithComponentVerify() {
     const initialState: ModalOptions = {
       initialState: {
         sessionUser: this.sessionUser,
-        emailUser: this.emailUser
-      }
+        secretCode: this.secretCode,
+      },
     };
-    this.bsModalRef = this.modalService.show(ActivarMfaComponent, initialState);
-    this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef = this.modalService.show(verificarMfaComponent, initialState);
   }
-  
+
+  openModalWithComponentDesafio() {
+    const initialState: ModalOptions = {
+      initialState: {
+        sessionUser: this.sessionUser,
+        emailUser: this.emailUser,
+      },
+    };
+    this.bsModalRef = this.modalService.show(ResponderDesafioComponent, initialState);
+  }
+
 }

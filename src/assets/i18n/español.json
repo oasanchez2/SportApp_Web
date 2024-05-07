@@ -217,6 +217,11 @@
     "REGISTER_DEPORTE_DESEO": "Deportes de interés",
     "REGISTER_VALIDATION_DEPORTE_DESEO_REQUIRE":"Se requiere un deporte de interés",
     "CONFIRM_CODE":"Código de confirmación",
-    "REGISTER_VALIDATION_CODE_REQUIRE":"Se requiere un código de confirmación"
+    "REGISTER_VALIDATION_CODE_REQUIRE":"Se requiere un código de confirmación",
+    "CONFIRM_MFA_TITLE": "Activar Segundo Factor",
+    "CONFIRM_MFA_BTN_CLOSE": "Cerrar",
+    "CONFIRM_MFA_BTN_CONFIR": "Confirmar",
+    "CONFIRM_MFA_MESSAJE_SCAN_QR": "Escanea este código QR con aplicaciones como Authy, Google Authenticator o Microsoft Authenticator",
+    "DESAFIO_MFA_TITLE": "Verificar Segundo Factor"
 
 }
