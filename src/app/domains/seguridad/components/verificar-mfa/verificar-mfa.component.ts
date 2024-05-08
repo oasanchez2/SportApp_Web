@@ -1,37 +1,26 @@
-import { Component, OnInit, ViewChild, inject, signal, ElementRef } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { RouterLinkWithHref } from '@angular/router';
 import { SeguridadService } from '../../../shared/services/seguridad/seguridad.service';
 import { ToastrService } from 'ngx-toastr';
-import {
-  LoginModel,
-  ActivarMFAModel,
-} from '../../../shared/models/login.model';
+import { VerifyMFAModel } from '../../../shared/models/login.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
   selector: 'app-activar-mfa',
   standalone: true,
-  imports: [TranslateModule,
-    CommonModule,
-    ReactiveFormsModule,
-    RouterLinkWithHref,],
-  templateUrl: './activar-mfa.component.html',
-  styleUrl: './activar-mfa.component.css'
+  imports: [TranslateModule, CommonModule, ReactiveFormsModule, RouterLinkWithHref,QRCodeModule],
+  templateUrl: './verificar-mfa.component.html',
+  styleUrl: './verificar-mfa.component.css'
 })
-export class ActivarMfaComponent implements OnInit {
+export class verificarMfaComponent implements OnInit {
   activarMFAForm: any;
   
   sessionUser: string = '';
-  eamailUser: string = '';
+  secretCode: string = '';
 
   private seguridadService = inject(SeguridadService);
 
@@ -44,6 +33,7 @@ export class ActivarMfaComponent implements OnInit {
 
   ngOnInit() {
     this.activarMFAForm = this.formBuilder.group({
+      
       codigo_MFA: [
         '',
         [
@@ -54,6 +44,7 @@ export class ActivarMfaComponent implements OnInit {
         ],
       ],
     });
+    
   }
 
   activarMFA(): void {
@@ -61,16 +52,21 @@ export class ActivarMfaComponent implements OnInit {
       this.toastr.error('Error', 'Por favor, revise los campos');
       return;
     } else {
-      if (this.sessionUser && this.eamailUser) {
-        const activarModel: ActivarMFAModel = {
-          email: this.eamailUser,
+      if (this.sessionUser) {
+        const verifyModel: VerifyMFAModel = {
           session: this.sessionUser,
-          codigo_MFA: this.activarMFAForm.get('codigo_MFA').value,
+          user_code: this.activarMFAForm.get('codigo_MFA').value,
         };
 
-        this.seguridadService.postActivarMFA(activarModel).subscribe({
+        this.seguridadService.postVerifyMFA(verifyModel).subscribe({
           next: (result) => {
             console.log(result);
+            if(result.Status === 'SUCCESS'){
+              this.toastr.success('Éxito', 'MFA activado correctamente, por favor inicie sesión nuevamente');              
+            }else{
+              this.toastr.error('Error', 'No se ha podido activar el MFA, por favor intente nuevamente');
+            }
+            this.bsModalRef.hide();
           },
           error: (er) => {
             // Manejar el error
