@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActivarMfaComponent } from './activar-mfa.component';
+import { verificarMfaComponent } from './verificar-mfa.component';
 
 describe('ActivarMfaComponent', () => {
-  let component: ActivarMfaComponent;
-  let fixture: ComponentFixture<ActivarMfaComponent>;
+  let component: verificarMfaComponent;
+  let fixture: ComponentFixture<verificarMfaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ActivarMfaComponent]
+      imports: [verificarMfaComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ActivarMfaComponent);
+    fixture = TestBed.createComponent(verificarMfaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

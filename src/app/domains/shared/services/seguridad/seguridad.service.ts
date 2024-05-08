@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../.././../../environments/environment'
 import { Observable } from 'rxjs';
-import { LoginModel, LoginResult, ActivarMFAModel } from '../../models/login.model';
+import { LoginModel, LoginResult, DesafioMFAModel, VerifyMFAModel } from '../../models/login.model';
 import { RegistrarModel, RegistrarResult  } from '../../models/registrar.model';
 import { ConfirmarRegistroModel, ConfirmarRegistroResultModel } from '../../models/confirmar_registro.model';
 
@@ -31,8 +31,13 @@ export class SeguridadService {
     return this.http.post<any>(this.urlApi+"/login", loginModel , { headers });
   }
   
-  postActivarMFA(activarMFA: ActivarMFAModel): Observable<any> {
+  postDesafioMFA(desafioMFA: DesafioMFAModel): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
-    return this.http.post<any>(this.urlApi+"/activar-mfa", activarMFA , { headers });
+    return this.http.post<any>(this.urlApi+"/desafio-mfa", desafioMFA , { headers });
+  }
+
+  postVerifyMFA(verifyMFA: VerifyMFAModel): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.post<any>(this.urlApi+"/verify-mfa", verifyMFA , { headers });
   }
 }

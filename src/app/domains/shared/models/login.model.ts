@@ -17,10 +17,15 @@ export interface LoginResult{
     AuthenticationResult: Tokens;
 }
 
-export interface ActivarMFAModel{
+export interface DesafioMFAModel{
     email: string;
     session: string;
-    codigo_MFA: string;
+    mfa_code: string;
+}
+
+export interface VerifyMFAModel{
+    session: string;
+    user_code: string;
 }
 
 
