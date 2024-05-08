@@ -10,6 +10,12 @@
     font-size: 96px;
     color: white;
   }
+  .jomhuria-text a {
+    font-family: 'Jomhuria', sans-serif;
+    font-size: 96px;
+    color: white;
+    text-decoration: none;
+  }
   .lb-text{
       color: white !important;
   }

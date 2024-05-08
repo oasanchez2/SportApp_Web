@@ -222,6 +222,7 @@
     "CONFIRM_MFA_BTN_CLOSE": "Cerrar",
     "CONFIRM_MFA_BTN_CONFIR": "Confirmar",
     "CONFIRM_MFA_MESSAJE_SCAN_QR": "Escanea este código QR con aplicaciones como Authy, Google Authenticator o Microsoft Authenticator",
-    "DESAFIO_MFA_TITLE": "Verificar Segundo Factor"
+    "DESAFIO_MFA_TITLE": "Verificar Segundo Factor",
+    "BOOTON_ACTIVE_FACTOR": "Activar Segundo Factor"
 
 }

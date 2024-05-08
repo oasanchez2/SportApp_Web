@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  inject,
-  signal,
-  ElementRef,
-  TemplateRef,
-} from '@angular/core';
+import { Component, OnInit, inject,  EventEmitter,} from '@angular/core';
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -45,6 +37,7 @@ export class LoginComponent implements OnInit {
   sessionUser: string = '';
   emailUser: string = '';
   secretCode: string = '';
+  btnActivarFactor: boolean = false;
 
   private seguridadService = inject(SeguridadService);
 
@@ -99,6 +92,7 @@ export class LoginComponent implements OnInit {
             this.secretCode = qrUrl;
             this.openModalWithComponentVerify();
             this.loginForm.reset();
+            this.btnActivarFactor = true;
           } else if (tokens.ChallengeName == 'SOFTWARE_TOKEN_MFA') {
             this.sessionUser = tokens.Session;
             this.emailUser = this.loginForm.get('email').value;
@@ -131,9 +125,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  openModal(template: TemplateRef<void>) {
-    this.modalRef = this.modalService.show(template);
+  // Método que maneja el evento emitido por el componente hijo
+  onBtnActiarFactor(value: boolean) {
+    this.btnActivarFactor = value;
   }
+
 
   openModalWithComponentVerify() {
     const initialState: ModalOptions = {
@@ -142,7 +138,10 @@ export class LoginComponent implements OnInit {
         secretCode: this.secretCode,
       },
     };
-    this.bsModalRef = this.modalService.show(verificarMfaComponent, initialState);
+    this.bsModalRef = this.modalService.show(verificarMfaComponent, initialState,);
+    this.bsModalRef.content.event.subscribe((event: any) => {
+      this.onBtnActiarFactor(event.btnActivarFactor);
+    });
   }
 
   openModalWithComponentDesafio() {

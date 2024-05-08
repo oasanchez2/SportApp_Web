@@ -4,11 +4,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { NotificacionesService } from '../../../shared/services/notificaciones/notificaciones.service';
 import { Notificaciones } from '../../models/notificaciones.model';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-header-deportista',
   standalone: true,
-  imports: [CommonModule,TranslateModule],
+  imports: [CommonModule,TranslateModule,RouterLinkWithHref],
   templateUrl: './header-deportista.component.html',
   styleUrl: './header-deportista.component.css'
 })
