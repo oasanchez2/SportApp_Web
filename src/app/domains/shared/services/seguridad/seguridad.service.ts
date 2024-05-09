@@ -40,4 +40,10 @@ export class SeguridadService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
     return this.http.post<any>(this.urlApi+"/verify-mfa", verifyMFA , { headers });
   }
+
+  getMe(token: string): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', 'Bearer ' + token);
+    return this.http.get<any>(this.urlApi+"/me", { headers });
+  }
 }

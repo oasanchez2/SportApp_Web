@@ -14,7 +14,7 @@ export class AuthService {
   signIn(accessToken: string,idToken: string, refreshToken: string, expireIn: number): void {
     this.cookieService.set('accessToken', accessToken, {
       secure: true, // Solo enviar cookie sobre HTTPS
-      expires: expireIn // Establecer la caducidad según la vida útil del token
+      expires: expireIn, // Establecer la caducidad según la vida útil del token
     });
     this.cookieService.set('idToken', idToken, {
       secure: true,
@@ -27,11 +27,19 @@ export class AuthService {
   }
 
   isSignedIn(): boolean {
-    return !!this.cookieService.get('name');
+    return !!this.cookieService.get('accessToken');
   }
 
-  getName(): string {
-    return this.cookieService.get('name');
+  getAccessToken(): string {
+    return this.cookieService.get('accessToken');
+  }
+
+  getIdToken(): string {
+    return this.cookieService.get('idToken');
+  }
+
+  getRefreshToken(): string {
+    return this.cookieService.get('refreshToken');
   }
 
 }

@@ -16,6 +16,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { verificarMfaComponent } from '../../components/verificar-mfa/verificar-mfa.component';
 import { ResponderDesafioComponent } from '../../components/responder-desafio/responder-desafio.component';
 
+
 @Component({
   selector: 'app-login',
   standalone: true,
