@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService,TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [TranslateModule,CommonModule],
+  imports: [TranslateModule,CommonModule,RouterLinkWithHref],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

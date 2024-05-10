@@ -7,6 +7,7 @@ import { SeguridadService } from '../../../shared/services/seguridad/seguridad.s
 import { ToastrService } from 'ngx-toastr';
 import { DesafioMFAModel } from '../../../shared/models/login.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { AuthService } from '../../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-responder-desafio',
@@ -22,6 +23,7 @@ export class ResponderDesafioComponent {
   emailUser: string = '';
   
   private seguridadService = inject(SeguridadService);
+  private authService = inject(AuthService);
 
   constructor(
     public bsModalRef: BsModalRef,
@@ -60,8 +62,26 @@ export class ResponderDesafioComponent {
         this.seguridadService.postDesafioMFA(desafioModel).subscribe({
           next: (result) => {
             console.log(result);
-            if(result.Status === 'SUCCESS'){
-              this.toastr.success('Éxito', 'Desafío MFA correcto');              
+
+            if(result.AuthenticationResult.AccessToken){
+              this.authService.signIn(result.AuthenticationResult.AccessToken, result.AuthenticationResult.IdToken, result.AuthenticationResult.RefreshToken, 3600);
+                this.seguridadService.getMe(result.AuthenticationResult.AccessToken).subscribe({
+                  next: (result) => {
+                    console.log(result);
+                    const email: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'email').Value;
+                    const rol: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'custom:rol').Value;
+                    sessionStorage.setItem('email', email);
+                    sessionStorage.setItem('rol', rol);
+                    sessionStorage.setItem('idUsuario', result.Username);
+
+                    this.toastr.success('Éxito', 'Desafío MFA correcto');
+                  },
+                  error: (er) => {
+                    console.log(er);
+                    this.toastr.error('Error', 'Fallo la verificación de usuario');
+                  },
+                });                
+                           
             }else{
               this.toastr.error('Error', 'Desafio MFA fallo');
             }

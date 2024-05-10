@@ -222,6 +222,18 @@
     "CONFIRM_MFA_BTN_CLOSE": "Cerrar",
     "CONFIRM_MFA_BTN_CONFIR": "Confirmar",
     "CONFIRM_MFA_MESSAJE_SCAN_QR": "Escanea este código QR con aplicaciones como Authy, Google Authenticator o Microsoft Authenticator",
-    "DESAFIO_MFA_TITLE": "Verificar Segundo Factor"
+    "DESAFIO_MFA_TITLE": "Verificar Segundo Factor",
+    "BOOTON_ACTIVE_FACTOR": "Activar Segundo Factor",
+    "RECOVERY_EMAIL": "Correo de recuperación",
+    "RECOVERY_VALIDATION_EMAIL_REQUIRE": "Se requiere un correo de recuperación",
+    "NEW_PASSWORD":"Nueva contraseña",
+    "NEW_VALIDATION_PASSWORD_REQUIRE":"Se requiere una nueva contraseña",
+    "NEW_VALIDATION_PASSWORD_VALID":"La nueva contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial",
+    "CONFIRM_NEW_PASSWORD":"Confirmar contraseña",
+    "CONFIRM_NEW_VALIDATION_PASSWORD_REQUIRE":"Se requiere confirmar la nueva contraseña",
+    "CONFIRM_NEW_VALIDATION_PASSWORD_VALID":"La confirmación de la nueva contraseña debe ser igual a la nueva contraseña",
+    "COMFIRM_CODE":"Código de confirmación",
+    "COMFIRM_VALIDATION_CODE_REQUIRE":"Se requiere un código de confirmación"
+
 
 }
