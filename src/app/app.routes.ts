@@ -12,6 +12,8 @@ import { InvitadoComponent } from './domains/invitados/pages/invitado/invitado.c
 import { LoginComponent } from './domains/seguridad/pages/login/login.component';
 import { RegistrarComponent } from './domains/seguridad/pages/registrar/registrar.component';
 import { ConfirmarRegistroComponent } from './domains/seguridad/pages/confirmar-registro/confirmar-registro.component';
+import { RecuperarClaveComponent } from './domains/seguridad/pages/recuperar-clave/recuperar-clave.component';
+import { ConfirmarRecuperarClaveComponent } from './domains/seguridad/pages/confirmar-recuperar-clave/confirmar-recuperar-clave.component';
 
 export const routes: Routes = [
     {
@@ -49,6 +51,14 @@ export const routes: Routes = [
             {
                 path: 'confirmar-registro/:email',
                 component: ConfirmarRegistroComponent
+            },
+            {
+                path: 'recuperar-clave',
+                component: RecuperarClaveComponent
+            },
+            {
+                path: 'confirmar-recuperar-clave/:email',
+                component: ConfirmarRecuperarClaveComponent
             }
         ]
     }, 

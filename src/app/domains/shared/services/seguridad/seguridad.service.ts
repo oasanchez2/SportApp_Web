@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { LoginModel, LoginResult, DesafioMFAModel, VerifyMFAModel } from '../../models/login.model';
 import { RegistrarModel, RegistrarResult  } from '../../models/registrar.model';
 import { ConfirmarRegistroModel, ConfirmarRegistroResultModel } from '../../models/confirmar_registro.model';
+import { ConfirmarRecoveryModel } from '../../../shared/models/confirmar_recovery.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,21 @@ export class SeguridadService {
   postVerifyMFA(verifyMFA: VerifyMFAModel): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
     return this.http.post<any>(this.urlApi+"/verify-mfa", verifyMFA , { headers });
+  }
+
+  getMe(token: string): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', 'Bearer ' + token);
+    return this.http.get<any>(this.urlApi+"/me", { headers });
+  }
+
+  postRecuperarClave(email: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.post<any>(this.urlApi+"/recuperar-clave", {email:email} , { headers });
+  }
+
+  postConfirmarRecuperarClave(confirmarRecoveryModel: ConfirmarRecoveryModel): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.post<any>(this.urlApi+"/confirmar-recuperar-clave", confirmarRecoveryModel , { headers });
   }
 }
