@@ -1,0 +1,37 @@
+<div class="page-inner mt--1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <form [formGroup]="recoveryForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="email">
+                                        {{'RECOVERY_EMAIL'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="email" id="email"
+                                        placeholder="{{'RECOVERY_EMAIL' |translate}}" formControlName="email">
+                                    <p id="emailError" class="text-danger"
+                                        *ngIf="recoveryForm.get('email')?.hasError('required') && recoveryForm.get('email')?.touched ">
+                                        {{'RECOVERY_VALIDATION_EMAIL_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="emailError2" class="text-danger"
+                                        *ngIf="recoveryForm.get('email').hasError('email') && recoveryForm.get('email')?.touched">
+                                        {{'LOGIN_VALIDATION_EMAIL_VALID'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="confirmar" [disabled]="recoveryForm.invalid" type="button" class="btn btn-sport-app"
+                            data-toggle="modal" data-target="#exampleModalCenter" (click)="recovery()">
+                            {{'CONFIRMAR'|translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

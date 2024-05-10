@@ -1,0 +1,70 @@
+<div class="page-inner mt--1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <form [formGroup]="confirmRecoveryForm">
+                    <div class="card-body">                        
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="form-label" for="password">
+                                    {{'NEW_PASSWORD'|translate}}
+                                </label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="{{'NEW_PASSWORD' |translate}}" formControlName="password">
+                                <p id="passwordError" class="text-danger"
+                                    *ngIf="confirmRecoveryForm.get('password')?.hasError('required') && confirmRecoveryForm.get('password')?.touched ">
+                                    {{'NEW_VALIDATION_PASSWORD_REQUIRE'|translate}}
+                                </p>
+                                <p id="passwordError2" class="text-danger"
+                                    *ngIf="confirmRecoveryForm.get('password')?.hasError('pattern') && confirmRecoveryForm.get('password')?.touched ">
+                                    {{'NEW_VALIDATION_PASSWORD_VALID'|translate}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="form-label" for="confir_password">
+                                    {{'CONFIRM_NEW_PASSWORD'|translate}}
+                                </label>
+                                <input type="password" class="form-control" name="confir_password" id="confir_password"
+                                    placeholder="{{'CONFIRM_NEW_PASSWORD' |translate}}" formControlName="confir_password">
+                                <p id="confirmPasswordError" class="text-danger"
+                                    *ngIf="confirmRecoveryForm.get('confir_password')?.hasError('required') && confirmRecoveryForm.get('confir_password')?.touched ">
+                                    {{'CONFIRM_NEW_VALIDATION_PASSWORD_REQUIRE'|translate}}
+                                </p>
+                                <p id="confirmPasswordError2" class="text-danger"
+                                     *ngIf="confirmRecoveryForm.hasError('notSame') && (confirmRecoveryForm.get('password').touched || confirmRecoveryForm.get('confir_password').touched) ">
+                                    Las contraseñas no coinciden.
+                                </p>
+                                <div *ngIf="confirmRecoveryForm.hasError('notSame') ">
+                                    Las contraseñas no coinciden.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="confirmation_code">
+                                        {{'COMFIRM_CODE'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="confirmation_code" id="confirmation_code"
+                                        placeholder="{{'COMFIRM_CODE' |translate}}" formControlName="confirmation_code">
+                                    <p id="confirmPassError" class="text-danger"
+                                        *ngIf="confirmRecoveryForm.get('confirmation_code')?.hasError('required') && confirmRecoveryForm.get('confirmation_code')?.touched ">
+                                        {{'COMFIRM_VALIDATION_CODE_REQUIRE'|translate}}
+                                    </p>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="confirmar" [disabled]="confirmRecoveryForm.invalid" type="button" class="btn btn-sport-app"
+                            data-toggle="modal" data-target="#exampleModalCenter" (click)="confirm_recovery()">
+                            {{'CONFIRMAR'|translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
