@@ -233,7 +233,18 @@
     "CONFIRM_NEW_VALIDATION_PASSWORD_REQUIRE":"Se requiere confirmar la nueva contraseña",
     "CONFIRM_NEW_VALIDATION_PASSWORD_VALID":"La confirmación de la nueva contraseña debe ser igual a la nueva contraseña",
     "COMFIRM_CODE":"Código de confirmación",
-    "COMFIRM_VALIDATION_CODE_REQUIRE":"Se requiere un código de confirmación"
+    "COMFIRM_VALIDATION_CODE_REQUIRE":"Se requiere un código de confirmación",
+    "REGISTER_SOCIO_ESPECIALIDAD":"Especialidad",
+    "REGISTER_SOCIO_VALIDATION_ESPECIALIDAD_REQUIRE":"Se requiere una especialidad",
+    "REGISTER_SOCIO_ANIOS_EXP":"Años de experiencia",
+    "REGISTER_SOCIO_VALIDATION_ANIOS_EXP_REQUIRE":"Se requiere años de experiencia",
+    "REGISTER_SOCIO_VALIDATION_ANIOS_EXP_NUMBER_VALID":"Años de experiencia debe ser numérico",
+    "REGISTER_SOCIO_TELEFONO":"Teléfono",
+    "REGISTER_SOCIO_VALIDATION_TELEFONO_REQUIRE":"Se requiere un teléfono",
+    "REGISTER_SOCIO_VALIDATION_TELEFONO_NUMBER_VALID":"El teléfono debe ser numérico",
+    "REGISTER_SOCIO_TP":"Numero de tarjeta profesional",
+    "REGISTER_SOCIO_VALIDATION_TP_REQUIRE":"Se requiere un número de tarjeta profesional",
+    "REGISTER_SOCIO_ORGANIZADOR": "Organizador"
 
 
 }

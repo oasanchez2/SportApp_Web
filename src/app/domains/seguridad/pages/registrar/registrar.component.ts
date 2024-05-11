@@ -4,7 +4,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { RegistrarModel, TiposIdentificacion, Genero } from '../../../shared/models/registrar.model';
+import { RegistrarModel } from '../../../shared/models/registrar.model';
+import { TiposIdentificacion, Genero, Rol } from '../../../shared/models/enums.model';
 import { SeguridadService } from '../../../shared/services/seguridad/seguridad.service';
 import { Router } from '@angular/router';
 
@@ -59,25 +60,16 @@ export class RegistrarComponent implements OnInit {
       this.toastr.error('Error', 'Por favor, revise los campos');
       return;
     } else {      
-      const registerModel: RegistrarModel = {
-        nombre: this.registerForm.value.nombre,
-        apellido: this.registerForm.value.apellido,
-        tipo_identificacion: this.registerForm.value.tipo_dentificacion,
-        numero_identificacion: this.registerForm.value.numero_identificacion,
-        genero_nacimiento: this.registerForm.value.genero_nacimiento,
-        edad: this.registerForm.value.edad,
-        peso: this.registerForm.value.peso,
-        estatura: this.registerForm.value.estatura,
-        deportes_desea_practicar: this.registerForm.value.deportes_desea_practicar,
+      const registerModel: RegistrarModel = {        
         email: this.registerForm.value.email,
         password: this.registerForm.value.password,
-        rol: 'Deportista',
+        rol: Rol.Deportista,
       };
       this.seguridadService.postRegistrarUsuario(registerModel).subscribe(
         (data) => {
-          this.toastr.success('Registro exitoso', 'Usuario registrado');
           console.log(data);
-            this.router.navigate(['/confirmar-registro',this.registerForm.value.email]);
+          this.toastr.success('Registro exitoso', 'Usuario registrado');          
+          this.router.navigate(['/confirmar-registro',this.registerForm.value.email]);
         },
         (error: HttpErrorResponse) => {
           switch (error.status) {
