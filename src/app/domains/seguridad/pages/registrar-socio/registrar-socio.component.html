@@ -1,0 +1,228 @@
+<div class="page-inner mt--1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <form [formGroup]="registerSocioForm">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="especialidad">
+                                        {{'REGISTER_SOCIO_ESPECIALIDAD'|translate}}
+                                    </label>
+                                    <select id="especialidad" class="form-select mx-sm3 mb-2" name="especialidad"
+                                        formControlName="especialidad">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let tipo of especialidadList" [value]="tipo[0]">{{tipo[1]}}
+                                        </option>
+                                    </select>
+                                    <p id="especialidadError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('especialidad')?.hasError('required') && registerSocioForm.get('especialidad')?.touched ">
+                                        {{'REGISTER_SOCIO_VALIDATION_ESPECIALIDAD_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="anios_experiencia">
+                                        {{'REGISTER_SOCIO_ANIOS_EXP'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="anios_experiencia"
+                                        id="anios_experiencia" placeholder="{{'REGISTER_SOCIO_ANIOS_EXP' |translate}}"
+                                        formControlName="anios_experiencia">
+                                    <p id="anios_experienciaError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('anios_experiencia')?.hasError('required') && registerSocioForm.get('anios_experiencia')?.touched ">
+                                        {{'REGISTER_SOCIO_VALIDATION_ANIOS_EXP_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="anios_experienciaError2" class="text-danger"
+                                        *ngIf="registerSocioForm.get('anios_experiencia')?.hasError('pattern') && registerSocioForm.get('anios_experiencia')?.touched ">
+                                        {{'REGISTER_SOCIO_VALIDATION_ANIOS_EXP_NUMBER_VALID'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="nombre">
+                                        {{'REGISTER_NAME'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre"
+                                        placeholder="{{'REGISTER_NAME' |translate}}" formControlName="nombre">
+                                    <p id="nombreError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('nombre')?.hasError('required') && registerSocioForm.get('nombre')?.touched ">
+                                        {{'REGISTER_VALIDATION_NAME_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="apellido">
+                                        {{'REGISTER_LASTNAME'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="apellido" id="apellido"
+                                        placeholder="{{'REGISTER_LASTNAME' |translate}}" formControlName="apellido">
+                                    <p id="apellidoError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('apellido')?.hasError('required') && registerSocioForm.get('apellido')?.touched ">
+                                        {{'REGISTER_VALIDATION_LASTNAME_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="genero_nacimiento">
+                                        {{'REGISTER_GENERO_NACIMIENTO'|translate}}
+                                    </label>
+                                    <select id="genero_nacimiento" class="form-select mx-sm3 mb-2"
+                                        name="genero_nacimiento" formControlName="genero_nacimiento">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let genero of generoList" [value]="genero[0]">{{genero[1]}}
+                                        </option>
+                                    </select>
+                                    <p id="tipo_identificacionError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('genero_nacimiento')?.hasError('required') && registerSocioForm.get('genero_nacimiento')?.touched ">
+                                        {{'REGISTER_GENERO_NACIMIENTO_REQUIRED'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="telefono">
+                                        {{'REGISTER_SOCIO_TELEFONO'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="telefono" id="telefono"
+                                        placeholder="{{'REGISTER_SOCIO_TELEFONO' |translate}}"
+                                        formControlName="telefono">
+                                    <p id="telefonoError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('telefono')?.hasError('required') && registerSocioForm.get('telefono')?.touched ">
+                                        {{'REGISTER_SOCIO_VALIDATION_TELEFONO_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="telefonoError2" class="text-danger"
+                                        *ngIf="registerSocioForm.get('telefono')?.hasError('pattern') && registerSocioForm.get('telefono')?.touched ">
+                                        {{'REGISTER_SOCIO_VALIDATION_TELEFONO_NUMBER_VALID'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="tipo_identificacion">
+                                        {{'REGISTER_TIPO_IDENT'|translate}}
+                                    </label>
+                                    <select id="tipo_identificacion" class="form-select mx-sm3 mb-2"
+                                        name="tipo_identificacion" formControlName="tipo_identificacion">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let tipo of tiposIdentificacionList" [value]="tipo[0]">
+                                            {{tipo[1]}}
+                                        </option>
+                                    </select>
+                                    <p id="tipo_identificacionError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('tipo_identificacion')?.hasError('required') && registerSocioForm.get('tipo_identificacion')?.touched ">
+                                        {{'REGISTER_VALIDATION_TIPO_IDENT_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="numero_identificacion">
+                                        {{'REGISTER_NUMBER_IDENT'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="numero_identificacion"
+                                        id="numero_identificacion" placeholder="{{'REGISTER_NUMBER_IDENT' |translate}}"
+                                        formControlName="numero_identificacion">
+                                    <p id="apellidoError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('numero_identificacion')?.hasError('required') && registerSocioForm.get('numero_identificacion')?.touched ">
+                                        {{'REGISTER_VALIDATION_NUMBER_IDENT_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="numero_tarjeta_profesional">
+                                        {{'REGISTER_SOCIO_TP'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="numero_tarjeta_profesional"
+                                        id="numero_tarjeta_profesional" placeholder="{{'REGISTER_SOCIO_TP' |translate}}"
+                                        formControlName="numero_tarjeta_profesional">
+                                    <p id="numero_tarjeta_profesionalError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('numero_tarjeta_profesional')?.hasError('required') && registerSocioForm.get('numero_tarjeta_profesional')?.touched ">
+                                        {{'REGISTER_SOCIO_VALIDATION_TP_REQUIRE'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <input type="checkbox" class="form-check-input" name="organizador" id="organizador"
+                                            formControlName="organizador">
+                                        <label class="form-check-label" for="organizador">
+                                            {{'REGISTER_SOCIO_ORGANIZADOR'|translate}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="email">
+                                        {{'LOGIN_EMAIL'|translate}}
+                                    </label>
+                                    <input type="text" class="form-control" name="email" id="email"
+                                        placeholder="{{'LOGIN_PLACE_HOLDER' |translate}}" formControlName="email">
+                                    <p id="emailError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('email')?.hasError('required') && registerSocioForm.get('email')?.touched ">
+                                        {{'LOGIN_VALIDATION_EMAIL_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="emailError2" class="text-danger"
+                                        *ngIf="registerSocioForm.get('email').hasError('email') && registerSocioForm.get('email')?.touched">
+                                        {{'LOGIN_VALIDATION_EMAIL_VALID'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="password">
+                                        {{'LOGIN_PASSWORD'|translate}}
+                                    </label>
+                                    <input type="password" class="form-control" name="password" id="password"
+                                        placeholder="{{'PASSWORD_PLACE_HOLDER' |translate}}" formControlName="password">
+                                    <p id="passwordError" class="text-danger"
+                                        *ngIf="registerSocioForm.get('password')?.hasError('required') && registerSocioForm.get('password')?.touched ">
+                                        {{'LOGIN_VALIDATION_PASSWORD_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="passwordError2" class="text-danger"
+                                        *ngIf="registerSocioForm.get('password')?.hasError('pattern') && registerSocioForm.get('password')?.touched ">
+                                        {{'LOGIN_VALIDATION_PASSWORD_VALID'|translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="ingresar" [disabled]="registerSocioForm.invalid" type="button"
+                            class="btn btn-sport-app" data-toggle="modal" data-target="#exampleModalCenter"
+                            (click)="register()">
+                            {{'SAVE'|translate}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
