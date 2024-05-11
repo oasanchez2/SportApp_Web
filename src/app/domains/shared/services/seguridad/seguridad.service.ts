@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { environment } from '../../.././../../environments/environment'
 import { Observable } from 'rxjs';
 import { LoginModel, LoginResult, DesafioMFAModel, VerifyMFAModel } from '../../models/login.model';
-import { RegistrarModel, RegistrarResult  } from '../../models/registrar.model';
+import { RegistrarModel } from '../../models/registrar.model';
 import { ConfirmarRegistroModel, ConfirmarRegistroResultModel } from '../../models/confirmar_registro.model';
 import { ConfirmarRecoveryModel } from '../../../shared/models/confirmar_recovery.model';
 
@@ -17,9 +17,9 @@ export class SeguridadService {
 
   constructor() { }
 
-  postRegistrarUsuario(registrarModel: RegistrarModel): Observable<RegistrarResult> {
+  postRegistrarUsuario(registrarModel: RegistrarModel): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
-    return this.http.post<RegistrarResult>(this.urlApi+"/register", registrarModel , { headers });
+    return this.http.post<any>(this.urlApi+"/register", registrarModel , { headers });
   }
   
   postConfirmarRegistroUsuario(confirmar: ConfirmarRegistroModel): Observable<ConfirmarRegistroResultModel> {

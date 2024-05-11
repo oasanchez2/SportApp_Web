@@ -14,6 +14,7 @@ import { RegistrarComponent } from './domains/seguridad/pages/registrar/registra
 import { ConfirmarRegistroComponent } from './domains/seguridad/pages/confirmar-registro/confirmar-registro.component';
 import { RecuperarClaveComponent } from './domains/seguridad/pages/recuperar-clave/recuperar-clave.component';
 import { ConfirmarRecuperarClaveComponent } from './domains/seguridad/pages/confirmar-recuperar-clave/confirmar-recuperar-clave.component';
+import { RegistrarSocioComponent } from './domains/seguridad/pages/registrar-socio/registrar-socio.component';
 
 export const routes: Routes = [
     {
@@ -45,8 +46,12 @@ export const routes: Routes = [
                 component: LoginComponent
             },
             {
-                path: 'register',
+                path: 'register-deportista',
                 component: RegistrarComponent
+            },
+            {
+                path: 'register-socio',
+                component: RegistrarSocioComponent
             },
             {
                 path: 'confirmar-registro/:email',
