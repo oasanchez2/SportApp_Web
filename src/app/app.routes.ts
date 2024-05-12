@@ -15,6 +15,9 @@ import { ConfirmarRegistroComponent } from './domains/seguridad/pages/confirmar-
 import { RecuperarClaveComponent } from './domains/seguridad/pages/recuperar-clave/recuperar-clave.component';
 import { ConfirmarRecuperarClaveComponent } from './domains/seguridad/pages/confirmar-recuperar-clave/confirmar-recuperar-clave.component';
 import { RegistrarSocioComponent } from './domains/seguridad/pages/registrar-socio/registrar-socio.component';
+import { HomeSocioComponent } from './domains/socio/pages/home-socio/home-socio.component';
+import { HomeDeportistaComponent } from './domains/deportista/pages/home-deportista/home-deportista.component';
+import { PlanDeportistaComponent } from './domains/deportista/pages/plan-deportista/plan-deportista.component';
 
 export const routes: Routes = [
     {
@@ -74,6 +77,18 @@ export const routes: Routes = [
             {
                 path:'notificaciones',
                 component: NotificacionesDeportistaComponent
+            },
+            {
+                path:'home-socio',
+                component: HomeSocioComponent
+            },
+            {
+                path:'home-deportista',
+                component: HomeDeportistaComponent
+            },
+            {
+                path:'plan-deportista',
+                component: PlanDeportistaComponent
             }
         ]
     },       

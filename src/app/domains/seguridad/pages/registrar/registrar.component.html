@@ -35,17 +35,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="tipo_dentificacion">
+                                    <label class="form-label" for="tipo_identificacion">
                                         {{'REGISTER_TIPO_IDENT'|translate}}
                                     </label>
-                                    <select id="tipo_dentificacion" class="form-select mx-sm3 mb-2"
-                                        name="tipo_dentificacion" formControlName="tipo_dentificacion">
+                                    <select id="tipo_identificacion" class="form-select mx-sm3 mb-2"
+                                        name="tipo_identificacion" formControlName="tipo_identificacion">
                                         <option value="" selected>{{'SELECT'|translate}}</option>
                                         <option *ngFor="let tipo of tipoIdentificaList" [value]="tipo[0]">{{tipo[1]}}
                                         </option>
                                     </select>
                                     <p id="tipo_identificacionError" class="text-danger"
-                                        *ngIf="registerForm.get('tipo_dentificacion')?.hasError('required') && registerForm.get('tipo_dentificacion')?.touched ">
+                                        *ngIf="registerForm.get('tipo_identificacion')?.hasError('required') && registerForm.get('tipo_identificacion')?.touched ">
                                         {{'REGISTER_VALIDATION_TIPO_IDENT_REQUIRE'|translate}}
                                     </p>
                                 </div>
@@ -94,6 +94,10 @@
                                         *ngIf="registerForm.get('edad')?.hasError('required') && registerForm.get('edad')?.touched ">
                                         {{'REGISTER_VALIDATION_EDAD_REQUIRE'|translate}}
                                     </p>
+                                    <p id="edadError2" class="text-danger"
+                                        *ngIf="registerForm.get('edad')?.hasError('pattern') && registerForm.get('edad')?.touched ">
+                                        {{'REGISTER_VALIDATION_EDAD_NUMBER_VALID'|translate}}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -109,6 +113,10 @@
                                         *ngIf="registerForm.get('peso')?.hasError('required') && registerForm.get('peso')?.touched ">
                                         {{'REGISTER_VALIDATION_PESO_REQUIRE'|translate}}
                                     </p>
+                                    <p id="edadError2" class="text-danger"
+                                        *ngIf="registerForm.get('peso')?.hasError('pattern') && registerForm.get('peso')?.touched ">
+                                        {{'REGISTER_VALIDATION_PESO_NUMBER_VALID'|translate}}
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -121,6 +129,10 @@
                                     <p id="estaturaError" class="text-danger"
                                         *ngIf="registerForm.get('estatura')?.hasError('required') && registerForm.get('estatura')?.touched ">
                                         {{'REGISTER_VALIDATION_ESTATURA_REQUIRE'|translate}}
+                                    </p>
+                                    <p id="edadError2" class="text-danger"
+                                        *ngIf="registerForm.get('estatura')?.hasError('pattern') && registerForm.get('estatura')?.touched ">
+                                        {{'REGISTER_VALIDATION_ESTATURA_VALID'|translate}}
                                     </p>
                                 </div>
                             </div>
