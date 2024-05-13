@@ -247,6 +247,24 @@
     "REGISTER_SOCIO_VALIDATION_TELEFONO_NUMBER_VALID":"Phone must be numeric",
     "REGISTER_SOCIO_TP":"Professional Card Number",
     "REGISTER_SOCIO_VALIDATION_TP_REQUIRE":"Professional Card Number is required",
-    "REGISTER_SOCIO_ORGANIZADOR": "Organizer"
+    "REGISTER_SOCIO_ORGANIZADOR": "Organizer",
+    "PLAN_TITULO_BASICO": "Basic Plan",
+    "PLAN_TITULO_INTERMEDIO": "Intermediate Plan",
+    "PLAN_TITULO_PREMIUM": "Premium Plan",
+    "PLAN_BASICO_ITEM_1": "Training Plan",
+    "PLAN_BASICO_ITEM_2": "Nutritional Plan",
+    "PLAN_BASICO_ITEM_3": "Training Monitoring",
+    "PLAN_BASICO_ITEM_4": "Training monitoring",
+    "PLAN_BASICO_ITEM_5": "Notification water, food",
+    "PLAN_BASICO_ITEM_6": "Control Board",
+    "PLAN_BASICO_ITEM_7": "Training Calendar",
+    "PLAN_BASICO_ITEM_8": "Event log",
+    "PLAN_BASICO_ITEM_9": "Connection with strava",
+    "PLAN_INTERMEDIO_ITEM_1": "Schedule a session with a trainer or sports doctor",
+    "PLAN_PREMIUM_ITEM_1": "Heart rate monitoring in the session",
+    "PLAN_SELECIONAR_BOTON":  "Get started",
+    "PLAN_SI": "Yes",
+    "PLAN_NO": "No",
+    "PLAN_CONFIRMAR": "Do you want to confirm?"
 }
 

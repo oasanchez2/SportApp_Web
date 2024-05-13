@@ -1,1 +1,206 @@
-<p>plan-deportista works!</p>
+<div class="page-inner mt--1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row justify-content-center align-items-center mb-1">
+                <div class="col-md-3 pl-md-0">
+                    <div class="card card-pricing">
+                        <div class="card-header">
+                            <h4 class="card-title">{{'PLAN_TITULO_BASICO' | translate}}</h4>
+                            <div class="card-price">
+                                <span class="price"></span>
+                                <span class="text"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="specification-list">
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_2' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_3' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_4' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_5' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_6' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_7' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_8' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_9' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_INTERMEDIO_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_NO' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_PREMIUM_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_NO' | translate}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary btn-block" (click)="openModal(template,Planes.Gratuito)"><b>{{'PLAN_SELECIONAR_BOTON' | translate}}</b></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pl-md-0 pr-md-0">
+                    <div class="card card-pricing card-pricing-focus card-primary">
+                        <div class="card-header">
+                            <h4 class="card-title">{{'PLAN_TITULO_INTERMEDIO' | translate}}</h4>
+                            <div class="card-price">
+                                <span class="price"></span>
+                                <span class="text"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="specification-list">
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_2' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_3' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_4' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_5' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_6' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_7' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_8' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_9' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_INTERMEDIO_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_PREMIUM_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_NO' | translate}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-light btn-block" (click)="openModal(template,Planes.Intermedio)"><b>{{'PLAN_SELECIONAR_BOTON' | translate}}</b></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-md-0">
+                    <div class="card card-pricing">
+                        <div class="card-header">
+                            <h4 class="card-title">{{'PLAN_TITULO_PREMIUM' | translate}}</h4>
+                            <div class="card-price">
+                                <span class="price"></span>
+                                <span class="text"></span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="specification-list">
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_2' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_3' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_4' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_5' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_6' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_7' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_8' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_BASICO_ITEM_9' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_INTERMEDIO_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                                <li>
+                                    <span class="name-specification">{{'PLAN_PREMIUM_ITEM_1' | translate}}</span>
+                                    <span class="status-specification">{{'PLAN_SI' | translate}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary btn-block" (click)="openModal(template,Planes.Premium)"><b>{{'PLAN_SELECIONAR_BOTON' | translate}}</b></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <ng-template #template>
+            <div class="modal-body text-center">
+              <p>Do you want to confirm?</p>
+              <div>
+                <h4>Plan</h4><p>{{planSeleccionado}}</p>
+              </div>             
+              <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+            </div>
+          </ng-template>
+    </div>
+</div>

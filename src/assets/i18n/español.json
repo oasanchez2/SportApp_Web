@@ -247,7 +247,23 @@
     "REGISTER_SOCIO_VALIDATION_TELEFONO_NUMBER_VALID":"El teléfono debe ser numérico",
     "REGISTER_SOCIO_TP":"Numero de tarjeta profesional",
     "REGISTER_SOCIO_VALIDATION_TP_REQUIRE":"Se requiere un número de tarjeta profesional",
-    "REGISTER_SOCIO_ORGANIZADOR": "Organizador"
-
-
+    "REGISTER_SOCIO_ORGANIZADOR": "Organizador",
+    "PLAN_TITULO_BASICO": "Plan Básico Gratuito",
+    "PLAN_TITULO_INTERMEDIO": "Plan Intermedio",
+    "PLAN_TITULO_PREMIUM": "Plan Premium",
+    "PLAN_BASICO_ITEM_1": "Plan de entrenamiento",
+    "PLAN_BASICO_ITEM_2": "Plan nutrición",
+    "PLAN_BASICO_ITEM_3": "Plan de recuperación",
+    "PLAN_BASICO_ITEM_4": "Monitoreo de entrenamiento",
+    "PLAN_BASICO_ITEM_5": "Notificación agua, comida",
+    "PLAN_BASICO_ITEM_6": "Tablero Control",
+    "PLAN_BASICO_ITEM_7": "Calendario de eventos",
+    "PLAN_BASICO_ITEM_8": "Registro de eventos",
+    "PLAN_BASICO_ITEM_9": "Conexión con strava",
+    "PLAN_INTERMEDIO_ITEM_1": "Agedar sesión con un entrenador o médico deportologo",
+    "PLAN_PREMIUM_ITEM_1": "Monitoreo ritmo cardíaco en la sesión",
+    "PLAN_SELECIONAR_BOTON":  "Empezar",
+    "PLAN_SI": "Si",
+    "PLAN_NO": "No",
+    "PLAN_CONFIRMAR": "¿Quieres confirmar?"
 }

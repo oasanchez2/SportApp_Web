@@ -1,0 +1,8 @@
+.card-primary {
+    background: #f26522 !important;
+    color: #fff; 
+}
+
+.card-pricing.card-primary .specification-list li {
+    border-color: #fff !important; 
+}

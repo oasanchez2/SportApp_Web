@@ -30,3 +30,9 @@ export enum Plan {
     Intermedio ='Intermedio',
     Premium = 'Premium'
 }
+
+export enum Planes {
+    Gratuito = 'Gratuito',
+    Intermedio ='Intermedio',
+    Premium = 'Premium'
+}
