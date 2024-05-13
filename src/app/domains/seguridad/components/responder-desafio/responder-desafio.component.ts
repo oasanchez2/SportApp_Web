@@ -8,6 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 import { DesafioMFAModel } from '../../../shared/models/login.model';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AuthService } from '../../../shared/services/auth/auth.service';
+import { Rol } from '../../../shared/models/enums.model';
+import { Router } from '@angular/router';
+import { DeportistaService } from '../../../shared/services/deportista/deportista.service';
+import { el } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-responder-desafio',
@@ -24,12 +28,14 @@ export class ResponderDesafioComponent {
   
   private seguridadService = inject(SeguridadService);
   private authService = inject(AuthService);
+  private deportistaService = inject(DeportistaService);
 
   constructor(
     public bsModalRef: BsModalRef,
     private formBuilder: FormBuilder,
     private translate: TranslateService,
     private toastr: ToastrService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -65,22 +71,44 @@ export class ResponderDesafioComponent {
 
             if(result.AuthenticationResult.AccessToken){
               this.authService.signIn(result.AuthenticationResult.AccessToken, result.AuthenticationResult.IdToken, result.AuthenticationResult.RefreshToken, 3600);
-                this.seguridadService.getMe(result.AuthenticationResult.AccessToken).subscribe({
-                  next: (result) => {
-                    console.log(result);
-                    const email: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'email').Value;
-                    const rol: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'custom:rol').Value;
-                    sessionStorage.setItem('email', email);
-                    sessionStorage.setItem('rol', rol);
-                    sessionStorage.setItem('idUsuario', result.Username);
-
-                    this.toastr.success('Éxito', 'Desafío MFA correcto');
-                  },
-                  error: (er) => {
-                    console.log(er);
-                    this.toastr.error('Error', 'Fallo la verificación de usuario');
-                  },
-                });                
+              this.seguridadService.getMe(result.AuthenticationResult.AccessToken).subscribe({
+                next: (result) => {
+                  console.log(result);
+                  const email: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'email').Value;
+                  const rol: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'custom:rol').Value;
+                  sessionStorage.setItem('email', email);
+                  sessionStorage.setItem('rol', rol);
+                  sessionStorage.setItem('idUsuario', result.Username);                  
+                  this.toastr.success('Éxito', 'Bienvenido.');
+                  if(rol === Rol.Socio){
+                    this.bsModalRef.hide();
+                    this.router.navigate(['/home-socio']);
+                  }else if(rol === Rol.Deportista){
+                    this.deportistaService.getDeportista(result.Username).subscribe({
+                      next:(data) => {                        
+                        console.log(data);
+                        if(!data.plan){
+                          this.bsModalRef.hide();
+                          this.router.navigate(['/plan-deportista']);
+                        }else{
+                          this.bsModalRef.hide();
+                          this.router.navigate(['/home-deportista']);
+                        }                        
+                      },
+                      error: (er) => {
+                        console.log(er);
+                        this.toastr.error('Error', 'Fallo la verificación del deportista');
+                      },
+                    });
+                  }else{
+                    this.toastr.error('Error', 'Rol no valido');
+                  }          
+                },
+                error: (er) => {
+                  console.log(er);
+                  this.toastr.error('Error', 'Fallo la verificación de usuario');
+                },
+              });                
                            
             }else{
               this.toastr.error('Error', 'Desafio MFA fallo');

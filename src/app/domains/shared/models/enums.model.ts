@@ -24,3 +24,9 @@ export enum Rol {
     Socio = 'Socio',
     Administrador = 'Administrador'
 }
+
+export enum Plan {
+    Gratuito = 'Gratuito',
+    Intermedio ='Intermedio',
+    Premium = 'Premium'
+}
