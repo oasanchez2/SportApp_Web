@@ -265,6 +265,10 @@
     "PLAN_SELECIONAR_BOTON":  "Get started",
     "PLAN_SI": "Yes",
     "PLAN_NO": "No",
-    "PLAN_CONFIRMAR": "Do you want to confirm?"
+    "PLAN_CONFIRMAR": "Do you want to confirm?",
+    "NAV_DEPORTISTA_PLAN": "Select Plan",
+    "NAV_DEPORTISTA_CALENDARIO": "Calendar",
+    "NAV_DEPORTISTA_ENTRENAMIENTO": "Training",
+    "NAV_DEPORTISTA_NOTIFICACIONES":"Notifications"
 }
 

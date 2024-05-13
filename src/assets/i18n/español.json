@@ -265,5 +265,9 @@
     "PLAN_SELECIONAR_BOTON":  "Empezar",
     "PLAN_SI": "Si",
     "PLAN_NO": "No",
-    "PLAN_CONFIRMAR": "¿Quieres confirmar?"
+    "PLAN_CONFIRMAR": "¿Quieres confirmar?",
+    "NAV_DEPORTISTA_PLAN": "Seleccionar un plan",
+    "NAV_DEPORTISTA_CALENDARIO": "Ver Calendario",
+    "NAV_DEPORTISTA_ENTRENAMIENTO": "Crear Entrenamiento",
+    "NAV_DEPORTISTA_NOTIFICACIONES":"Notificaciones"
 }
