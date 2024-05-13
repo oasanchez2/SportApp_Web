@@ -27,15 +27,7 @@ export const routes: Routes = [
             {
                 path: '',
                 component: InvitadoComponent,
-            },
-            {
-                path: 'nuevo-entrenamiento',
-                component: NuevoEntrenamientoComponent,
-            },
-            {
-                path:'calendario',
-                component: CalendarioEventosComponent
-            },
+            },                       
             {
                 path:'recomendaciones',
                 component: RutasEventosComponent
@@ -89,7 +81,15 @@ export const routes: Routes = [
             {
                 path:'plan-deportista',
                 component: PlanDeportistaComponent
-            }
+            },
+            {
+                path:'calendario',
+                component: CalendarioEventosComponent
+            },
+            {
+                path: 'nuevo-entrenamiento',
+                component: NuevoEntrenamientoComponent,
+            }, 
         ]
     },       
     {
