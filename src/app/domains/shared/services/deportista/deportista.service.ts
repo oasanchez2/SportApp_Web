@@ -25,4 +25,10 @@ export class DeportistaService {
     headers = headers.append('Authorization', 'Bearer ' + id_deportista);
     return this.http.get<any>(this.urlApi+"/"+id_deportista, { headers });
   }
+
+  pachActualizarPlan(id_deportista: string, plan: string): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', 'Bearer ' + id_deportista);
+    return this.http.patch<any>(this.urlApi+"/"+id_deportista, {new_plan: plan} , { headers });
+  }
 }
