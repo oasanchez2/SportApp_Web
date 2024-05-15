@@ -7,5 +7,8 @@ export const environment = {
     URL_NOTIFICACIONES: "http://127.0.0.1:5005/notificaciones",
     URL_SECURITY: "http://127.0.0.1:5006/security",
     URL_DEPORTISTA: "http://127.0.0.1:5004/deportista",
-    URL_CIUDADES: "https://www.datos.gov.co/resource/xdk5-pm3f.json"
+    URL_CIUDADES: "https://www.datos.gov.co/resource/xdk5-pm3f.json",
+    URL_PAISES: "https://oasanchez2.github.io/countries/json/countries.json",
+    URL_ESTADOS_PAISES: "https://oasanchez2.github.io/states/json/states.json",
+    URL_CIUDADES_ESTADOS: "https://oasanchez2.github.io/cities/json/cities.json"
 };

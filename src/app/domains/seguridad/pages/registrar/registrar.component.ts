@@ -1,4 +1,4 @@
-import { Component,OnInit, inject } from '@angular/core';
+import { Component,OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
@@ -10,6 +10,8 @@ import { SeguridadService } from '../../../shared/services/seguridad/seguridad.s
 import { DeportistaService } from '../../../shared/services/deportista/deportista.service';
 import { RegistrarDeportistaModel } from '../../../shared/models/registrar-deportista.model';
 import { Router } from '@angular/router';
+import { CountriesService } from '../../../shared/services/countries/countries.service';
+import { Countries } from '../../../shared/models/countries.model';
 
 @Component({
   selector: 'app-registrar',
@@ -26,6 +28,9 @@ export class RegistrarComponent implements OnInit {
 
   private seguridadService = inject(SeguridadService);
   private deportistaService = inject(DeportistaService);
+  private countriesService = inject(CountriesService);
+
+  paises = signal<Countries[]>([])
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,6 +61,8 @@ export class RegistrarComponent implements OnInit {
         ],
       ],
     });
+    this.getCountries();
+    this.getCitiesForCountry(1);
   }
 
   register(): void {
@@ -116,4 +123,57 @@ export class RegistrarComponent implements OnInit {
       );      
     }
   }
+
+  getCountries() {  
+    this.countriesService.getPaises().subscribe({ 
+      next: (data) => {
+      this.paises.set(data);
+      console.log(data);
+  },
+  error: (err) => {
+    console.error('Error al cargar paises:', err);
+    if (err instanceof HttpErrorResponse) {
+      console.error('Status:', err.status);
+      console.error('Mensaje:', err.message);
+      console.error('URL:', err.url);
+      if (err.error instanceof Error) {
+        // El error del lado del cliente (p. ej., red)
+        console.error('Error del cliente:', err.error.message);
+      } else {
+        // El error del lado del servidor
+        console.error('Error del servidor:', err.error);
+      }
+    } else {
+      // Error en el cliente Angular
+      console.error('Error Angular:', err);
+    }
+  },
+});
+}
+  getCitiesForCountry(idPais: number) { 
+    this.countriesService.getCitiesForCountry(idPais).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.error('Error al cargar ciudades:', err);
+        if (err instanceof HttpErrorResponse) {
+          console.error('Status:', err.status);
+          console.error('Mensaje:', err.message);
+          console.error('URL:', err.url);
+          if (err.error instanceof Error) {
+            // El error del lado del cliente (p. ej., red)
+            console.error('Error del cliente:', err.error.message);
+          } else {
+            // El error del lado del servidor
+            console.error('Error del servidor:', err.error);
+          }
+        } else {
+          // Error en el cliente Angular
+          console.error('Error Angular:', err);
+        }
+      },
+    });
+  }
+
 }
