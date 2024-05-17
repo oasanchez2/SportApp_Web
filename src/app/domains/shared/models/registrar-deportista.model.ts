@@ -10,8 +10,10 @@ export interface RegistrarDeportistaModel {
     edad: number;
     peso_inicial: number;
     altura: number;
-    pais_recidencia: string;
-    ciudad_recidencia: string;
+    pais_nacimiento: string;
+    ciudad_nacimiento: string;
+    pais_residencia: string;
+    ciudad_residencia: string;
     deporte_practicar: string;
     plan?: Plan;    
 }

@@ -269,5 +269,13 @@
     "NAV_DEPORTISTA_PLAN": "Seleccionar un plan",
     "NAV_DEPORTISTA_CALENDARIO": "Ver Calendario",
     "NAV_DEPORTISTA_ENTRENAMIENTO": "Crear Entrenamiento",
-    "NAV_DEPORTISTA_NOTIFICACIONES":"Notificaciones"
+    "NAV_DEPORTISTA_NOTIFICACIONES":"Notificaciones",
+    "DEPORTISTA_PAIS_NACIMIENTO":"País de nacimiento",
+    "RULE_SELECT_DEPORTISTA_PAIS_NACIMIENTO":"Se requiere seleccionar un país de nacimiento",
+    "DEPORTISTA_CIUDAD_NACIMIENTO":"Ciudad de nacimiento",
+    "RULE_SELECT_DEPORTISTA_CIUDAD_NACIMIENTO":"Se requiere seleccionar una ciudad de nacimiento",
+    "DEPORTISTA_PAIS_RECIDENCIA":"País de residencia",
+    "RULE_SELECT_DEPORTISTA_PAIS_RECIDENCIA":"Se requiere seleccionar un país de residencia",
+    "DEPORTISTA_CIUDAD_RECIDENCIA":"Ciudad de residencia",
+    "RULE_SELECT_DEPORTISTA_CIUDAD_RECIDENCIA":"Se requiere seleccionar una ciudad de residencia"
 }
