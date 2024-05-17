@@ -140,11 +140,75 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="pais_nacimiento" class="form-label">
+                                        {{'DEPORTISTA_PAIS_NACIMIENTO'|translate}}
+                                      </label>
+                                      <select id="pais_nacimiento" class="form-select mx-sm3 mb-2" name="pais_nacimiento" formControlName="pais_nacimiento" (change)="getCitiesForCountryNacimiento()">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let pais of paisesNacimiento()" [value]="pais.id">{{pais.name}}</option>
+                                      </select>
+                                      <p id="pais_nacimientoError" class="text-danger"
+                                        *ngIf="registerForm.get('pais_nacimiento')?.hasError('required') && registerForm.get('pais_nacimiento')?.touched ">
+                                        {{'RULE_SELECT_DEPORTISTA_PAIS_NACIMIENTO'|translate}}
+                                      </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ciudad_nacimiento" class="form-label">
+                                        {{'DEPORTISTA_CIUDAD_NACIMIENTO'|translate}}
+                                      </label>
+                                      <select id="ciudad_nacimiento" class="form-select mx-sm3 mb-2" name="ciudad_nacimiento" formControlName="ciudad_nacimiento">
+                                        <option value="0" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let ciu of ciudadesNacimiento()" [value]="ciu.id">{{ciu.name}}</option>
+                                      </select>
+                                      <p id="ciudad_nacimientoError" class="text-danger"
+                                        *ngIf="registerForm.get('ciudad_nacimiento')?.hasError('required') && registerForm.get('ciudad_nacimiento')?.touched ">
+                                        {{'RULE_SELECT_DEPORTISTA_CIUDAD_NACIMIENTO'|translate}}
+                                      </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pais_residencia" class="form-label">
+                                        {{'DEPORTISTA_PAIS_RECIDENCIA'|translate}}
+                                      </label>
+                                      <select id="pais_residencia" class="form-select mx-sm3 mb-2" name="pais_residencia" formControlName="pais_residencia" (change)="getCitiesForCountryRecidencia()">
+                                        <option value="" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let pais of paisesResidencia()" [value]="pais.id">{{pais.name}}</option>
+                                      </select>
+                                      <p id="pais_residenciaError" class="text-danger"
+                                        *ngIf="registerForm.get('pais_residencia')?.hasError('required') && registerForm.get('pais_residencia')?.touched ">
+                                        {{'RULE_SELECT_DEPORTISTA_PAIS_RECIDENCIA'|translate}}
+                                      </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ciudad_residencia" class="form-label">
+                                        {{'DEPORTISTA_CIUDAD_RECIDENCIA'|translate}}
+                                      </label>
+                                      <select id="ciudad_residencia" class="form-select mx-sm3 mb-2" name="ciudad_residencia" formControlName="ciudad_residencia">
+                                        <option value="0" selected>{{'SELECT'|translate}}</option>
+                                        <option *ngFor="let ciuR of ciudadesResidencia()" [value]="ciuR.id">{{ciuR.name}}</option>
+                                      </select>
+                                      <p id="ciudad_residenciaError" class="text-danger"
+                                        *ngIf="registerForm.get('ciudad_residencia')?.hasError('required') && registerForm.get('ciudad_residencia')?.touched ">
+                                        {{'RULE_SELECT_DEPORTISTA_CIUDAD_RECIDENCIA'|translate}}
+                                      </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label class="form-label" for="deportes_desea_practicar">
                                         {{'REGISTER_DEPORTE_DESEO'|translate}}
                                     </label>
                                     <input type="text" class="form-control" name="deportes_desea_practicar"
-                                        id="deportes_desea_practicar" placeholder="{{'REGISTER_PESO' |translate}}"
+                                        id="deportes_desea_practicar" placeholder="{{'REGISTER_DEPORTE_DESEO' |translate}}"
                                         formControlName="deportes_desea_practicar">
                                     <p id="deportes_desea_practicarError" class="text-danger"
                                         *ngIf="registerForm.get('deportes_desea_practicar')?.hasError('required') && registerForm.get('deportes_desea_practicar')?.touched ">

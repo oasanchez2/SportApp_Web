@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../.././../../environments/environment'
 import { Observable } from 'rxjs';
 import { RegistrarDeportistaModel } from '../../models/registrar-deportista.model';
+import { co } from '@fullcalendar/core/internal-common';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class DeportistaService {
   constructor() { }
 
   postRegistrarDeportista(registrarModel: RegistrarDeportistaModel): Observable<any> {
+    console.log(registrarModel);
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
     return this.http.post<any>(this.urlApi, registrarModel , { headers });
   }
