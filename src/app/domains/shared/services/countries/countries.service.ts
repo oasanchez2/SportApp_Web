@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Ciudades } from '../../models/ciudades.model';
-import { Countries, States, Cities } from '../../models/countries.model';
+import { Countries, State, States, Citie, Cities } from '../../models/countries.model';
 import { environment } from '../../.././../../environments/environment'
 import { Observable, of  } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,14 +18,15 @@ export class CountriesService {
   constructor() { }
 
   getPaises() {
-    return this.http.get<Countries[]>(this.urlApi_Paises);
+    return this.http.get<Countries>(this.urlApi_Paises);
   }
 
-  getCitiesForCountry(idPais: number): Observable<Cities[]> {
-   const allCities: Cities[] = [];
+  getCitiesForCountry(idPais: number): Observable<Citie[]> {
+    console.log(idPais);
+   const allCities: Citie[] = [];
    this.getStatesForCountry(idPais).subscribe(states => {
       states.forEach(state => {
-        this.getCitiesForState(state).subscribe(cities => {
+        this.getCitiesForState(state.id).subscribe(cities => {
           allCities.push(...cities);
         });
       });
@@ -33,16 +34,28 @@ export class CountriesService {
     return of(allCities);
   }
   
-  getStatesForCountry(idPais: number): Observable<States[]> {
+  getStatesForCountry(idPais: number): Observable<State[]> {
     //const statesUrl = `https://oasanchez2.github.io/countries/json/states.json?id_country=${idPais}`;
+    /*
     const statesUrl = `${this.urlApi_Estados}?id_country=${idPais}`;
     return this.http.get<States[]>(statesUrl);
+    */
+    return this.http.get<States>(this.urlApi_Estados)
+      .pipe(
+        map(data => data.states.filter(state => state.id_country === idPais))
+      );
   }
 
-  getCitiesForState(state: States): Observable<Cities[]> {
+  getCitiesForState(idState: number): Observable<Citie[]> {
     //const cityUrl = `https://oasanchez2.github.io/countries/json/cities.json?id_state=${state.id}`;
+    /*
     const cityUrl = `${this.urlApi_Ciudades}?id_state=${state.id}`;
     return this.http.get<Cities[]>(cityUrl);
+    */
+    return this.http.get<Cities>(this.urlApi_Ciudades)
+    .pipe(
+      map(data => data.cities.filter(citie => citie.id_state === idState))
+    );
   }
   
   
