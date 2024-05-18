@@ -18,16 +18,19 @@ export class NotificacionesDeportistaComponent implements OnInit  {
   
   notificacionesDeportista = signal<Notificaciones[]>([])
 
+  private idUser: string = sessionStorage.getItem('idUsuario') ?? '';
+
   constructor(private toastr:ToastrService,
     private translate: TranslateService
 ){ }
 
   ngOnInit() {
-  this.getNotificacionesDeportista('07adc016-82eb-4c92-b722-0e80ebfdcfe5');
+  this.getNotificacionesDeportista(this.idUser);
   }
 
   getNotificacionesDeportista(idDeportista: string){
-    this.notificacionService.getNotificacionesDeportista(idDeportista)
+    if(idDeportista){
+      this.notificacionService.getNotificacionesDeportista(idDeportista)
       .subscribe({
         next: (notificaciones) => {
           this.notificacionesDeportista.set(notificaciones);
@@ -36,6 +39,6 @@ export class NotificacionesDeportistaComponent implements OnInit  {
           console.error(err);
         }
       });
+    }    
   }
-
 }

@@ -29,6 +29,7 @@ export class NuevoEntrenamientoComponent implements OnInit  {
 
   public fechaMinima:Date= new Date();
   public fechaMaxima:Date= new Date();
+  private idUser: string = sessionStorage.getItem('idUsuario') ?? '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -154,7 +155,7 @@ crearEntrenamiento(): void{
       const nuevoEntrenamiento: EntrenamientoJson = {
         nombre: this.companyForm.value.nombre,
         fecha_entrenamiento: this.companyForm.value.fecha_entrenamiento,
-        id_usuario: '07adc016-82eb-4c92-b722-0e80ebfdcfe5',
+        id_usuario: this.idUser,
         estado: true,
         ejercicios: this.ejerciciosSeleccionados()
       };
