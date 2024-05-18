@@ -277,5 +277,14 @@
     "DEPORTISTA_PAIS_RECIDENCIA":"País de residencia",
     "RULE_SELECT_DEPORTISTA_PAIS_RECIDENCIA":"Se requiere seleccionar un país de residencia",
     "DEPORTISTA_CIUDAD_RECIDENCIA":"Ciudad de residencia",
-    "RULE_SELECT_DEPORTISTA_CIUDAD_RECIDENCIA":"Se requiere seleccionar una ciudad de residencia"
+    "RULE_SELECT_DEPORTISTA_CIUDAD_RECIDENCIA":"Se requiere seleccionar una ciudad de residencia",
+    "NAV_SOCIO_PERFIL": "Perfil Socio",
+    "NAV_SOCIO_CREAR_ENTRENAMIENTO": "Crear Entrenamiento",
+    "NAV_SOCIO_CREAR_PRODUCTO_SERVICIO": "Crear Producto/Servicio",
+    "NAV_SOCIO_NOTIFICACIONES": "Notificaciones",
+    "NAV-DEPORTISTA-HOME": "Inicio",
+    "NAV_DEPORTISTA_PERFIL": "Registrar Perfil",
+    "NAV_DEPORTISTA_RECOMENDACIONES": "Recomendaciones",
+    "UNAUTHORIZED": "No autorizado",
+    "UNAUTHORIZED-DESC": "Lo sentimos, no tienes permisos para acceder a esta página."
 }

@@ -1,4 +1,4 @@
-import { Component,OnInit, inject } from '@angular/core';
+import { Component,OnInit, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr'
@@ -10,6 +10,8 @@ import { Genero, Rol, Especialidad, TiposIdentificacion } from '../../../shared/
 import { SeguridadService } from '../../../shared/services/seguridad/seguridad.service';
 import { SociosService } from '../../../shared/services/socios/socios.service';
 import { Router } from '@angular/router';
+import { CountriesService } from '../../../shared/services/countries/countries.service';
+import { Countries, Country, Citie } from '../../../shared/models/countries.model';
 
 @Component({
   selector: 'app-registrar-socio',
@@ -26,6 +28,10 @@ export class RegistrarSocioComponent implements OnInit{
 
   private seguridadService = inject(SeguridadService);
   private sociosService = inject(SociosService);
+  private countriesService = inject(CountriesService);
+
+  paisesResidencia = signal<Country[]>([]);
+  ciudadesResidencia = signal<Citie[]>([]);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,6 +53,8 @@ export class RegistrarSocioComponent implements OnInit{
       numero_tarjeta_profesional: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       organizador: ['', ],
+      pais_residencia : ['', [Validators.required]],
+      ciudad_residencia : ['', [Validators.required]],
       password: [
         '',
         [
@@ -57,6 +65,8 @@ export class RegistrarSocioComponent implements OnInit{
         ],
       ],
     });
+
+    this.getCountries();
   }
 
   register(): void {
@@ -69,6 +79,7 @@ export class RegistrarSocioComponent implements OnInit{
         password: this.registerSocioForm.value.password,
         rol: Rol.Socio,
       };
+      
       this.seguridadService.postRegistrarUsuario(registerModel).subscribe(
         (data) => {
           console.log('Socio registrado');
@@ -84,10 +95,11 @@ export class RegistrarSocioComponent implements OnInit{
             tipo_identificacion: this.registerSocioForm.value.tipo_identificacion,
             numero_identificacion: this.registerSocioForm.value.numero_identificacion,
             numero_tarjeta_profesional: this.registerSocioForm.value.numero_tarjeta_profesional,
-            pais_recidencia: "Colombia",
-            ciudad_recidencia: "Bogotá",
-            organizador: this.registerSocioForm.value.organizador,
+            pais_recidencia: this.registerSocioForm.value.pais_residencia,
+            ciudad_recidencia: this.registerSocioForm.value.ciudad_residencia,
+            organizador: this.registerSocioForm.value.organizador ? true : false,
           };
+          
           this.sociosService.postRegistrarSocio(registerSocioModel).subscribe(
             (data) => {
               console.log('Data socio registrado');
@@ -98,12 +110,71 @@ export class RegistrarSocioComponent implements OnInit{
             (error: HttpErrorResponse) => {
               this.toastr.error('Error', error.error.mssg);
             }
-          );          
+          );       
         },
         (error: HttpErrorResponse) => {
           this.toastr.error('Error', error.error.mssg);
         }
       );      
     }
+  }
+
+  getCountries() {
+    this.countriesService.getPaises().subscribe({
+      next: (data) => {
+        this.paisesResidencia.set(data.countries);
+      },
+      error: (err) => {
+        console.error('Error al cargar paises:', err);
+        if (err instanceof HttpErrorResponse) {
+          console.error('Status:', err.status);
+          console.error('Mensaje:', err.message);
+          console.error('URL:', err.url);
+          if (err.error instanceof Error) {
+            // El error del lado del cliente (p. ej., red)
+            console.error('Error del cliente:', err.error.message);
+          } else {
+            // El error del lado del servidor
+            console.error('Error del servidor:', err.error);
+          }
+        } else {
+          // Error en el cliente Angular
+          console.error('Error Angular:', err);
+        }
+      },
+    });
+  }
+
+  getCitiesForCountryRecidencia() {
+    const idPais: number = Number(this.registerSocioForm.get('pais_residencia').value);
+    if(idPais > 0){
+
+      this.countriesService.getCitiesForCountry(idPais).subscribe({
+        next: (data) => {      
+          this.ciudadesResidencia.set(data);            
+        },
+        error: (err) => {
+          console.error('Error al cargar ciudades:', err);
+          if (err instanceof HttpErrorResponse) {
+            console.error('Status:', err.status);
+            console.error('Mensaje:', err.message);
+            console.error('URL:', err.url);
+            if (err.error instanceof Error) {
+              // El error del lado del cliente (p. ej., red)
+              console.error('Error del cliente:', err.error.message);
+            } else {
+              // El error del lado del servidor
+              console.error('Error del servidor:', err.error);
+            }
+          } else {
+            // Error en el cliente Angular
+            console.error('Error Angular:', err);
+          }
+        },
+      });
+    }else{
+      this.ciudadesResidencia.set([]);
+    }
+    
   }
 }

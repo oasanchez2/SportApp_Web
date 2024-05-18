@@ -20,6 +20,7 @@ export class NuevoProductoServicioComponent implements OnInit {
 
   private socioService = inject(SociosService)
   tipoOferta = Object.values(TipoOferta);
+  private idUser: string = sessionStorage.getItem('idUsuario') ?? '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,7 +50,7 @@ export class NuevoProductoServicioComponent implements OnInit {
       return;
     }else{      
         const nuevoProductoServicio: ProductoServicioJson = {
-          id_socio: 'ce4a4e82-948d-41d8-b27d-04c8e59973c0',
+          id_socio: this.idUser,
           nombre: this.productoServicioForm.value.nombre,
           descripcion: this.productoServicioForm.value.descripcion,
           costo: this.productoServicioForm.value.costo,
