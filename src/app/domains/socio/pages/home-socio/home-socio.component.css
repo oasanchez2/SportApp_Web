@@ -1,0 +1,19 @@
+.line-border{
+    border-right: 3px solid #f26522;    
+}
+
+.nav-deportista{
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 65vh;
+}
+
+.nav-elementos{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.nav-elementos p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

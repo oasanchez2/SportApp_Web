@@ -277,6 +277,10 @@
     "DEPORTISTA_PAIS_RECIDENCIA":"Country of residence",
     "RULE_SELECT_DEPORTISTA_PAIS_RECIDENCIA":"It is required to select a country of residence",
     "DEPORTISTA_CIUDAD_RECIDENCIA":"City of residence",
-    "RULE_SELECT_DEPORTISTA_CIUDAD_RECIDENCIA":"It is required to select a city of residence"
+    "RULE_SELECT_DEPORTISTA_CIUDAD_RECIDENCIA":"It is required to select a city of residence",
+    "NAV_SOCIO_PERFIL": "Profile",
+    "NAV_SOCIO_CREAR_ENTRENAMIENTO": "Create Training",
+    "NAV_SOCIO_CREAR_PRODUCTO_SERVICIO": "Create Product/Service",
+    "NAV_SOCIO_NOTIFICACIONES": "Notifications"
 }
 
