@@ -281,6 +281,9 @@
     "NAV_SOCIO_PERFIL": "Profile",
     "NAV_SOCIO_CREAR_ENTRENAMIENTO": "Create Training",
     "NAV_SOCIO_CREAR_PRODUCTO_SERVICIO": "Create Product/Service",
-    "NAV_SOCIO_NOTIFICACIONES": "Notifications"
+    "NAV_SOCIO_NOTIFICACIONES": "Notifications",    
+    "NAV-DEPORTISTA-HOME": "Home",
+    "NAV_DEPORTISTA_PERFIL": "Profile",
+    "NAV_DEPORTISTA_RECOMENDACIONES": "Recommendations"
 }
 

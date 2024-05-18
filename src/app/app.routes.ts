@@ -18,6 +18,7 @@ import { RegistrarSocioComponent } from './domains/seguridad/pages/registrar-soc
 import { HomeSocioComponent } from './domains/socio/pages/home-socio/home-socio.component';
 import { HomeDeportistaComponent } from './domains/deportista/pages/home-deportista/home-deportista.component';
 import { PlanDeportistaComponent } from './domains/deportista/pages/plan-deportista/plan-deportista.component';
+import { LayoutSocioComponent } from './domains/shared/components/layout-socio/layout-socio.component';
 
 export const routes: Routes = [
     {
@@ -27,15 +28,7 @@ export const routes: Routes = [
             {
                 path: '',
                 component: InvitadoComponent,
-            },                       
-            {
-                path:'recomendaciones',
-                component: RutasEventosComponent
-            },
-            {
-                path:'producto-servicio',
-                component: NuevoProductoServicioComponent
-            },
+            },        
             {
                 path:'login',
                 component: LoginComponent
@@ -67,13 +60,9 @@ export const routes: Routes = [
         component: LayoutDeportistaComponent,
         children: [
             {
-                path:'notificaciones',
+                path:'notificaciones-deprortista',
                 component: NotificacionesDeportistaComponent
-            },
-            {
-                path:'home-socio',
-                component: HomeSocioComponent
-            },
+            },           
             {
                 path:'home-deportista',
                 component: HomeDeportistaComponent
@@ -83,13 +72,36 @@ export const routes: Routes = [
                 component: PlanDeportistaComponent
             },
             {
-                path:'calendario',
+                path:'calendario-deportista',
                 component: CalendarioEventosComponent
             },
             {
                 path: 'nuevo-entrenamiento',
                 component: NuevoEntrenamientoComponent,
             }, 
+            {
+                path:'recomendaciones',
+                component: RutasEventosComponent
+            },  
+        ]
+    },
+    {
+        path: '',
+        component: LayoutSocioComponent,
+        children: [
+            {
+                path:'home-socio',
+                component: HomeSocioComponent
+            },
+            {
+                path:'producto-servicio',
+                component: NuevoProductoServicioComponent
+            },
+            {
+                path:'notificaciones-socio',
+                component: NotificacionesDeportistaComponent
+            }, 
+                  
         ]
     },       
     {

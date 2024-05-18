@@ -35,6 +35,7 @@ export class CalendarioEventosComponent implements OnInit{
   private eventosService = inject(EventosService);
   entrenamientos = signal<Entrenamientos[]>([]);
   eventosCalendario = signal<EventInput[]>([])
+  private idUser: string = sessionStorage.getItem('idUsuario') ?? '';
 
   localeEsSelected: boolean = true;
   calendarVisible = signal(true);
@@ -79,7 +80,7 @@ export class CalendarioEventosComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.getEventosDeportista('07adc016-82eb-4c92-b722-0e80ebfdcfe5');
+    this.getEventosDeportista(this.idUser);
     this.cambiarIdioma(this.translate.currentLang)
     
     this.translate.onLangChange.subscribe(langChangeEvent => {
@@ -100,47 +101,48 @@ export class CalendarioEventosComponent implements OnInit{
     }))
   }
   getEventosDeportista(idDeportista: string){
-    const events: EventInput[] = [];
+    if(idDeportista){
+      const events: EventInput[] = [];
 
-    this.eventosService.getEventosDeportista(idDeportista)
+      this.eventosService.getEventosDeportista(idDeportista)
+        .subscribe({
+          next: (evento) => {
+            evento.forEach((e) => {
+              const event: EventInput = {
+                id: e.id_evento,
+                title: e.evento.nombre,
+                start: e.evento.fecha_evento
+              };
+              events.push(event);
+            });
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        });
+  
+      this.entrenamientoService.getEntrenamientoDeportista(idDeportista)
       .subscribe({
-        next: (evento) => {
-          evento.forEach((e) => {
+        next: (entrenamientos) => {          
+          entrenamientos.forEach((e) => {
             const event: EventInput = {
-              id: e.id_evento,
-              title: e.evento.nombre,
-              start: e.evento.fecha_evento
+              id: e.id_entrenamiento,
+              title: e.nombre,
+              start: e.fecha_entrenamiento
             };
             events.push(event);
-          });
+          });      
         },
         error: (err) => {
           console.error(err);
         }
-      });
-
-    this.entrenamientoService.getEntrenamientoDeportista(idDeportista)
-    .subscribe({
-      next: (entrenamientos) => {          
-        entrenamientos.forEach((e) => {
-          const event: EventInput = {
-            id: e.id_entrenamiento,
-            title: e.nombre,
-            start: e.fecha_entrenamiento
-          };
-          events.push(event);
-        });      
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    }); 
-
-    this.calendarOptions.update((options) => ({
-      ...options,
-      initialEvents: events
-    }));
-
+      }); 
+  
+      this.calendarOptions.update((options) => ({
+        ...options,
+        initialEvents: events
+      }));
+    }
   }
 
   handleCalendarToggle() {
