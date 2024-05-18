@@ -284,6 +284,8 @@
     "NAV_SOCIO_NOTIFICACIONES": "Notifications",    
     "NAV-DEPORTISTA-HOME": "Home",
     "NAV_DEPORTISTA_PERFIL": "Profile",
-    "NAV_DEPORTISTA_RECOMENDACIONES": "Recommendations"
+    "NAV_DEPORTISTA_RECOMENDACIONES": "Recommendations",
+    "UNAUTHORIZED": "Unauthorized",
+    "UNAUTHORIZED-DESC": "You are not authorized to access this page."
 }
 

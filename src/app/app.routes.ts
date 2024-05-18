@@ -19,11 +19,16 @@ import { HomeSocioComponent } from './domains/socio/pages/home-socio/home-socio.
 import { HomeDeportistaComponent } from './domains/deportista/pages/home-deportista/home-deportista.component';
 import { PlanDeportistaComponent } from './domains/deportista/pages/plan-deportista/plan-deportista.component';
 import { LayoutSocioComponent } from './domains/shared/components/layout-socio/layout-socio.component';
+import { UnauthorizedComponent } from './domains/shared/pages/unauthorized/unauthorized.component';
+import { authDeportistaGuard } from './domains/guards/auth-deportista.guard';
+import { authSocioGuard } from './domains/guards/auth-socio.guard';
+import { authGuard } from './domains/guards/auth.guard';
 
 export const routes: Routes = [
     {
         path: '',
         component: LayoutComponent,
+        canActivateChild: [authGuard],
         children: [
             {
                 path: '',
@@ -58,6 +63,7 @@ export const routes: Routes = [
     {
         path: '',
         component: LayoutDeportistaComponent,
+        canActivateChild: [authDeportistaGuard],
         children: [
             {
                 path:'notificaciones-deprortista',
@@ -88,6 +94,7 @@ export const routes: Routes = [
     {
         path: '',
         component: LayoutSocioComponent,
+        canActivateChild: [authSocioGuard],
         children: [
             {
                 path:'home-socio',
@@ -103,7 +110,11 @@ export const routes: Routes = [
             }, 
                   
         ]
-    },       
+    },
+    {
+        path: 'unauthorized',
+        component: UnauthorizedComponent
+    },      
     {
         path: '**',
         component: NotFoundComponent

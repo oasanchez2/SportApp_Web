@@ -284,5 +284,7 @@
     "NAV_SOCIO_NOTIFICACIONES": "Notificaciones",
     "NAV-DEPORTISTA-HOME": "Inicio",
     "NAV_DEPORTISTA_PERFIL": "Registrar Perfil",
-    "NAV_DEPORTISTA_RECOMENDACIONES": "Recomendaciones"
+    "NAV_DEPORTISTA_RECOMENDACIONES": "Recomendaciones",
+    "UNAUTHORIZED": "No autorizado",
+    "UNAUTHORIZED-DESC": "Lo sentimos, no tienes permisos para acceder a esta página."
 }
