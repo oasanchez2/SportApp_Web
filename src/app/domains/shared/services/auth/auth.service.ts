@@ -27,12 +27,12 @@ export class AuthService {
       secure: true,
       expires: expireIn
     });
+    sessionStorage.setItem('accessToken', accessToken);
   }
 
   isSignedIn(): boolean {
-    console.log('accessToken: ' + this.cookieService.get('accessToken'));
-    console.log(!!this.cookieService.get('accessToken'));
-    return !!this.cookieService.get('accessToken');
+    //return !!this.cookieService.get('accessToken');
+    return !!sessionStorage.getItem('accessToken');
   }
 
   getAccessToken(): string {
@@ -55,7 +55,7 @@ export class AuthService {
   }
 
   getIdUsuario(): string {
-    return sessionStorage.getItem('id_usuario') ?? '';  
+    return sessionStorage.getItem('idUsuario') ?? '';  
   }
   getNombre(): string {
     console.log('nombre usuario: ' + sessionStorage.getItem('nombre'));
