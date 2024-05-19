@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr'
 import { NotificacionesService } from '../../../shared/services/notificaciones/notificaciones.service';
 import { Notificaciones } from '../../models/notificaciones.model';
 import { RouterLinkWithHref } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-deportista',
@@ -16,15 +18,25 @@ import { RouterLinkWithHref } from '@angular/router';
 export class HeaderDeportistaComponent implements OnInit {
 
   private notificacionService = inject(NotificacionesService);
+  private authService = inject(AuthService);
   
   notificacionesDeportista = signal<Notificaciones[]>([])
+  sessionCorreo: string = ''
+  sessionRol: string = ''
+  sessionNombre: string = ''
+  sessionIdUser: string = ''
 
   constructor(private toastr:ToastrService,
-              private translate: TranslateService
+              private translate: TranslateService,
+              private router: Router,
   ){ }
 
   ngOnInit() {
-    this.getNotificacionesDeportista('07adc016-82eb-4c92-b722-0e80ebfdcfe5');
+    this.sessionIdUser = this.authService.getIdUsuario();
+    this.sessionCorreo = this.authService.getEmail();
+    this.sessionRol = this.authService.getRol();
+    this.sessionNombre = this.authService.getNombre();
+    this.getNotificacionesDeportista(this.sessionIdUser);    
   }
 
   getNotificacionesDeportista(idDeportista: string){
@@ -45,6 +57,12 @@ calcularMinutosPasados(fecha: Date): number {
   const diferencia = ahora.getTime() - fechaCreado.getTime();
   const minutos = Math.floor(diferencia / (1000 * 60));
   return minutos;
+}
+
+cerrarSesion(){
+  this.authService.cerrarSesion();
+  this.toastr.success(this.translate.instant('Sesión cerrada correctamente'));
+  this.router.navigate(['/']);
 }
 
 }

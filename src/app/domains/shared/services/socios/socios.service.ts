@@ -25,4 +25,14 @@ export class SociosService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
     return this.http.post<ProductoServicio>(this.urlApi + "/producto-servicio", productoServicio, { headers });
   }
+
+  getSocio(idSocio: string): Observable<RegistrarSocioModel> {
+    return this.http.get<RegistrarSocioModel>(this.urlApi + '/' + idSocio);
+  }
+
+  getDeportista(id_deportista: string): Observable<any> {
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    headers = headers.append('Authorization', 'Bearer ' + id_deportista);
+    return this.http.get<any>(this.urlApi+"/"+id_deportista, { headers });
+  }
 }
