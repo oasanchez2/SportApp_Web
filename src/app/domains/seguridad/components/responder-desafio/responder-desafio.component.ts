@@ -11,36 +11,43 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 import { Rol } from '../../../shared/models/enums.model';
 import { Router } from '@angular/router';
 import { DeportistaService } from '../../../shared/services/deportista/deportista.service';
+import { SociosService } from '../../../shared/services/socios/socios.service';
+import { RegistrarSocioModel } from '../../../shared/models/registrar-socio.model';
 import { el } from '@fullcalendar/core/internal-common';
 
 @Component({
   selector: 'app-responder-desafio',
   standalone: true,
-  imports: [TranslateModule, CommonModule, ReactiveFormsModule, RouterLinkWithHref],
+  imports: [
+    TranslateModule,
+    CommonModule,
+    ReactiveFormsModule,
+    RouterLinkWithHref,
+  ],
   templateUrl: './responder-desafio.component.html',
-  styleUrl: './responder-desafio.component.css'
+  styleUrl: './responder-desafio.component.css',
 })
 export class ResponderDesafioComponent {
   desafioMFAForm: any;
-  
+
   sessionUser: string = '';
   emailUser: string = '';
-  
+
   private seguridadService = inject(SeguridadService);
   private authService = inject(AuthService);
   private deportistaService = inject(DeportistaService);
+  private sociosService = inject(SociosService);
 
   constructor(
     public bsModalRef: BsModalRef,
     private formBuilder: FormBuilder,
     private translate: TranslateService,
     private toastr: ToastrService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.desafioMFAForm = this.formBuilder.group({
-      
       codigo_MFA: [
         '',
         [
@@ -50,7 +57,7 @@ export class ResponderDesafioComponent {
           Validators.pattern('^[0-9]*$'),
         ],
       ],
-    });    
+    });
   }
 
   desafioMFA(): void {
@@ -69,51 +76,91 @@ export class ResponderDesafioComponent {
           next: (result) => {
             console.log(result);
 
-            if(result.AuthenticationResult.AccessToken){
-              this.authService.signIn(result.AuthenticationResult.AccessToken, result.AuthenticationResult.IdToken, result.AuthenticationResult.RefreshToken, 3600);
-              this.seguridadService.getMe(result.AuthenticationResult.AccessToken).subscribe({
-                next: (result) => {
-                  console.log(result);
-                  const email: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'email').Value;
-                  const rol: string = result.UserAttributes.find((x: { Name: string; Value: string }) => x.Name === 'custom:rol').Value;
-                  sessionStorage.setItem('email', email);
-                  sessionStorage.setItem('rol', rol);
-                  sessionStorage.setItem('idUsuario', result.Username);                  
-                  this.toastr.success('Éxito', 'Bienvenido.');
-                  if(rol === Rol.Socio){
-                    this.bsModalRef.hide();
-                    this.router.navigate(['/home-socio']);
-                  }else if(rol === Rol.Deportista){
-                    this.deportistaService.getDeportista(result.Username).subscribe({
-                      next:(data) => {                        
-                        console.log(data);
-                        if(!data.plan){
+            if (result.AuthenticationResult.AccessToken) {
+              this.authService.signIn(
+                result.AuthenticationResult.AccessToken,
+                result.AuthenticationResult.IdToken,
+                result.AuthenticationResult.RefreshToken,
+                3600
+              );
+              this.seguridadService
+                .getMe(result.AuthenticationResult.AccessToken)
+                .subscribe({
+                  next: (result) => {
+                    console.log(result);
+                    const email: string = result.UserAttributes.find(
+                      (x: { Name: string; Value: string }) => x.Name === 'email'
+                    ).Value;
+                    const rol: string = result.UserAttributes.find(
+                      (x: { Name: string; Value: string }) =>
+                        x.Name === 'custom:rol'
+                    ).Value;
+                    sessionStorage.setItem('email', email);
+                    sessionStorage.setItem('rol', rol);
+                    sessionStorage.setItem('idUsuario', result.Username);
+                    this.toastr.success('Éxito', 'Bienvenido.');
+                    if (rol === Rol.Socio) {
+                      //this.getInformacionSocio(result.Username);
+                      this.sociosService.getSocio(result.Username)
+                      .subscribe({
+                        next: (socio: RegistrarSocioModel) => {
+                          console.log(socio);
+                          sessionStorage.setItem(
+                            'nombre',
+                            socio.nombre + ' ' + socio.apellido
+                          );
                           this.bsModalRef.hide();
-                          this.router.navigate(['/plan-deportista']);
-                        }else{
-                          this.bsModalRef.hide();
-                          this.router.navigate(['/home-deportista']);
-                        }                        
-                      },
-                      error: (er) => {
-                        console.log(er);
-                        this.toastr.error('Error', 'Fallo la verificación del deportista');
-                      },
-                    });
-                  }else{
-                    this.toastr.error('Error', 'Rol no valido');
-                  }          
-                },
-                error: (er) => {
-                  console.log(er);
-                  this.toastr.error('Error', 'Fallo la verificación de usuario');
-                },
-              });                
-                           
-            }else{
+                          this.router.navigate(['/home-socio']);
+                        },
+                        error: (er) => {
+                          console.log(er);
+                          this.toastr.error(
+                            'Error',
+                            'Fallo la verificación del socio'
+                          );
+                        },
+                      });                      
+                    } else if (rol === Rol.Deportista) {
+                      this.deportistaService
+                        .getDeportista(result.Username)
+                        .subscribe({
+                          next: (data) => {
+                            console.log(data);
+                            sessionStorage.setItem(
+                              'nombre',
+                              data.nombre + ' ' + data.apellido
+                            );
+                            if (!data.plan) {
+                              this.bsModalRef.hide();
+                              this.router.navigate(['/plan-deportista']);
+                            } else {
+                              this.bsModalRef.hide();
+                              this.router.navigate(['/home-deportista']);
+                            }
+                          },
+                          error: (er) => {
+                            console.log(er);
+                            this.toastr.error(
+                              'Error',
+                              'Fallo la verificación del deportista'
+                            );
+                          },
+                        });
+                    } else {
+                      this.toastr.error('Error', 'Rol no valido');
+                    }
+                  },
+                  error: (er) => {
+                    console.log(er);
+                    this.toastr.error(
+                      'Error',
+                      'Fallo la verificación de usuario'
+                    );
+                  },
+                });
+            } else {
               this.toastr.error('Error', 'Desafio MFA fallo');
             }
-     
           },
           error: (er) => {
             // Manejar el error
@@ -140,5 +187,4 @@ export class ResponderDesafioComponent {
       }
     }
   }
-
 }

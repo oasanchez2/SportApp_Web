@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLinkWithHref } from '@angular/router';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
@@ -10,8 +10,10 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
   templateUrl: './home-socio.component.html',
   styleUrl: './home-socio.component.css'
 })
-export class HomeSocioComponent {
+export class HomeSocioComponent{
+
   constructor(
     private translate: TranslateService
   ) {}
+
 }

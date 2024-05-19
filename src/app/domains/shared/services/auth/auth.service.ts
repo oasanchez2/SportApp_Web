@@ -47,18 +47,36 @@ export class AuthService {
     return this.cookieService.get('refreshToken');
   }
 
+  getRol(): string {
+    return sessionStorage.getItem('rol') ?? '';
+  }
+  getEmail(): string {
+    return sessionStorage.getItem('email') ?? '';
+  }
+
+  getIdUsuario(): string {
+    return sessionStorage.getItem('id_usuario') ?? '';  
+  }
+  getNombre(): string {
+    console.log('nombre usuario: ' + sessionStorage.getItem('nombre'));
+    return sessionStorage.getItem('nombre') ?? '';
+  }
+
   isDeportista(): boolean {
-    const rolUser: string = sessionStorage.getItem('rol') ?? '';
-    console.log(rolUser);
-    console.log(rolUser === Rol.Deportista);
+    const rolUser: string = sessionStorage.getItem('rol') ?? '';    
     return rolUser === Rol.Deportista;    
   }
 
   isSocio(): boolean {
-    const rolUser: string = sessionStorage.getItem('rol') ?? '';
-    console.log(rolUser);  
-    console.log(rolUser === Rol.Socio);
+    const rolUser: string = sessionStorage.getItem('rol') ?? '';    
     return rolUser === Rol.Socio;
+  }
+
+  cerrarSesion(): void {  
+    this.cookieService.delete('accessToken');
+    this.cookieService.delete('idToken');
+    this.cookieService.delete('refreshToken');
+    sessionStorage.clear();
   }
 
 }
