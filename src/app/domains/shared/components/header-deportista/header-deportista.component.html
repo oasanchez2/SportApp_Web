@@ -40,6 +40,26 @@
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
                     <i class="fas fa-user" style="font-size:25px;color:white"></i>
                 </a>
+                <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 274.836px;">
+                        <li>
+                            <div class="user-box">
+                                <div class="demo-icon">
+                                     <div class="icon-preview"><i class="la flaticon-profile"></i></div> <div class="icon-class"></div> 
+                                </div>
+                                <div class="u-text">
+                                    <h4>{{sessionNombre}}</h4>
+                                    <p class="text-muted">{{sessionCorreo}}</p>
+                                    <p class="text-muted">{{sessionRol}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" (click)="cerrarSesion()">Logout</a>
+                        </li>
+                    </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle" style="width: 100px;"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle" style="height: 99px;"></div></div></div></div>
+                </ul>
             </li>
         </ul>
     </div>

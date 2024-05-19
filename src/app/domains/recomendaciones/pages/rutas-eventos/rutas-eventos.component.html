@@ -10,7 +10,7 @@
                   <label for="ciudades" class="form-label">
                     {{'CITY_RECOMENDATION'|translate}}
                   </label>
-                  <select id="ciudades" class="selectpicker form-control " name="ciudades" formControlName="ciudades" data-live-search="true">
+                  <select id="ciudades" class="form-control " name="ciudades" formControlName="ciudades">
                     <option value="" selected>{{'SELECT'|translate}}</option>
                     <option *ngFor="let ciudad of ciudades()" [value]="ciudad.municipio">{{ciudad.municipio}}-{{ciudad.departamento}}</option>
                   </select>
