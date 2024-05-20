@@ -56,9 +56,9 @@
                   </ul>
                 </div>-->
               </div>
-  
+              <div><p>cantidad de eventos: {{eventosCalendario().length}}</p></div>
               <div class='demo-app-main'>
-                <full-calendar *ngIf='calendarVisible()' [options]="calendarOptions2">
+                <full-calendar *ngIf='calendarVisible()' [options]="calendarOptions()">
                   <ng-template #eventContent let-arg>
                     <b>{{ arg.timeText }}</b>
                     <i>{{ arg.event.title }}</i>
