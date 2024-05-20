@@ -37,8 +37,12 @@ export class CalendarioEventosComponent implements OnInit{
   entrenamientos = signal<Entrenamientos[]>([]);
   eventosCalendario = signal<EventInput[]>([])
 
+  events: any[] = [];
+
   localeEsSelected: boolean = true;
   calendarVisible = signal(true);
+  calendarOptions2: CalendarOptions = {};
+
   calendarOptions = signal<CalendarOptions>({
     plugins: [
       interactionPlugin,
@@ -69,6 +73,7 @@ export class CalendarioEventosComponent implements OnInit{
     eventRemove:
     */
   });
+
   currentEvents = signal<EventApi[]>([]);
 
   constructor(
@@ -102,78 +107,64 @@ export class CalendarioEventosComponent implements OnInit{
   }
   getEventosDeportista(idDeportista: string){
     if(idDeportista){
-      const events: any[] = [];
-      const events2 = [
-        { title: 'Evento 1', date: '2024-05-20' },
-        { title: 'Evento 2', date: '2024-05-22' }
-      ];
 
-      this.eventosService.getEventosDeportista(idDeportista)
-        .subscribe({
-          next: (evento) => {
-            evento.forEach((e) => {
-              /*
-              const event: EventInput = {
-                id: e.id_evento,
-                title: e.evento.nombre,
-                start: e.evento.fecha_evento
-              };
-              */
-              const event = { title: e.evento.nombre, date: e.evento.fecha_evento };
-              events.push(events2);
-            });
-            // Continue with the execution here
-            // You can put the code that depends on the result of the service call
-          },
-          error: (err) => {
-            console.error(err);
-          },
-          complete: () => {
-            // This block will be executed when the service call is complete
-            // You can put the code that depends on the result of the service call
-            console.log('cantidad 1 ' + events.length);
-            this.calendarOptions.update((options) => ({
-              ...options,
-              initialEvents: events
-            }));
-          }
-        });
-  
-      this.entrenamientoService.getEntrenamientoDeportista(idDeportista)
-      .subscribe({
-        next: (entrenamientos) => {          
+      forkJoin([
+        this.eventosService.getEventosDeportista(idDeportista),
+        this.entrenamientoService.getEntrenamientoDeportista(idDeportista)
+      ]).subscribe({
+        next: ([eventos, entrenamientos]) => {
+          eventos.forEach((e) => {
+            const event = { title: e.evento.nombre, date: e.evento.fecha_evento };
+            this.events.push(event);
+          });
+
           entrenamientos.forEach((e) => {
-            /*
-            const event: EventInput = {
-              id: e.id_entrenamiento,
-              title: e.nombre,
-              start: e.fecha_entrenamiento
-            };
-            */
             const event = { title: e.nombre, date: e.fecha_entrenamiento };
-            events.push(event);
-          });      
+            this.events.push(event);
+          });
+
+          this.updateCalendarOptions();
         },
         error: (err) => {
           console.error(err);
-        },
-        complete: () => {
-          // This block will be executed when the service call is complete
-          // You can put the code that depends on the result of the service call
-          console.log('cantidad 2 ' + events.length);
-          this.calendarOptions.update((options) => ({
-            ...options,
-            initialEvents: events
-          }));
         }
-      }); 
+      });
 
-      console.log(events);
-      this.calendarOptions.update((options) => ({
-        ...options,
-        initialEvents: events
-      }));
+
     }
+  }
+
+  updateCalendarOptions(): void {
+    this.calendarOptions2 = {
+      plugins: [
+        interactionPlugin,
+        dayGridPlugin,
+        timeGridPlugin,
+        listPlugin,
+      ],
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      },
+      locales:[esLocale],
+      locale: 'en',
+      initialView: 'dayGridMonth',
+      initialEvents: this.events,//INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
+      weekends: true,
+      editable: true,
+      selectable: true,
+      selectMirror: true,
+      dayMaxEvents: true,
+      select: this.handleDateSelect.bind(this),
+      eventClick: this.handleEventClick.bind(this),
+      eventsSet: this.handleEvents.bind(this)
+      /* you can update a remote database when these fire:
+      eventAdd:
+      eventChange:
+      eventRemove:
+      */
+    };
   }
 
   handleCalendarToggle() {
