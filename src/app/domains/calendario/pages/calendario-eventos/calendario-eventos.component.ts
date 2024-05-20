@@ -41,7 +41,6 @@ export class CalendarioEventosComponent implements OnInit{
 
   localeEsSelected: boolean = true;
   calendarVisible = signal(true);
-  calendarOptions2: CalendarOptions = {};
 
   calendarOptions = signal<CalendarOptions>({
     plugins: [
@@ -58,6 +57,7 @@ export class CalendarioEventosComponent implements OnInit{
     locales:[esLocale],
     locale: 'en',
     initialView: 'dayGridMonth',
+    events: this.eventosCalendario(), // Asigna los eventos de la señal
     initialEvents: [],//INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     weekends: true,
     editable: true,
@@ -113,17 +113,28 @@ export class CalendarioEventosComponent implements OnInit{
         this.entrenamientoService.getEntrenamientoDeportista(idDeportista)
       ]).subscribe({
         next: ([eventos, entrenamientos]) => {
+          const eventosArray: EventInput[] = [];
+          
           eventos.forEach((e) => {
             const event = { title: e.evento.nombre, date: e.evento.fecha_evento };
-            this.events.push(event);
+            eventosArray.push(event);
           });
 
           entrenamientos.forEach((e) => {
             const event = { title: e.nombre, date: e.fecha_entrenamiento };
-            this.events.push(event);
+            eventosArray.push(event);
           });
 
-          this.updateCalendarOptions();
+           // Actualiza la señal de eventos del calendario
+        console.log('cantidad eveneventos: ' + eventosArray.length);
+           this.eventosCalendario.set(eventosArray);
+
+        // Actualiza la configuración del calendario para incluir los nuevos eventos
+        this.calendarOptions.update((options) => ({
+          ...options,
+          events: eventosArray
+        }));
+     
         },
         error: (err) => {
           console.error(err);
@@ -132,39 +143,6 @@ export class CalendarioEventosComponent implements OnInit{
 
 
     }
-  }
-
-  updateCalendarOptions(): void {
-    this.calendarOptions2 = {
-      plugins: [
-        interactionPlugin,
-        dayGridPlugin,
-        timeGridPlugin,
-        listPlugin,
-      ],
-      headerToolbar: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-      },
-      locales:[esLocale],
-      locale: 'en',
-      initialView: 'dayGridMonth',
-      initialEvents: this.events,//INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
-      weekends: true,
-      editable: true,
-      selectable: true,
-      selectMirror: true,
-      dayMaxEvents: true,
-      select: this.handleDateSelect.bind(this),
-      eventClick: this.handleEventClick.bind(this),
-      eventsSet: this.handleEvents.bind(this)
-      /* you can update a remote database when these fire:
-      eventAdd:
-      eventChange:
-      eventRemove:
-      */
-    };
   }
 
   handleCalendarToggle() {
